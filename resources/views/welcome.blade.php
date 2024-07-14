@@ -20,7 +20,7 @@
                         APPLY NOW
                         <span class="ml-1" aria-hidden="true">→</span>
                     </a>
-                    <a href="#"
+                    <a href="{{ route('courses') }}"
                         class="px-6 py-3 text-center text-orange-600 transition-all bg-white border-2 border-orange-600 rounded-full hover:bg-orange-100 focus:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
                         CHECK COURSES
                         <span class="ml-1" aria-hidden="true">🏆</span>
@@ -43,7 +43,7 @@
                 Welcome to Tetu TVC
               </h3>
               <div class="my-4 text-center">
-                <img src="/images/principal.png" class="h-[200px] w-[200px] object-cover mx-auto rounded-full shadow-lg" alt="Mrs. Catherine Gikoyo">
+                <img src="{{ asset('images/principal.png') }}" class="h-[200px] w-[200px] object-cover mx-auto rounded-full shadow-lg" alt="Mrs. Catherine Gikoyo">
               </div>
               <div class="px-4 my-3 text-gray-700">
                 <p class="mb-4">It's my pleasure to welcome you to Tetu Technical and Vocational College. We are committed to providing quality programs, activities, and services that will enhance and enrich your academic and professional journey.</p>
@@ -54,7 +54,7 @@
               </div>
             </div>
             <div class="mt-6 text-center">
-              <a href="/administration" class="inline-block px-6 py-2 text-white transition duration-300 bg-orange-600 rounded-full btn hover:bg-orange-700">
+              <a href="{{ route('administration') }}" class="inline-block px-6 py-2 text-white transition duration-300 bg-orange-600 rounded-full btn hover:bg-orange-700">
                 Meet Our Team <i class="ml-2 fas fa-arrow-right"></i>
               </a>
             </div>
@@ -65,7 +65,7 @@
           <div class="grid h-full gap-6 md:grid-cols-2">
             <div class="flex flex-col justify-between text-white bg-blue-600 rounded-lg shadow-md">
               <div class="p-6">
-                <img src="/images/user-tick.svg" class="w-16 h-16 mx-auto mb-4" alt="">
+                <img src="{{ asset('images/user-tick.svg') }}" class="w-16 h-16 mx-auto mb-4" alt="">
                 <h4 class="mb-3 text-xl font-bold text-center">Admissions Ongoing!</h4>
                 <p class="px-3 mb-4 text-center">Apply now for Artisan, Certificate, and Diploma programs in various technical fields.</p>
               </div>
@@ -78,12 +78,12 @@
 
             <div class="flex flex-col justify-between text-white bg-green-600 rounded-lg shadow-md">
               <div class="p-6">
-                <img src="/images/download-w-1.svg" class="w-16 h-16 mx-auto mb-4" alt="">
+                <img src="{{ asset('images/download-w-1.svg') }}" class="w-16 h-16 mx-auto mb-4" alt="">
                 <h4 class="mb-3 text-xl font-bold text-center">Resources</h4>
                 <p class="px-3 mb-4 text-center">Access important documents, course outlines, and student handbooks in our downloads section.</p>
               </div>
               <div class="p-6 text-center">
-                <a href="/downloads" class="inline-block px-4 py-2 text-green-600 transition duration-300 bg-white rounded-full hover:bg-gray-200">
+                <a href="{{ route('downloads') }}" class="inline-block px-4 py-2 text-green-600 transition duration-300 bg-white rounded-full hover:bg-gray-200">
                   Download <i class="ml-2 fas fa-download"></i>
                 </a>
               </div>

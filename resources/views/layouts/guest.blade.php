@@ -17,16 +17,18 @@
       <meta property="og:url" content="https://www.tetutvc.ac.ke/">
       <meta property="og:title" content="Tetu Technical and Vocational College | Quality Education in Kenya">
       <meta property="og:description" content="Tetu TVC offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
-      <meta property="og:image" content="https://www.tetutvc.ac.ke/images/og-image.jpg">
+      <meta property="og:image" content="{{ asset('images/logo.jpeg') }}">
 
       <!-- Twitter -->
       <meta property="twitter:card" content="summary_large_image">
       <meta property="twitter:url" content="https://www.tetutvc.ac.ke/">
       <meta property="twitter:title" content="Tetu Technical and Vocational College | Quality Education in Kenya">
       <meta property="twitter:description" content="Tetu TVC offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
-      <meta property="twitter:image" content="https://www.tetutvc.ac.ke/images/twitter-image.jpg">
+      <meta property="twitter:image" content="{{ asset('images/logo.jpeg') }}">
 
-      @vite(['resources/css/app.css', 'resources/js/app.js'])
+      <link rel="stylesheet" href="{{ asset('build/assets/app-CYtj8nbC.css') }}">
+
+      {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
   </head>
 <body class="font-sans antialiased">
@@ -50,7 +52,7 @@
                     <a href="#">Tenders</a>
                 </div>
                 <div class="hidden px-2 border-l border-white md:inline">
-                    <a href="#">Downloads</a>
+                    <a href="{{ route('downloads') }}">Downloads</a>
                 </div>
                 <div class="hidden px-2 border-l border-white md:inline">
                     <a href="{{ route('login') }}">Signin</a>
@@ -75,7 +77,7 @@
                   <a href="{{ route('about') }}" class="ml-4 transition-all hover:text-orange-600">ABOUT US</a>
                   <a href="{{ route('administration') }}" class="ml-4 transition-all hover:text-orange-600">ADMINISTRATION</a>
                   <a href="{{ route('departments') }}" class="ml-4 transition-all hover:text-orange-600">DEPARTMENTS</a>
-                  <a href="#" class="ml-4 transition-all hover:text-orange-600">ACADEMICS</a>
+                  <a href="{{ route('courses') }}" class="ml-4 transition-all hover:text-orange-600">COURSES</a>
                   <a href="{{ route('contact') }}" class="ml-4 transition-all hover:text-orange-600">CONTACT US</a>
               </div>
 
@@ -90,15 +92,15 @@
           <div class="p-4">
               <button id="closeMobileMenu" class="float-right text-2xl fa fa-times"></button>
               <div class="mt-8 space-y-4">
-                  <a href="#" class="block transition-all hover:text-orange-600">HOME</a>
-                  <a href="#" class="block transition-all hover:text-orange-600">ABOUT US</a>
-                  <a href="#" class="block transition-all hover:text-orange-600">ADMINISTRATION</a>
-                  <a href="#" class="block transition-all hover:text-orange-600">DEPARTMENTS</a>
+                  <a href="{{ route('welcome') }}" class="block transition-all hover:text-orange-600">HOME</a>
+                  <a href="{{ route('about') }}" class="block transition-all hover:text-orange-600">ABOUT US</a>
+                  <a href="{{ route('administration') }}" class="block transition-all hover:text-orange-600">ADMINISTRATION</a>
+                  <a href="{{ route('departments') }}" class="block transition-all hover:text-orange-600">DEPARTMENTS</a>
                   <a href="#" class="block transition-all hover:text-orange-600">ACADEMICS</a>
-                  <a href="#" class="block transition-all hover:text-orange-600">CONTACT US</a>
-                  <a href="#" class="block transition-all hover:text-orange-600">DOWNLOADS</a>
+                  <a href="{{ route('contact') }}" class="block transition-all hover:text-orange-600">CONTACT US</a>
+                  <a href="{{ route('downloads') }}" class="block transition-all hover:text-orange-600">DOWNLOADS</a>
                   <a href="#" class="block transition-all hover:text-orange-600">TENDERS</a>
-                  <a href="#" class="block transition-all hover:text-orange-600">SIGNIN</a>
+                  <a href="{{ route('login') }}" class="block transition-all hover:text-orange-600">SIGNIN</a>
               </div>
           </div>
       </div>

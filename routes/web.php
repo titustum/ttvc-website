@@ -16,6 +16,10 @@ Volt::route('departments', 'mypages.departments')
         ->name('departments');
 Volt::route('administration', 'mypages.administration')
         ->name('administration');
+Volt::route('downloads', 'mypages.downloads')
+        ->name('downloads');
+Volt::route('courses', 'mypages.courses')
+        ->name('courses');
 
 
 
