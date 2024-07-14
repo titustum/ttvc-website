@@ -20,6 +20,8 @@ Volt::route('downloads', 'mypages.downloads')
         ->name('downloads');
 Volt::route('courses', 'mypages.courses')
         ->name('courses');
+Volt::route('departments/{name}', 'mypages.department')
+        ->name('department');
 
 
 
