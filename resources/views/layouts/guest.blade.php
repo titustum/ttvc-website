@@ -62,7 +62,7 @@
 
         <nav class="bg-white border-b shadow h-[70px] top-0 sticky w-full z-30">
           <div class="flex justify-between items-center px-3 py-2 lg:w-[90%] mt-2 lg:px-0 mx-auto">
-              <div class="inline lg:hidden">
+              <div class="inline xl:hidden">
                   <button id="mobileMenuButton" class="text-2xl fa fa-bars"></button>
               </div>
 
@@ -70,20 +70,11 @@
                   <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" class="h-10">
                   <h1 class="font-['Righteous'] text-3xl hidden lg:inline">TETU TVC</h1>
               </a>
-              <div class="items-center hidden font-semibold lg:flex">
+              <div class="items-center hidden font-semibold xl:flex">
                   <a href="{{ route('welcome') }}" class="transition-all hover:text-orange-600">HOME</a>
                   <a href="{{ route('about') }}" class="ml-4 transition-all hover:text-orange-600">ABOUT US</a>
                   <a href="{{ route('administration') }}" class="ml-4 transition-all hover:text-orange-600">ADMINISTRATION</a>
-                  <div class="relative ml-4">
-                      <button id="departmentsDropdown" class="transition-all hover:text-orange-600">DEPARTMENTS <i class="fas fa-chevron-down"></i></button>
-                      <div id="departmentsMenu" class="absolute hidden w-48 py-2 mt-2 bg-white rounded-md shadow-lg">
-                          <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Cosmetology</a>
-                          <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Hospitality</a>
-                          <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Fashion</a>
-                          <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">ICT</a>
-                          <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Agriculture</a>
-                      </div>
-                  </div>
+                  <a href="{{ route('departments') }}" class="ml-4 transition-all hover:text-orange-600">DEPARTMENTS</a>
                   <a href="#" class="ml-4 transition-all hover:text-orange-600">ACADEMICS</a>
                   <a href="{{ route('contact') }}" class="ml-4 transition-all hover:text-orange-600">CONTACT US</a>
               </div>
@@ -95,25 +86,19 @@
       </nav>
 
       <!-- Mobile Menu -->
-      <div id="mobileMenu" class="fixed top-0 left-0 z-40 w-64 h-full transition-transform duration-300 ease-in-out transform -translate-x-full bg-white shadow-lg lg:hidden">
+      <div id="mobileMenu" class="fixed top-0 left-0 z-40 w-64 h-full transition-transform duration-300 ease-in-out transform -translate-x-full bg-white shadow-lg xl:hidden">
           <div class="p-4">
               <button id="closeMobileMenu" class="float-right text-2xl fa fa-times"></button>
               <div class="mt-8 space-y-4">
                   <a href="#" class="block transition-all hover:text-orange-600">HOME</a>
                   <a href="#" class="block transition-all hover:text-orange-600">ABOUT US</a>
                   <a href="#" class="block transition-all hover:text-orange-600">ADMINISTRATION</a>
-                  <div class="relative">
-                      <button id="mobileDepartmentsDropdown" class="w-full text-left transition-all hover:text-orange-600">DEPARTMENTS <i class="fas fa-chevron-down"></i></button>
-                      <div id="mobileDepartmentsMenu" class="hidden mt-2 ml-4 space-y-2">
-                          <a href="#" class="block text-sm hover:text-orange-600"> <i class="fas fa-square"></i> Cosmetology</a>
-                          <a href="#" class="block text-sm hover:text-orange-600"> <i class="fas fa-square"></i> Hospitality</a>
-                          <a href="#" class="block text-sm hover:text-orange-600"> <i class="fas fa-square"></i> Fashion</a>
-                          <a href="#" class="block text-sm hover:text-orange-600"> <i class="fas fa-square"></i> ICT</a>
-                          <a href="#" class="block text-sm hover:text-orange-600"> <i class="fas fa-square"></i> Agriculture</a>
-                      </div>
-                  </div>
+                  <a href="#" class="block transition-all hover:text-orange-600">DEPARTMENTS</a>
                   <a href="#" class="block transition-all hover:text-orange-600">ACADEMICS</a>
                   <a href="#" class="block transition-all hover:text-orange-600">CONTACT US</a>
+                  <a href="#" class="block transition-all hover:text-orange-600">DOWNLOADS</a>
+                  <a href="#" class="block transition-all hover:text-orange-600">TENDERS</a>
+                  <a href="#" class="block transition-all hover:text-orange-600">SIGNIN</a>
               </div>
           </div>
       </div>
@@ -196,17 +181,11 @@
 
 
           <script>
-            const departmentsDropdown = document.getElementById('departmentsDropdown');
-            const departmentsMenu = document.getElementById('departmentsMenu');
             const mobileMenuButton = document.getElementById('mobileMenuButton');
             const mobileMenu = document.getElementById('mobileMenu');
             const closeMobileMenu = document.getElementById('closeMobileMenu');
             const mobileDepartmentsDropdown = document.getElementById('mobileDepartmentsDropdown');
             const mobileDepartmentsMenu = document.getElementById('mobileDepartmentsMenu');
-
-            departmentsDropdown.addEventListener('click', () => {
-                departmentsMenu.classList.toggle('hidden');
-            });
 
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.remove('-translate-x-full');
@@ -216,16 +195,7 @@
                 mobileMenu.classList.add('-translate-x-full');
             });
 
-            mobileDepartmentsDropdown.addEventListener('click', () => {
-                mobileDepartmentsMenu.classList.toggle('hidden');
-            });
 
-            // Close the dropdown when clicking outside of it
-            window.addEventListener('click', (event) => {
-                if (!departmentsDropdown.contains(event.target) && !departmentsMenu.contains(event.target)) {
-                    departmentsMenu.classList.add('hidden');
-                }
-            });
         </script>
 
 

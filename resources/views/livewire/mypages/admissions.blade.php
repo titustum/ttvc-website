@@ -12,41 +12,56 @@ new #[Layout('layouts.guest')] class extends Component
 <main>
 
 
-    <section class="w-full py-16 px-4 bg-gray-50">
-        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
-          <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Student Application Form</h2>
+    <section class="w-full px-4 py-16 bg-gray-50">
+        <div class="max-w-4xl p-8 mx-auto bg-white rounded-lg shadow-lg">
+          <h2 class="mb-8 text-3xl font-bold text-center text-gray-800">Student Application Form</h2>
           <form action="/submit-application" method="POST" class="space-y-6">
             <!-- Personal Information -->
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid gap-6 md:grid-cols-2">
               <div>
-                <label for="firstName" class="block text-gray-700 font-medium mb-2">First Name</label>
+                <label for="firstName" class="block mb-2 font-medium text-gray-700">First Name</label>
                 <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
               </div>
               <div>
-                <label for="lastName" class="block text-gray-700 font-medium mb-2">Last Name</label>
+                <label for="lastName" class="block mb-2 font-medium text-gray-700">Last Name</label>
                 <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
               </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid gap-6 md:grid-cols-2">
               <div>
-                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                <label for="email" class="block mb-2 font-medium text-gray-700">Email Address</label>
                 <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
               </div>
               <div>
-                <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                <label for="phone" class="block mb-2 font-medium text-gray-700">Phone Number</label>
                 <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
               </div>
             </div>
 
+            <div class="grid gap-6 md:grid-cols-2">
+                <div>
+                    <label for="program" class="block mb-2 font-medium text-gray-700">Gender</label>
+                    <select id="program" name="program" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                      <option value="">Select your gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+              <div>
+                <label for="idnumber" class="block mb-2 font-medium text-gray-700">ID No./Birth Cert.</label>
+                <input type="number" id="idnumber" name="idnumber" min="1000" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+              </div>
+            </div>
+
             <div>
-              <label for="dob" class="block text-gray-700 font-medium mb-2">Date of Birth</label>
+              <label for="dob" class="block mb-2 font-medium text-gray-700">Date of Birth</label>
               <input type="date" id="dob" name="dob" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
             </div>
 
             <!-- Academic Information -->
             <div>
-              <label for="program" class="block text-gray-700 font-medium mb-2">Desired Program of Study</label>
+              <label for="program" class="block mb-2 font-medium text-gray-700">Desired Course of Study</label>
               <select id="program" name="program" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                 <option value="">Select a program</option>
                 <option value="computer_science">Computer Science</option>
@@ -58,33 +73,44 @@ new #[Layout('layouts.guest')] class extends Component
             </div>
 
             <div>
-              <label for="startTerm" class="block text-gray-700 font-medium mb-2">Intended Start Term</label>
+              <label for="startTerm" class="block mb-2 font-medium text-gray-700">Intended Start Term</label>
               <select id="startTerm" name="startTerm" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                 <option value="">Select a term</option>
-                <option value="fall_2024">Fall 2024</option>
-                <option value="spring_2025">Spring 2025</option>
-                <option value="fall_2025">Fall 2025</option>
+                <option value="sept_2024">September 2024</option>
+                <option value="jan_2025">January 2025</option>
+                <option value="may_2025">May 2025</option>
               </select>
             </div>
 
             <div>
-              <label for="highSchool" class="block text-gray-700 font-medium mb-2">High School Name</label>
+              <label for="highSchool" class="block mb-2 font-medium text-gray-700">High School Name</label>
               <input type="text" id="highSchool" name="highSchool" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
             </div>
 
             <div>
-              <label for="gpa" class="block text-gray-700 font-medium mb-2">High School GPA</label>
-              <input type="number" id="gpa" name="gpa" step="0.01" min="0" max="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+              <label for="gpa" class="block mb-2 font-medium text-gray-700">High School Grade</label>
+              <select id="startTerm" name="startTerm" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                <option value="">Select a grade</option>
+                <option value="c++">C+ & Above</option>
+                <option value="c">C (Plain)</option>
+                <option value="c-">C- (Minus)</option>
+                <option value="d+">D+ (Plus)</option>
+                <option value="d">D (Plain)</option>
+                <option value="d-">D- (Minus)</option>
+                <option value="e">E</option>
+                <option value="kcpe">I have KCPE only</option>
+                <option value="none">Not attended highschool</option>
+              </select>
             </div>
 
             <!-- Additional Information -->
             <div>
-              <label for="extracurricular" class="block text-gray-700 font-medium mb-2">Extracurricular Activities</label>
+              <label for="extracurricular" class="block mb-2 font-medium text-gray-700">Extracurricular Activities</label>
               <textarea id="extracurricular" name="extracurricular" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600"></textarea>
             </div>
 
             <div>
-              <label for="essay" class="block text-gray-700 font-medium mb-2">Personal Statement</label>
+              <label for="essay" class="block mb-2 font-medium text-gray-700">Personal Statement</label>
               <textarea id="essay" name="essay" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600"></textarea>
             </div>
 
@@ -94,7 +120,7 @@ new #[Layout('layouts.guest')] class extends Component
               <label for="terms" class="text-gray-700">I agree to the terms and conditions</label>
             </div>
 
-            <button type="submit" class="w-full bg-orange-600 text-white font-semibold py-3 px-6 rounded-md hover:bg-orange-700 transition duration-300">Submit Application</button>
+            <button type="submit" class="w-full px-6 py-3 font-semibold text-white transition duration-300 bg-orange-600 rounded-md hover:bg-orange-700">Submit Application</button>
           </form>
         </div>
       </section>
