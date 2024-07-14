@@ -1,0 +1,268 @@
+<x-guest-layout>
+
+
+  <section id="hero" class="h-[calc(100vh-70px)] bg-no-repeat bg-cover bg-right lg:bg-top z-10"
+    style="background-image: url('./images/gate1.jpg');">
+    <div class="block h-full lg:grid lg:grid-cols-2">
+        <div class="bg-black bg-opacity-80 flex flex-col justify-center py-10 px-7 h-full min-h-[70vh]">
+            <div class="py-20">
+                <h1 class="text-3xl font-bold text-white md:text-4xl xl:text-5xl">Explore Your Future at Tetu Technical and Vocational College</h1>
+                <h2 class="mt-5 text-2xl lg:text-3xl text-cyan-300">
+                    We are the leading Technical and Vocational Education in Kenya
+                    in skill delivery and co-curricular activities.
+                </h2>
+                <p class="mt-4 font-semibold text-green-300">
+                    Join over 2,000 happy students
+                </p>
+                <div class="grid gap-4 mt-6 font-semibold lg:flex">
+                    <a href="{{ route('admissions') }}"
+                        class="px-6 py-3 text-center text-white transition-all bg-orange-600 rounded-full text hover:bg-orange-700 focus:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+                        APPLY NOW
+                        <span class="ml-1" aria-hidden="true">→</span>
+                    </a>
+                    <a href="#"
+                        class="px-6 py-3 text-center text-orange-600 transition-all bg-white border-2 border-orange-600 rounded-full hover:bg-orange-100 focus:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+                        CHECK COURSES
+                        <span class="ml-1" aria-hidden="true">🏆</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="w-full px-4 py-16 bg-white">
+    <div class="w-full mx-auto max-w-7xl">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+        <div class="w-full md:col-span-2 lg:col-span-1">
+          <div class="flex flex-col justify-between h-full p-6 bg-white border rounded-lg shadow-md">
+            <div>
+              <h3 class="mb-4 text-2xl font-bold text-center text-orange-600">
+                Welcome to Tetu TVC
+              </h3>
+              <div class="my-4 text-center">
+                <img src="/images/principal.png" class="h-[200px] w-[200px] object-cover mx-auto rounded-full shadow-lg" alt="Mrs. Catherine Gikoyo">
+              </div>
+              <div class="px-4 my-3 text-gray-700">
+                <p class="mb-4">It's my pleasure to welcome you to Tetu Technical and Vocational College. We are committed to providing quality programs, activities, and services that will enhance and enrich your academic and professional journey.</p>
+                <p class="font-bold text-center">
+                  Mrs. Catherine Gikoyo<br>
+                  <i class="text-orange-600">College Principal</i>
+                </p>
+              </div>
+            </div>
+            <div class="mt-6 text-center">
+              <a href="/administration" class="inline-block px-6 py-2 text-white transition duration-300 bg-orange-600 rounded-full btn hover:bg-orange-700">
+                Meet Our Team <i class="ml-2 fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full md:col-span-2 lg:col-span-2">
+          <div class="grid h-full gap-6 md:grid-cols-2">
+            <div class="flex flex-col justify-between text-white bg-blue-600 rounded-lg shadow-md">
+              <div class="p-6">
+                <img src="/images/user-tick.svg" class="w-16 h-16 mx-auto mb-4" alt="">
+                <h4 class="mb-3 text-xl font-bold text-center">Admissions Ongoing!</h4>
+                <p class="px-3 mb-4 text-center">Apply now for Artisan, Certificate, and Diploma programs in various technical fields.</p>
+              </div>
+              <div class="p-6 text-center">
+                <a href="{{ route('admissions') }}" class="inline-block px-4 py-2 text-blue-600 transition duration-300 bg-white rounded-full hover:bg-gray-200">
+                  Apply Now <i class="ml-2 fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex flex-col justify-between text-white bg-green-600 rounded-lg shadow-md">
+              <div class="p-6">
+                <img src="/images/download-w-1.svg" class="w-16 h-16 mx-auto mb-4" alt="">
+                <h4 class="mb-3 text-xl font-bold text-center">Resources</h4>
+                <p class="px-3 mb-4 text-center">Access important documents, course outlines, and student handbooks in our downloads section.</p>
+              </div>
+              <div class="p-6 text-center">
+                <a href="/downloads" class="inline-block px-4 py-2 text-green-600 transition duration-300 bg-white rounded-full hover:bg-gray-200">
+                  Download <i class="ml-2 fas fa-download"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex flex-col justify-center text-white bg-yellow-600 rounded-lg shadow-md md:col-span-2">
+              <div class="p-6">
+                <h4 class="mb-3 text-xl font-bold text-center">Our Programs</h4>
+                <p class="px-3 mb-4 text-center">Discover our wide range of technical and vocational programs designed to equip you with industry-relevant skills.</p>
+                <div class="text-center">
+                  <a href="/programs" class="inline-block px-4 py-2 text-yellow-600 transition duration-300 bg-white rounded-full hover:bg-gray-200">
+                    Explore Programs <i class="ml-2 fas fa-book-open"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+<section class="py-16 bg-gray-100">
+  <div class="container px-4 mx-auto">
+      <h2 class="mb-12 text-3xl font-bold text-center text-gray-800">Our Featured Programs</h2>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Cosmetology Program -->
+          <div class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
+              <img src="/images/departments/Cosmetology.jpg" alt="Cosmetology" class="object-cover w-full h-48">
+              <div class="p-6">
+                  <h3 class="mb-2 text-xl font-semibold text-orange-600">Cosmetology</h3>
+                  <p class="mb-4 text-gray-600">Master the art of beauty with our comprehensive cosmetology program.</p>
+                  <a href="/programs/cosmetology" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
+              </div>
+          </div>
+
+          <!-- Hospitality Program -->
+          <div class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
+              <img src="/images/departments/Hospitality.jpg" alt="Hospitality" class="object-cover w-full h-48">
+              <div class="p-6">
+                  <h3 class="mb-2 text-xl font-semibold text-orange-600">Hospitality Management</h3>
+                  <p class="mb-4 text-gray-600">Develop skills for a successful career in the dynamic hospitality industry.</p>
+                  <a href="/programs/hospitality" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
+              </div>
+          </div>
+
+          <!-- Fashion Design Program -->
+          <div class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
+              <img src="/images/departments/Fashion.jpg" alt="Fashion Design" class="object-cover w-full h-48">
+              <div class="p-6">
+                  <h3 class="mb-2 text-xl font-semibold text-orange-600">Fashion Design</h3>
+                  <p class="mb-4 text-gray-600">Unleash your creativity and learn the fundamentals of fashion design.</p>
+                  <a href="/programs/fashion-design" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
+              </div>
+          </div>
+
+          <!-- ICT Program -->
+          <div class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
+              <img src="/images/departments/ict.jpg" alt="Information and Communication Technology" class="object-cover w-full h-48">
+              <div class="p-6">
+                  <h3 class="mb-2 text-xl font-semibold text-orange-600">ICT</h3>
+                  <p class="mb-4 text-gray-600">Gain cutting-edge skills in information and communication technology.</p>
+                  <a href="/programs/ict" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
+              </div>
+          </div>
+
+          <!-- Agriculture Program -->
+          <div class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
+              <img src="/images/departments/agricultre.jpg" alt="Agriculture" class="object-cover w-full h-48">
+              <div class="p-6">
+                  <h3 class="mb-2 text-xl font-semibold text-orange-600">Agriculture</h3>
+                  <p class="mb-4 text-gray-600">Learn modern agricultural techniques and sustainable farming practices.</p>
+                  <a href="/programs/agriculture" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
+              </div>
+          </div>
+
+          <!-- General Programs Link -->
+          <div class="flex items-center justify-center overflow-hidden transition-transform bg-orange-600 rounded-lg shadow-md hover:scale-105">
+              <div class="p-6 text-center">
+                  <h3 class="mb-4 text-2xl font-semibold text-white">Explore All Programs</h3>
+                  <p class="mb-6 text-white">Discover our full range of technical and vocational programs.</p>
+                  <a href="/programs" class="px-4 py-2 font-semibold text-orange-600 transition duration-300 bg-white rounded-full hover:bg-gray-100">View All Programs</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+<section class="py-16 bg-white">
+  <div class="container px-4 mx-auto">
+      <h2 class="mb-12 text-3xl font-bold text-center text-gray-800">Student Success Stories</h2>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Success Story 1 -->
+          <div class="p-6 bg-gray-100 rounded-lg shadow-md">
+              <img src="/images/students/student1.png" alt="Jane Doe" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
+              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">Jane Doe</h3>
+              <p class="mb-4 text-center text-gray-600">Cosmetology Graduate</p>
+              <p class="text-gray-700">"Thanks to Tetu TVC, I now run my own successful beauty salon. The hands-on training I received was invaluable."</p>
+          </div>
+
+          <!-- Success Story 2 -->
+          <div class="p-6 bg-gray-100 rounded-lg shadow-md">
+              <img src="/images/students/student2.jpeg" alt="John Smith" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
+              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">John Smith</h3>
+              <p class="mb-4 text-center text-gray-600">ICT Graduate</p>
+              <p class="text-gray-700">"The skills I learned at Tetu TVC helped me secure a job at a leading tech company. I'm grateful for the practical education I received."</p>
+          </div>
+
+          <!-- Success Story 3 -->
+          <div class="p-6 bg-gray-100 rounded-lg shadow-md">
+              <img src="/images/students/student3.webp" alt="Mary Johnson" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
+              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">Mary Johnson</h3>
+              <p class="mb-4 text-center text-gray-600">Agriculture Graduate</p>
+              <p class="text-gray-700">"Tetu TVC's agriculture program gave me the knowledge to start my own organic farm. It's been a life-changing experience."</p>
+          </div>
+      </div>
+
+      <div class="mt-12 text-center">
+          <a href="/success-stories" class="inline-block px-6 py-3 font-semibold text-white transition duration-300 bg-orange-600 rounded-full hover:bg-orange-700">Read More Success Stories</a>
+      </div>
+  </div>
+</section>
+
+
+
+<section class="py-16 bg-cyan-100">
+  <div class="container px-4 mx-auto">
+      <h2 class="text-3xl font-bold text-center text-gray-800">Our Partners</h2>
+      <p class="mt-6 mb-12 text-center text-gray-600">
+        Our partnerships with industry leaders and educational authorities ensure that our programs remain cutting-edge and our graduates are well-prepared for the workforce.
+    </p>
+
+      <div class="grid items-center grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
+          <!-- Partner 1 -->
+          <div class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+              <img src="/images/partners/knec.png" alt="Kenya National Examinational Council" class="h-16 max-w-full">
+          </div>
+
+          <!-- Partner 2 -->
+          <div class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+              <img src="/images/partners/CDAAC.png" alt="CDAAC Logo" class="h-16 max-w-full">
+          </div>
+
+          <!-- Partner 3 -->
+          <div class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+              <img src="/images/partners/nita.png" alt="NITA Logo" class="h-16 max-w-full">
+          </div>
+
+          <!-- Partner 4 -->
+          <div class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+              <img src="/images/partners/Ministry-of-Education-logo.jpg" alt="Ministry of Education" class="max-w-full max-h-16">
+          </div>
+
+          <!-- Partner 5 -->
+          <div class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+              <img src="/images/partners/TVETA.png" alt="TVETA" class="h-16 max-w-full">
+          </div>
+
+          <!-- Partner 5 -->
+          <div title="Kenya Association of Technical Training Institutions" class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
+              <img src="/images/partners/katti.png" alt="KATTI" class="h-16 max-w-full">
+          </div>
+      </div>
+
+      <div class="mt-12 text-center">
+          <a href="/our-partners" class="inline-block px-6 py-3 font-semibold text-white transition duration-300 bg-orange-600 rounded-full hover:bg-orange-700">
+              Learn More About Our Partnerships
+          </a>
+      </div>
+  </div>
+</section>
+
+
+</x-guest-layout>
