@@ -26,9 +26,23 @@
       <meta property="twitter:description" content="Tetu TVC offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
       <meta property="twitter:image" content="{{ asset('images/logo.jpeg') }}">
 
+
+      <style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <link rel="stylesheet" href="{{ asset('build/assets/app-CYtj8nbC.css') }}">
 
-      {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+
+      @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   </head>
 <body class="font-sans antialiased">
@@ -45,7 +59,7 @@
                 <div class="px-2">
                     <span>+254 758 660 300</span>
                 </div>
-                <div class="px-2 border-l border-white">
+                <div class="px-2 border-white md:border-l">
                     <a href="mailto:info@tetutvc.ac.ke">info@tetutvc.ac.ke</a>
                 </div>
                 <div class="hidden px-2 border-l border-white md:inline">
@@ -62,30 +76,36 @@
       </header>
 
 
-        <nav class="bg-white border-b shadow h-[70px] top-0 sticky w-full z-30">
-          <div class="flex justify-between items-center px-3 py-2 lg:w-[90%] mt-2 lg:px-0 mx-auto">
-              <div class="inline xl:hidden">
-                  <button id="mobileMenuButton" class="text-2xl fa fa-bars"></button>
-              </div>
+        <nav id="mainNav" class="bg-white border-b shadow h-[70px] top-0 sticky w-full z-30">
+            <div class="flex justify-between items-center px-3 py-2 lg:w-[90%] mt-2 lg:px-0 mx-auto">
+                <div class="inline xl:hidden">
+                    <button id="mobileMenuButton" class="text-2xl fa fa-bars"></button>
+                </div>
 
-              <a href="{{ route('welcome') }}" class="flex items-center text-orange-600 uppercase">
-                  <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" class="h-10">
-                  <h1 class="font-['Righteous'] text-3xl hidden lg:inline">TETU TVC</h1>
-              </a>
-              <div class="items-center hidden font-semibold xl:flex">
-                  <a href="{{ route('welcome') }}" class="transition-all hover:text-orange-600">HOME</a>
-                  <a href="{{ route('about') }}" class="ml-4 transition-all hover:text-orange-600">ABOUT US</a>
-                  <a href="{{ route('administration') }}" class="ml-4 transition-all hover:text-orange-600">ADMINISTRATION</a>
-                  <a href="{{ route('departments') }}" class="ml-4 transition-all hover:text-orange-600">DEPARTMENTS</a>
-                  <a href="{{ route('courses') }}" class="ml-4 transition-all hover:text-orange-600">COURSES</a>
-                  <a href="{{ route('contact') }}" class="ml-4 transition-all hover:text-orange-600">CONTACT US</a>
-              </div>
+                <a href="{{ route('welcome') }}" class="flex items-center text-orange-600 uppercase">
+                    <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" class="h-10">
+                    <h1 class="font-['Righteous'] text-3xl hidden lg:inline">TETU TVC</h1>
+                </a>
+                <div class="items-center hidden font-semibold xl:flex">
+                    <a href="{{ route('welcome') }}" class="transition-all hover:text-orange-600">HOME</a>
+                    <a href="{{ route('about') }}" class="ml-4 transition-all hover:text-orange-600">ABOUT US</a>
+                    <a href="{{ route('administration') }}" class="ml-4 transition-all hover:text-orange-600">ADMINISTRATION</a>
+                    <a href="{{ route('departments') }}" class="ml-4 transition-all hover:text-orange-600">DEPARTMENTS</a>
+                    <a href="{{ route('courses') }}" class="ml-4 transition-all hover:text-orange-600">COURSES</a>
+                    <a href="{{ route('contact') }}" class="ml-4 transition-all hover:text-orange-600">CONTACT US</a>
+                </div>
 
-              <div class="flex items-center font-semibold">
-                  <a href="{{ route('admissions') }}" class="px-4 py-3 ml-4 text-white transition-all bg-orange-600 rounded-full hover:opacity-80">APPLY NOW</a>
-              </div>
-          </div>
-      </nav>
+                <div class="flex items-center font-semibold">
+                    <a href="{{ route('admissions') }}"
+                        class="hidden px-4 py-3 ml-4 text-white transition-all bg-orange-600 rounded-full lg:inline hover:opacity-80">
+                        APPLY NOW
+                    </a>
+                    <a href="{{ route('admissions') }}" class="px-4 py-3 ml-4 transition-all lg:hidden hover:text-orange-600 focus:orange-600">
+                        <i class="text-2xl fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
 
       <!-- Mobile Menu -->
       <div id="mobileMenu" class="fixed top-0 left-0 z-40 w-64 h-full transition-transform duration-300 ease-in-out transform -translate-x-full bg-white shadow-lg xl:hidden">
@@ -105,21 +125,24 @@
           </div>
       </div>
 
-    {{ $slot }}
+
+
+
+      {{ $slot }}
 
 
     <footer class="py-12 text-white bg-gray-800">
         <div class="container px-4 mx-auto">
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                 <!-- About Tetu TVC -->
-                <div>
+                <div data-aos='fade-up'>
                     <h3 class="mb-4 text-xl font-semibold">About Tetu TVC</h3>
                     <p class="mb-4 text-gray-400">Tetu Technical and Vocational College is committed to providing quality education and training to empower students for successful careers.</p>
                     <a href="/about" class="text-orange-400 hover:text-orange-300">Learn More</a>
                 </div>
 
                 <!-- Quick Links -->
-                <div>
+                <div data-aos='fade-up'>
                     <h3 class="mb-4 text-xl font-semibold">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="/programs" class="text-gray-400 hover:text-white">Programs</a></li>
@@ -131,7 +154,7 @@
                 </div>
 
                 <!-- Contact Information -->
-                <div>
+                <div data-aos='fade-up'>
                     <h3 class="mb-4 text-xl font-semibold">Contact Us</h3>
                     <ul class="space-y-2 text-gray-400">
                         <li>
@@ -150,7 +173,7 @@
                 </div>
 
                 <!-- Newsletter Signup -->
-                <div>
+                <div data-aos='fade-up'>
                     <h3 class="mb-4 text-xl font-semibold">Stay Connected</h3>
                     <p class="mb-4 text-gray-400">Subscribe to our newsletter for updates and news.</p>
                     <form class="flex">
@@ -198,6 +221,52 @@
             });
 
 
+        </script>
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const lazyImages = document.querySelectorAll('img.lazy');
+        const teamContainer = document.getElementById('teamContainer');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+
+        // Lazy loading
+        const lazyLoad = function() {
+            lazyImages.forEach(img => {
+                if (img.getBoundingClientRect().left <= window.innerWidth) {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                }
+            });
+        };
+
+        // Initial load
+        lazyLoad();
+
+        // Scroll event for lazy loading
+        teamContainer.addEventListener('scroll', lazyLoad);
+
+        // Scroll buttons functionality
+        scrollLeftBtn.addEventListener('click', () => {
+            teamContainer.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            teamContainer.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+    });
+</script>
+
+
+
+
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <script>
+            AOS.init();
         </script>
 
 

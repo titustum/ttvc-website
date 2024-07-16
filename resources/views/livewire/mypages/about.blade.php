@@ -37,9 +37,9 @@ new #[Layout('layouts.guest')] class extends Component
 
 <section class="py-16 bg-white">
     <div class="container px-4 mx-auto">
-        <h2 class="mb-8 text-3xl font-bold text-center text-gray-800">Our Journey</h2>
+        <h2 data-aos="fade-up" class="mb-8 text-3xl font-bold text-center text-gray-800">Our Journey</h2>
 
-        <div class="p-8 bg-gray-100 rounded-lg shadow-md">
+        <div data-aos="fade-up" class="p-8 bg-gray-100 rounded-lg shadow-md">
             <p class="mb-4 text-gray-700">
                 Established in March 2019, Tetu Technical & Vocational College emerged from a collaboration between the National Government and Tetu NG CDF. Located in Nyeri County, our institution has grown from an initial enrollment of 89 students to become a beacon of technical education in the region.
             </p>
@@ -55,11 +55,11 @@ new #[Layout('layouts.guest')] class extends Component
 
 <section class="py-16 text-white bg-orange-600">
     <div class="container px-4 mx-auto text-center">
-        <h2 class="mb-8 text-3xl font-bold">Our Commitment</h2>
-        <p class="mb-8 text-xl">
+        <h2 data-aos="fade-up" class="mb-8 text-3xl font-bold">Our Commitment</h2>
+        <p data-aos="fade-up" class="mb-8 text-xl">
             Tetu TVC is dedicated to providing equitable access to technical education, fostering innovation, and producing socially responsible graduates with the skills and entrepreneurial spirit necessary for Kenya's development and global competitiveness.
         </p>
-        <a href="{{ route('admissions') }}" class="px-8 py-3 font-semibold text-orange-600 transition duration-300 bg-white rounded-full hover:bg-gray-200">
+        <a data-aos="fade-up" href="{{ route('admissions') }}" class="px-8 py-3 font-semibold text-orange-600 transition duration-300 bg-white rounded-full hover:bg-gray-200">
             Join Us Today
         </a>
     </div>
