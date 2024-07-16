@@ -22,8 +22,13 @@ Volt::route('courses', 'mypages.courses')
         ->name('courses');
 Volt::route('departments/{deptname}', 'mypages.department')
         ->name('department');
-Volt::route('department-manager/', 'mypages.department-manager')
-        ->name('department.manager');
+
+Volt::route('create-department', 'mypages.create-department')
+        ->name('create.department');
+Volt::route('create-team', 'mypages.create-team')
+        ->name('create.team');
+Volt::route('create-course', 'mypages.create-course')
+        ->name('create.course');
 
 
 

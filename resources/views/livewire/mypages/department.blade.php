@@ -17,10 +17,10 @@ new #[Layout('layouts.guest')] class extends Component
 
     <section class="py-16 bg-gray-100">
         <div class="container px-4 mx-auto">
-            <h1 class="mb-8 text-4xl font-bold text-center text-gray-800">Department of Information and Communication
-                Technology (ICT)</h1>
-            <h1 class="mb-8 text-4xl font-bold text-center text-gray-800">Department of Information and Communication
-                {{ $deptname }}</h1>
+            <h1 class="mb-8 text-2xl font-bold text-center text-gray-800 lg:text-4xl">
+                Department of Information and Communication
+                Technology (ICT)
+            </h1>
 
             <div class="mb-12 overflow-hidden bg-white rounded-lg shadow-md">
                 <img src="./images/departments/ict-banner.jpg" alt="ICT Department" class="object-cover w-full h-64">
