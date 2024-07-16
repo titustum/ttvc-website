@@ -101,7 +101,8 @@
                         APPLY NOW
                     </a>
                     <a href="{{ route('admissions') }}" class="px-4 py-3 ml-4 transition-all lg:hidden hover:text-orange-600 focus:orange-600">
-                        <i class="text-2xl fas fa-envelope"></i>
+                        {{-- <i class="text-2xl fas fa-envelope-open"></i> --}}
+                        APPLY →
                     </a>
                 </div>
             </div>

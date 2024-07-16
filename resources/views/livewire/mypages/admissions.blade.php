@@ -14,7 +14,7 @@ new #[Layout('layouts.guest')] class extends Component
 
     <section class="w-full px-4 py-16 bg-gray-50">
         <div class="max-w-4xl p-8 mx-auto bg-white rounded-lg shadow-lg">
-          <h2 class="mb-8 text-3xl font-bold text-center text-gray-800">Student Application Form</h2>
+          <h2 class="mb-8 text-2xl font-bold text-center text-gray-800 lg:text-3xl">Student Application Form</h2>
           <form action="/submit-application" method="POST" class="space-y-6">
             <!-- Personal Information -->
             <div class="grid gap-6 md:grid-cols-2">
