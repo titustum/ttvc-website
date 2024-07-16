@@ -10,6 +10,7 @@ new #[Layout('layouts.guest')] class extends Component
 {
     use WithFileUploads;
 
+    public $departments;
     public $department_id = '';
     public $name = '';
     public $photo;

@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Department;
+use Illuminate\Http\Request;
+
+class WelcomeController extends Controller
+{
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(Request $request)
+    {
+        $departments = Department::all();
+        return view('welcome', compact('departments'));
+    }
+}

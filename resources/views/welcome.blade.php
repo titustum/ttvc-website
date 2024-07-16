@@ -117,54 +117,16 @@
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <!-- Cosmetology Program -->
-          <div data-aos='fade-up' class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
-              <img src="/images/departments/Cosmetology.jpg" alt="Cosmetology" class="object-cover w-full h-48">
-              <div class="p-6">
-                  <h3 class="mb-2 text-xl font-semibold text-orange-600">Cosmetology</h3>
-                  <p class="mb-4 text-gray-600">Master the art of beauty with our comprehensive cosmetology program.</p>
-                  <a href="/programs/cosmetology" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
-              </div>
-          </div>
-
-          <!-- Hospitality Program -->
-          <div data-aos='fade-up' class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
-              <img src="/images/departments/Hospitality.jpg" alt="Hospitality" class="object-cover w-full h-48">
-              <div class="p-6">
-                  <h3 class="mb-2 text-xl font-semibold text-orange-600">Hospitality Management</h3>
-                  <p class="mb-4 text-gray-600">Develop skills for a successful career in the dynamic hospitality industry.</p>
-                  <a href="/programs/hospitality" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
-              </div>
-          </div>
-
-          <!-- Fashion Design Program -->
-          <div data-aos='fade-up' class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
-              <img src="/images/departments/Fashion.jpg" alt="Fashion Design" class="object-cover w-full h-48">
-              <div class="p-6">
-                  <h3 class="mb-2 text-xl font-semibold text-orange-600">Fashion Design</h3>
-                  <p class="mb-4 text-gray-600">Unleash your creativity and learn the fundamentals of fashion design.</p>
-                  <a href="/programs/fashion-design" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
-              </div>
-          </div>
-
-          <!-- ICT Program -->
-          <div data-aos='fade-up' class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
-              <img src="/images/departments/ict.jpg" alt="Information and Communication Technology" class="object-cover w-full h-48">
-              <div class="p-6">
-                  <h3 class="mb-2 text-xl font-semibold text-orange-600">ICT</h3>
-                  <p class="mb-4 text-gray-600">Gain cutting-edge skills in information and communication technology.</p>
-                  <a href="/programs/ict" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
-              </div>
-          </div>
-
-          <!-- Agriculture Program -->
-          <div data-aos='fade-up' class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
-              <img src="/images/departments/agricultre.jpg" alt="Agriculture" class="object-cover w-full h-48">
-              <div class="p-6">
-                  <h3 class="mb-2 text-xl font-semibold text-orange-600">Agriculture</h3>
-                  <p class="mb-4 text-gray-600">Learn modern agricultural techniques and sustainable farming practices.</p>
-                  <a href="/programs/agriculture" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
-              </div>
-          </div>
+          @foreach ($departments as $department)
+            <div data-aos='fade-up' class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
+                <img src="{{ asset("storage/".$department->photo) }}" alt="{{ $department->photo }}" class="object-cover w-full h-48">
+                <div class="p-6">
+                    <h3 class="mb-2 text-xl font-semibold text-orange-600">{{ $department->name }}</h3>
+                    <p class="mb-4 text-gray-600">{{ $department->short_desc }}</p>
+                    <a href="{{ route('department', $department->name) }}" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
+                </div>
+            </div>
+          @endforeach
 
           <!-- General Programs Link -->
           <div data-aos='fade-up' class="flex items-center justify-center overflow-hidden transition-transform bg-orange-600 rounded-lg shadow-md hover:scale-105">
@@ -188,7 +150,7 @@
           <!-- Success Story 1 -->
           <div data-aos='fade-up' class="p-6 bg-gray-100 rounded-lg shadow-md">
               <img src="/images/students/student1.png" alt="Jane Doe" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
-              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">Jane Doe</h3>
+              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">Daisy Wangechi</h3>
               <p class="mb-4 text-center text-gray-600">Cosmetology Graduate</p>
               <p class="text-gray-700">"Thanks to Tetu TVC, I now run my own successful beauty salon. The hands-on training I received was invaluable."</p>
           </div>
@@ -196,7 +158,7 @@
           <!-- Success Story 2 -->
           <div data-aos='fade-up' class="p-6 bg-gray-100 rounded-lg shadow-md">
               <img src="/images/students/student2.jpeg" alt="John Smith" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
-              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">John Smith</h3>
+              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">John Kibet</h3>
               <p class="mb-4 text-center text-gray-600">ICT Graduate</p>
               <p class="text-gray-700">"The skills I learned at Tetu TVC helped me secure a job at a leading tech company. I'm grateful for the practical education I received."</p>
           </div>
@@ -204,7 +166,7 @@
           <!-- Success Story 3 -->
           <div data-aos='fade-up' class="p-6 bg-gray-100 rounded-lg shadow-md">
               <img src="/images/students/student3.webp" alt="Mary Johnson" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
-              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">Mary Johnson</h3>
+              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">Mary Wanjiku</h3>
               <p class="mb-4 text-center text-gray-600">Agriculture Graduate</p>
               <p class="text-gray-700">"Tetu TVC's agriculture program gave me the knowledge to start my own organic farm. It's been a life-changing experience."</p>
           </div>

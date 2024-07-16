@@ -1,11 +1,17 @@
 <?php
 
+use App\Models\Department;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
 new #[Layout('layouts.guest')] class extends Component
 {
-    //
+    public $department;
+
+    public function mount($deptname)
+    {
+        $this->department = Department::where('name', $deptname)->firstOrFail();
+    }
 }; ?>
 
 
@@ -17,20 +23,24 @@ new #[Layout('layouts.guest')] class extends Component
 
     <section class="py-16 bg-gray-100">
         <div class="container px-4 mx-auto">
-            <h1 class="mb-8 text-2xl font-bold text-center text-gray-800 lg:text-4xl">
-                Department of Information and Communication
-                Technology (ICT)
-            </h1>
+            {{-- <h1 class="mb-8 text-2xl font-bold text-center text-gray-800 lg:text-4xl">
+                {{ $department->name  }}
+            </h1> --}}
 
             <div class="mb-12 overflow-hidden bg-white rounded-lg shadow-md">
-                <img src="./images/departments/ict-banner.jpg" alt="ICT Department" class="object-cover w-full h-64">
+                @if($department->banner_pic)
+                    <img src="{{ asset('storage/' . $department->banner_pic) }}" alt="{{ $department->name }}" class="w-full h-64 object-cover">
+
+                @else
+
+                  <div class="h-64 w-full text-center text-4xl font-bold text-white flex flex-col justify-center bg-gradient-to-r from-black via-cyan-500 to-yellow-700">
+                    {{ $department->name  }} Department
+                  </div>
+
+                @endif
                 <div class="p-8">
                     <p class="mb-6 text-gray-700">
-                        The ICT Department at Tetu TVC offers a wide range of programs to suit various educational needs
-                        and
-                        career aspirations. Our courses are designed to equip students with the latest skills and
-                        knowledge
-                        in information and communication technology.
+                        {{ $department->full_desc  }}
                     </p>
                 </div>
             </div>

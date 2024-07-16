@@ -10,7 +10,8 @@ use App\Models\Role;
 new #[Layout('layouts.guest')] class extends Component
 {
     use WithFileUploads;
-
+    public $roles;
+    public $departments;
     public $department_id = '';
     public $role_id = '';
     public $name = '';

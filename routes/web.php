@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 // pages
-Route::view('/', 'welcome')->name('welcome');
+Route::get('/', WelcomeController::class)->name('welcome');
 
 Volt::route('about', 'mypages.about')
         ->name('about');
@@ -20,7 +21,9 @@ Volt::route('downloads', 'mypages.downloads')
         ->name('downloads');
 Volt::route('courses', 'mypages.courses')
         ->name('courses');
-Volt::route('departments/{deptname}', 'mypages.department')
+Volt::route('team', 'mypages.team-members')
+        ->name('team');
+Volt::route('departments/{deptname}', 'mypages.single-dept')
         ->name('department');
 
 
