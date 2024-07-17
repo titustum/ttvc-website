@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\WelcomeController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -23,29 +25,41 @@ Volt::route('courses', 'mypages.courses')
         ->name('courses');
 Volt::route('team', 'mypages.team-members')
         ->name('team');
-Volt::route('departments/{deptname}', 'mypages.single-dept')
+Volt::route('departments/{deptname}', 'mypages.department')
         ->name('department');
 
 
 //admin management
-Volt::route('create-department', 'mypages.create-department')
-        ->name('create.department');
-Volt::route('create-team', 'mypages.create-team')
-        ->name('create.team');
-Volt::route('create-course', 'mypages.create-course')
-        ->name('create.course');
-Volt::route('view-applicants', 'mypages.view-applicants')
-        ->name('view.applicants');
+
+Volt::route('view-courses', 'admin.courses-view')
+        ->name('courses.view');
+Volt::route('create-department', 'admin.department-create')
+        ->name('department.create');
+Volt::route('create-course', 'admin.course-create')
+        ->name('course.create');
+Volt::route('create-team', 'admin.team-create')
+        ->name('team.create');
+Volt::route('view-applicants', 'admin.applicants-view')
+        ->name('applicants.view');
 
 
-
-
-Route::view('dashboard', 'dashboard')
+Volt::route('dashboard', 'admin.dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::post('logout', function (Request $request) {
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+})->middleware(['auth'])->name('logout');
+
 
 require __DIR__.'/auth.php';

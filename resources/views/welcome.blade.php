@@ -1,3 +1,7 @@
+
+@section('title') Home @endsection
+
+
 <x-guest-layout>
 
 
@@ -119,7 +123,7 @@
           <!-- Cosmetology Program -->
           @foreach ($departments as $department)
             <div data-aos='fade-up' class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
-                <img src="{{ asset("storage/".$department->photo) }}" alt="{{ $department->photo }}" class="object-cover w-full h-48">
+                <img src="{{ asset("storage/".$department->photo) }}" alt="{{ $department->photo }}" class="object-cover w-full h-48 lg:h-56">
                 <div class="p-6">
                     <h3 class="mb-2 text-xl font-semibold text-orange-600">{{ $department->name }}</h3>
                     <p class="mb-4 text-gray-600">{{ $department->short_desc }}</p>
@@ -149,26 +153,26 @@
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <!-- Success Story 1 -->
           <div data-aos='fade-up' class="p-6 bg-gray-100 rounded-lg shadow-md">
-              <img src="/images/students/student1.png" alt="Jane Doe" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
-              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">Daisy Wangechi</h3>
-              <p class="mb-4 text-center text-gray-600">Cosmetology Graduate</p>
-              <p class="text-gray-700">"Thanks to Tetu TVC, I now run my own successful beauty salon. The hands-on training I received was invaluable."</p>
+              <img src="{{ asset('images/stories/plumbing-story.jpg') }}" alt="Jane Doe" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
+              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">Rashid A.</h3>
+              <p class="mb-4 text-center text-gray-600">Welding & Fabrication Graduate</p>
+              <p class="text-gray-700">"Thanks to Tetu TVC, I now run my own successful welding store. The hands-on training I received was invaluable."</p>
           </div>
 
           <!-- Success Story 2 -->
           <div data-aos='fade-up' class="p-6 bg-gray-100 rounded-lg shadow-md">
-              <img src="/images/students/student2.jpeg" alt="John Smith" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
-              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">John Kibet</h3>
-              <p class="mb-4 text-center text-gray-600">ICT Graduate</p>
-              <p class="text-gray-700">"The skills I learned at Tetu TVC helped me secure a job at a leading tech company. I'm grateful for the practical education I received."</p>
+              <img src="{{ asset('images/stories/fashion-story.jpg') }}" alt="John Smith" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
+              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">Sheilla Wangechi</h3>
+              <p class="mb-4 text-center text-gray-600"> Fashion Design Graduate</p>
+              <p class="text-gray-700">"I can now make my own high quality garments and excel in my modelling journey. Thanks Tetu TVC."</p>
           </div>
 
           <!-- Success Story 3 -->
           <div data-aos='fade-up' class="p-6 bg-gray-100 rounded-lg shadow-md">
-              <img src="/images/students/student3.webp" alt="Mary Johnson" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
-              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">Mary Wanjiku</h3>
-              <p class="mb-4 text-center text-gray-600">Agriculture Graduate</p>
-              <p class="text-gray-700">"Tetu TVC's agriculture program gave me the knowledge to start my own organic farm. It's been a life-changing experience."</p>
+              <img src="{{ asset('images/stories/ict-story.jpeg') }}" alt="Mary Johnson" class="object-cover w-24 h-24 mx-auto mb-4 rounded-full">
+              <h3 class="mb-2 text-xl font-semibold text-center text-orange-600">James Kiragu</h3>
+              <p class="mb-4 text-center text-gray-600">ICT Graduate</p>
+              <p class="text-gray-700">"The skills I learned at Tetu TVC helped me secure a job at a leading tech company. I'm grateful for the practical education I received."</p>
           </div>
       </div>
 

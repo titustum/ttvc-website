@@ -1,12 +1,14 @@
 <?php
 
-use Livewire\Attributes\Layout;
+use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
 use Livewire\WithFileUploads;
 use App\Models\Course;
 use App\Models\Department;
 
-new #[Layout('layouts.guest')] class extends Component
+new
+#[Layout('layouts.admin-portal')]
+class extends Component
 {
     use WithFileUploads;
 
@@ -54,7 +56,8 @@ new #[Layout('layouts.guest')] class extends Component
 
 ?>
 
-<main class="container px-4 mx-auto my-8">
+<div class="p-3">
+   <main class="container px-6 py-8 mx-auto my-8 bg-white rounded-md">
     <h1 class="mb-6 text-3xl font-bold text-orange-600">Create New Course</h1>
 
     @if (session('message'))
@@ -112,3 +115,6 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
     </form>
 </main>
+</div>
+
+

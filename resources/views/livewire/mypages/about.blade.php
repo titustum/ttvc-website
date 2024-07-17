@@ -1,9 +1,12 @@
 <?php
 
-use Livewire\Attributes\Layout;
+use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component
+new
+#[Title('About Us')]
+#[Layout('layouts.guest')]
+class extends Component
 {
     //
 }; ?>

@@ -1,10 +1,13 @@
 <?php
 
-use App\Models\Department;
-use Livewire\Attributes\Layout;
+use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
+use App\Models\Department;
 
-new #[Layout('layouts.guest')] class extends Component
+new
+#[Title('Department')]
+#[Layout('layouts.guest')]
+class extends Component
 {
     public $department;
 
@@ -12,171 +15,98 @@ new #[Layout('layouts.guest')] class extends Component
     {
         $this->department = Department::where('name', $deptname)->firstOrFail();
     }
-}; ?>
 
+};
+?>
 
+<section class="min-h-screen py-16 bg-gray-100 to-orange-200">
+    <div class="container px-4 mx-auto">
+        @if($department)
+            <h1 class="mb-8 text-4xl font-bold text-orange-600">{{ $department->name }}</h1>
 
-<main>
-
-
-    <!-- ======================start dept section ============== -->
-
-    <section class="py-16 bg-gray-100">
-        <div class="container px-4 mx-auto">
-            {{-- <h1 class="mb-8 text-2xl font-bold text-center text-gray-800 lg:text-4xl">
-                {{ $department->name  }}
-            </h1> --}}
-
-            <div class="mb-12 overflow-hidden bg-white rounded-lg shadow-md">
+            <div class="mb-8 overflow-hidden bg-white rounded-lg shadow-xl">
                 @if($department->banner_pic)
-                    <img src="{{ asset('storage/' . $department->banner_pic) }}" alt="{{ $department->name }}" class="w-full h-64 object-cover">
-
-                @else
-
-                  <div class="h-64 w-full text-center text-4xl font-bold text-white flex flex-col justify-center bg-gradient-to-r from-black via-cyan-500 to-yellow-700">
-                    {{ $department->name  }} Department
-                  </div>
-
+                    <img src="{{ asset('storage/' . $department->banner_pic) }}" alt="{{ $department->name }}" class="object-cover w-full h-64">
                 @endif
-                <div class="p-8">
-                    <p class="mb-6 text-gray-700">
-                        {{ $department->full_desc  }}
-                    </p>
+
+                <div class="p-6">
+                    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                        <div class="md:col-span-2">
+                            <h2 class="mb-4 text-2xl font-semibold text-gray-800">About the Department</h2>
+                            <p class="mb-4 text-gray-600">{{ $department->full_desc }}</p>
+                        </div>
+
+                        <div>
+                            @if($department->photo)
+                                <img src="{{ asset('storage/' . $department->photo) }}" alt="{{ $department->name }} Photo" class="w-full mb-4 rounded-lg shadow-md">
+                            @endif
+
+                            <div class="p-4 bg-orange-100 rounded-lg">
+                                <h3 class="mb-2 text-xl font-semibold text-orange-600">Quick Facts</h3>
+                                <p class="text-gray-700">{{ $department->short_desc }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <h2 class="mb-6 text-3xl font-bold text-gray-800">Courses Offered</h2>
-            <div class="mb-12 overflow-x-auto">
-                <table class="w-full overflow-hidden bg-white rounded-lg shadow-md">
-                    <thead class="text-white bg-orange-600">
-                        <tr>
-                            <th class="px-4 py-3 text-left">Course</th>
-                            <th class="px-4 py-3 text-left">Requirements</th>
-                            <th class="px-4 py-3 text-left">Duration</th>
-                            <th class="px-4 py-3 text-left">Examining Body</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b">
-                            <td class="px-4 py-3">Diploma in Information Communication Technology</td>
-                            <td class="px-4 py-3">C (plain)</td>
-                            <td class="px-4 py-3">3 Years</td>
-                            <td class="px-4 py-3">KNEC</td>
-                        </tr>
-                        <tr class="border-b bg-gray-50">
-                            <td class="px-4 py-3">Certificate in Information Communication Technology</td>
-                            <td class="px-4 py-3">D (plain)</td>
-                            <td class="px-4 py-3">2 Years</td>
-                            <td class="px-4 py-3">KNEC</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="px-4 py-3">ICT Technician Level 4</td>
-                            <td class="px-4 py-3">D (minus)</td>
-                            <td class="px-4 py-3">6 Months</td>
-                            <td class="px-4 py-3">TVET CDACC</td>
-                        </tr>
-                        <tr class="border-b bg-gray-50">
-                            <td class="px-4 py-3">ICT Technician Level 5</td>
-                            <td class="px-4 py-3">D (plain)</td>
-                            <td class="px-4 py-3">1 Year</td>
-                            <td class="px-4 py-3">TVET CDACC</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="px-4 py-3">ICT Technician Level 6</td>
-                            <td class="px-4 py-3">C (plain)</td>
-                            <td class="px-4 py-3">2 Years</td>
-                            <td class="px-4 py-3">TVET CDACC</td>
-                        </tr>
-                        <tr class="border-b bg-gray-50">
-                            <td class="px-4 py-3">Computer Operator</td>
-                            <td class="px-4 py-3">KCSE or KCPE</td>
-                            <td class="px-4 py-3">6 Months</td>
-                            <td class="px-4 py-3">NITA</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-3">Web Designer</td>
-                            <td class="px-4 py-3">KCSE or KCPE</td>
-                            <td class="px-4 py-3">6 Months</td>
-                            <td class="px-4 py-3">NITA</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div class="mb-8 overflow-hidden bg-white rounded-lg shadow-xl">
+                <div class="p-6">
+                    <h2 class="mb-6 text-2xl font-semibold text-gray-800">Courses Offered</h2>
 
 
-
-
-            <h2 class="mb-6 text-3xl font-bold text-gray-800">Our Team</h2>
-            <div class="relative mb-12">
-                <div id="teamContainer" class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-                    <div class="flex-shrink-0 w-64 p-6 mx-2 text-center bg-white rounded-lg shadow-md snap-start">
-                        <img data-src="./images/team/DEPUTY-ACADEMICS-JAMES-KIHARA.jpeg" alt="HOD ICT"
-                            class="object-cover w-32 h-32 mx-auto mb-4 rounded-full lazy">
-                        <h3 class="mb-2 text-xl font-semibold text-orange-600">Mr. John Doe</h3>
-                        <p class="mb-2 text-gray-700">Head of Department</p>
-                        <p class="text-sm text-gray-600">MSc. Computer Science, 15+ years experience</p>
+                    <div class="mb-12 overflow-x-auto">
+                        <table class="w-full overflow-hidden bg-white rounded-lg shadow-md">
+                            <thead class="text-white bg-orange-600">
+                                <tr>
+                                    <th class="px-2 py-2 text-left sm:px-4 sm:py-3">Course</th>
+                                    <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 sm:table-cell">Requirements</th>
+                                    <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 md:table-cell">Duration</th>
+                                    <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 md:table-cell">Exam Body</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($department->courses as $course)
+                                <tr class="border-b">
+                                    <td class="px-2 py-2 sm:px-4 sm:py-3">
+                                        <div class="font-medium">{{$course->name}}</div>
+                                        <div class="text-sm text-gray-500 sm:hidden">{{$course->requirement}}</div>
+                                        <div class="text-sm text-gray-500 sm:hidden md:hidden">{{$course->duration}} | {{$course->exam_body}}</div>
+                                    </td>
+                                    <td class="hidden px-2 py-2 sm:px-4 sm:py-3 sm:table-cell">{{$course->requirement}}</td>
+                                    <td class="hidden px-2 py-2 sm:px-4 sm:py-3 md:table-cell">{{$course->duration}}</td>
+                                    <td class="hidden px-2 py-2 sm:px-4 sm:py-3 md:table-cell">{{$course->exam_body}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="flex-shrink-0 w-64 p-6 mx-2 text-center bg-white rounded-lg shadow-md snap-start">
-                        <img data-src="./images/team/LYDIA-NDIRANGU-DP-ADMIN.jpeg" alt="ICT Trainer 1"
-                            class="object-cover w-32 h-32 mx-auto mb-4 rounded-full lazy">
-                        <h3 class="mb-2 text-xl font-semibold text-orange-600">Ms. Jane Smith</h3>
-                        <p class="mb-2 text-gray-700">Senior Lecturer</p>
-                        <p class="text-sm text-gray-600">BSc. Information Technology, 8 years experience</p>
-                    </div>
-                    <div class="flex-shrink-0 w-64 p-6 mx-2 text-center bg-white rounded-lg shadow-md snap-start">
-                        <img data-src="./images/principal.png" alt="ICT Trainer 2"
-                            class="object-cover w-32 h-32 mx-auto mb-4 rounded-full lazy">
-                        <h3 class="mb-2 text-xl font-semibold text-orange-600">Mr. David Johnson</h3>
-                        <p class="mb-2 text-gray-700">Lecturer</p>
-                        <p class="text-sm text-gray-600">BSc. Computer Science, 5 years experience</p>
-                    </div>
-                    <!-- Add more team members as needed -->
+
+
+
                 </div>
-                <button id="scrollLeft"
-                    class="absolute left-0 p-2 transform -translate-y-1/2 bg-white rounded-full shadow-md top-1/2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                        class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="scrollRight"
-                    class="absolute right-0 p-2 transform -translate-y-1/2 bg-white rounded-full shadow-md top-1/2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                        class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
             </div>
 
-
-
-            {{-- =================end team ========================= --}}
-
-            <h2 class="mb-6 text-3xl font-bold text-gray-800">Our Facilities</h2>
-            <div class="grid grid-cols-1 gap-8 mb-12 md:grid-cols-2">
-                <img src="./images/ict-lab1.jpg" alt="ICT Lab 1" class="object-cover w-full h-64 rounded-lg shadow-md">
-                <img src="./images/ict-lab2.jpg" alt="ICT Lab 2" class="object-cover w-full h-64 rounded-lg shadow-md">
+            <div class="overflow-hidden bg-white rounded-lg shadow-xl">
+                <div class="p-6">
+                    <h2 class="mb-6 text-2xl font-semibold text-gray-800">Our Team</h2>
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                        @foreach($department->teamMembers as $member)
+                            <div class="p-4 text-center rounded-lg shadow bg-gray-50">
+                                @if($member->photo)
+                                    <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}" class="object-cover w-24 h-24 mx-auto mb-2 rounded-full">
+                                @endif
+                                <h4 class="font-semibold text-gray-800">{{ $member->name }}</h4>
+                                <p class="text-sm text-orange-600">{{ $member->role->name }}</p>
+                                <p class="text-xs text-gray-500">{{ $member->qualification }}</p>
+                                <p class="text-xs text-gray-500">{{ $member->experience }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-            <p class="mb-6 text-gray-700">Our department boasts modern computer labs equipped with the latest hardware
-                and
-                software, providing students with an optimal learning environment for practical skills development.</p>
-        </div>
-    </section>
-
-    <section class="py-12 text-white bg-orange-600">
-        <div class="container px-4 mx-auto text-center">
-            <h2 class="mb-4 text-3xl font-bold">Ready to Start Your ICT Career?</h2>
-            <p class="mb-8 text-xl">Join our ICT department and unlock a world of opportunities in the digital realm.
-            </p>
-            <a href="#"
-                class="px-8 py-3 font-semibold text-orange-600 transition duration-300 bg-white rounded-full hover:bg-gray-200">
-                Apply Now
-            </a>
-        </div>
-    </section>
-
-
-
-    <!-- =================end department ========================== -->
-
-</main>
+        @else
+            <p class="text-xl text-center text-gray-800">Department not found.</p>
+        @endif
+    </div>
+</section>

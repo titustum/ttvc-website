@@ -1,12 +1,37 @@
 <?php
 
-use Livewire\Attributes\Layout;
+use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
+use App\Models\Contact;
 
-new #[Layout('layouts.guest')] class extends Component
+new
+#[Title('Contact Us')]
+#[Layout('layouts.guest')]
+class extends Component
 {
-    //
-}; ?>
+    public $name = '';
+    public $email = '';
+    public $subject = '';
+    public $message = '';
+    public $successMessage = '';
+
+    public function submitForm()
+    {
+        $validatedData = $this->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'subject' => 'required|min:3',
+            'message' => 'required|min:10',
+        ]);
+
+        Contact::create($validatedData);
+
+        $this->reset(['name', 'email', 'subject', 'message']);
+        $this->successMessage = 'Your message has been sent successfully!';
+    }
+};
+
+?>
 
 <main>
 <!-- =============start contact================ -->
@@ -14,33 +39,51 @@ new #[Layout('layouts.guest')] class extends Component
     <div class="mx-auto max-w-7xl">
       <h2 class="mb-12 text-4xl font-bold text-center text-gray-800">Get in Touch</h2>
       <div class="grid gap-10 md:grid-cols-2">
+
         <!-- Contact Form -->
-        <div class="p-8 bg-white rounded-lg shadow-lg">
-          <h3 class="mb-6 text-2xl font-semibold text-gray-800">Send us a message</h3>
-          <form action="/submit-form" method="POST">
-            <div class="mb-6">
-              <label for="name" class="block mb-2 font-medium text-gray-700">Name</label>
-              <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+
+        <div class="p-8 bg-white rounded-lg shadow-lg" data-aos="fade-up">
+            <h3 class="mb-6 text-2xl font-semibold text-gray-800">Send us a message</h3>
+            @if($successMessage)
+            <div class="p-4 mb-4 text-green-700 bg-green-100 rounded-md">
+                {{ $successMessage }}
             </div>
-            <div class="mb-6">
-              <label for="email" class="block mb-2 font-medium text-gray-700">Email</label>
-              <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
-            </div>
-            <div class="mb-6">
-              <label for="subject" class="block mb-2 font-medium text-gray-700">Subject</label>
-              <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
-            </div>
-            <div class="mb-6">
-              <label for="message" class="block mb-2 font-medium text-gray-700">Message</label>
-              <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600"></textarea>
-            </div>
-            <button type="submit" class="w-full px-6 py-3 font-semibold text-white transition duration-300 transform bg-orange-600 rounded-md hover:bg-orange-700 hover:scale-105">Send Message</button>
-          </form>
+            @endif
+            <form wire:submit.prevent="submitForm">
+                <div class="mb-6">
+                    <label for="name" class="block mb-2 font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" wire:model="name" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                    @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div>
+                <div class="mb-6">
+                    <label for="email" class="block mb-2 font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" wire:model="email" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                    @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div>
+                <div class="mb-6">
+                    <label for="subject" class="block mb-2 font-medium text-gray-700">Subject</label>
+                    <input type="text" id="subject" wire:model="subject" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                    @error('subject') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block mb-2 font-medium text-gray-700">Message</label>
+                    <textarea id="message" wire:model="message" rows="4" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600"></textarea>
+                    @error('message') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div>
+                <button type="submit"
+                    class="w-full px-6 py-3 font-semibold text-white transition duration-300 transform bg-orange-600 rounded-md hover:bg-orange-700 hover:scale-105">Send
+                    Message</button>
+            </form>
+
         </div>
 
         <!-- Contact Information and Map -->
         <div class="space-y-8">
-          <div class="p-8 bg-white rounded-lg shadow-lg">
+          <div class="p-8 bg-white rounded-lg shadow-lg" data-aos="fade-up">
             <h3 class="mb-6 text-2xl font-semibold text-gray-800">Contact Information</h3>
             <ul class="space-y-4">
               <li class="flex items-start">
@@ -57,7 +100,7 @@ new #[Layout('layouts.guest')] class extends Component
               </li>
             </ul>
           </div>
-          <div class="p-8 bg-white rounded-lg shadow-lg">
+          <div class="p-8 bg-white rounded-lg shadow-lg" data-aos="fade-up">
             <h3 class="mb-6 text-2xl font-semibold text-gray-800">Our Location</h3>
             <div class="overflow-hidden rounded-lg aspect-w-16 aspect-h-9">
               <!-- Replace the src with your actual Google Maps embed URL -->

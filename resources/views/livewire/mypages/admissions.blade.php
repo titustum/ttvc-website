@@ -1,12 +1,15 @@
 <?php
 
-use Livewire\Attributes\Layout;
+use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
 use App\Models\Course;
 use App\Models\Application;
 use Carbon\Carbon;
 
-new #[Layout('layouts.guest')] class extends Component
+new
+#[Title('Admissions')]
+#[Layout('layouts.guest')]
+class extends Component
 {
     public $courses;
     public $firstName;
@@ -37,7 +40,7 @@ new #[Layout('layouts.guest')] class extends Component
         $currentDate = Carbon::now();
         $options = [];
 
-        for ($i = 0; $i < 4; $i++) {
+        // for ($i = 0; $i < 1; $i++) {
             $year = $currentDate->year;
 
             // September term
@@ -59,7 +62,7 @@ new #[Layout('layouts.guest')] class extends Component
             }
 
             $currentDate->addYear();
-        }
+        // }
 
         return $options;
     }
@@ -118,7 +121,7 @@ new #[Layout('layouts.guest')] class extends Component
                 </div>
             @endif
 
-            <form wire:submit.prevent="submitApplication" class="space-y-6">
+            <form wire:submit.prevent="submitApplication" class="space-y-6" data-aos="fade-up">
                 <!-- Personal Information -->
                 <div class="grid gap-6 md:grid-cols-2">
                     <div>

@@ -1,10 +1,13 @@
 <?php
 
 use App\Models\Department;
-use Livewire\Attributes\Layout;
+use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component
+new
+#[Title('Departments')]
+#[Layout('layouts.guest')]
+class extends Component
 {
 
     public $departments;
@@ -33,9 +36,9 @@ new #[Layout('layouts.guest')] class extends Component
                         <h2 class="mb-2 text-2xl font-semibold text-gray-800">{{ $department->name }}</h2>
                         <p class="mb-4 text-gray-600">{{ $department->short_desc }}</p>
                         <ul class="mb-4 text-gray-600">
-                            <li>• Hair Styling and Cutting</li>
-                            <li>• Makeup Artistry</li>
-                            <li>• Nail Technology</li>
+                            @foreach ($department->courses->take(3) as $course)
+                                <li>• {{ $course->name }}</li>
+                            @endforeach
                         </ul>
                         <a href="{{ route('department', $department->name) }}" class="font-semibold text-orange-600 hover:text-orange-700">Explore Courses →</a>
                     </div>
