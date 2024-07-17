@@ -113,14 +113,12 @@
 
 
 
-
-
 <section class="py-16 bg-gray-100">
   <div class="container px-4 mx-auto">
       <h2 class="mb-12 text-3xl font-bold text-center text-gray-800">Our Featured Programs</h2>
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <!-- Cosmetology Program -->
+          <!-- Program -->
           @foreach ($departments as $department)
             <div data-aos='fade-up' class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
                 <img src="{{ asset("storage/".$department->photo) }}" alt="{{ $department->photo }}" class="object-cover w-full h-48 lg:h-56">
@@ -137,7 +135,7 @@
               <div class="p-6 text-center">
                   <h3 class="mb-4 text-2xl font-semibold text-white">Explore All Programs</h3>
                   <p class="mb-6 text-white">Discover our full range of technical and vocational programs.</p>
-                  <a href="/programs" class="px-4 py-2 font-semibold text-orange-600 transition duration-300 bg-white rounded-full hover:bg-gray-100">View All Programs</a>
+                  <a href="{{ route('departments') }}" class="px-4 py-2 font-semibold text-orange-600 transition duration-300 bg-white rounded-full hover:bg-gray-100">View All Programs</a>
               </div>
           </div>
       </div>
@@ -176,9 +174,9 @@
           </div>
       </div>
 
-      <div class="mt-12 text-center">
+      {{-- <div class="mt-12 text-center">
           <a href="/success-stories" class="inline-block px-6 py-3 font-semibold text-white transition duration-300 bg-orange-600 rounded-full hover:bg-orange-700">Read More Success Stories</a>
-      </div>
+      </div> --}}
   </div>
 </section>
 
@@ -223,11 +221,11 @@
           </div>
       </div>
 
-      <div data-aos='fade-up' class="mt-12 text-center">
+      {{-- <div data-aos='fade-up' class="mt-12 text-center">
           <a href="/our-partners" class="inline-block px-6 py-3 font-semibold text-white transition duration-300 bg-orange-600 rounded-full hover:bg-orange-700">
               Learn More About Our Partnerships
           </a>
-      </div>
+      </div> --}}
   </div>
 </section>
 
