@@ -34,6 +34,8 @@ Volt::route('create-team', 'mypages.create-team')
         ->name('create.team');
 Volt::route('create-course', 'mypages.create-course')
         ->name('create.course');
+Volt::route('view-applicants', 'mypages.view-applicants')
+        ->name('view.applicants');
 
 
 
