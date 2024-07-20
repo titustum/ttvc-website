@@ -119,7 +119,7 @@
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <!-- Program -->
-          @foreach ($departments as $department)
+          {{-- @foreach ($departments as $department)
             <div data-aos='fade-up' class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
                 <img src="{{ asset("storage/".$department->photo) }}" alt="{{ $department->photo }}" class="object-cover w-full h-48 lg:h-56">
                 <div class="p-6">
@@ -128,7 +128,20 @@
                     <a href="{{ route('department', $department->name) }}" class="font-semibold text-orange-600 hover:text-orange-700">Learn More →</a>
                 </div>
             </div>
-          @endforeach
+          @endforeach --}}
+
+          @foreach ($departments as $department)
+            <div data-aos='fade-up' class="overflow-hidden transition-transform bg-white rounded-lg shadow-md group hover:scale-105">
+                <div class="overflow-hidden">
+                    <img src="{{ asset("storage/".$department->photo) }}" alt="{{ $department->photo }}" class="object-cover w-full h-48 transition-transform duration-300 ease-in-out lg:h-56 group-hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <h3 class="mb-2 text-xl font-semibold text-orange-600">{{ $department->name }}</h3>
+                    <p class="mb-4 text-gray-600">{{ $department->short_desc }}</p>
+                    <a href="{{ route('department', $department->name) }}" class="font-semibold text-orange-600 transition-colors duration-300 hover:text-orange-700">Learn More →</a>
+                </div>
+            </div>
+        @endforeach
 
           <!-- General Programs Link -->
           <div data-aos='fade-up' class="flex items-center justify-center overflow-hidden transition-transform bg-orange-600 rounded-lg shadow-md hover:scale-105">

@@ -39,10 +39,12 @@
     </style>
 
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-      <link rel="stylesheet" href="{{ asset('build/assets/app-CYtj8nbC.css') }}">
+      <link rel="stylesheet" href="{{ asset('build/assets/app-pKFxUtPj.css') }}">
+
+      <script src="{{ asset('build/assets/app-C1-XIpUa.js') }}"></script>
 
 
-      @vite(['resources/css/app.css', 'resources/js/app.js'])
+      {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
   </head>
 <body class="font-sans antialiased">
@@ -60,20 +62,21 @@
 
 
     <script>
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMobileMenu = document.getElementById('closeMobileMenu');
-        const mobileDepartmentsDropdown = document.getElementById('mobileDepartmentsDropdown');
-        const mobileDepartmentsMenu = document.getElementById('mobileDepartmentsMenu');
+        window.addEventListener("DOMContentLoaded", (event) => {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const mobileDepartmentsDropdown = document.getElementById('mobileDepartmentsDropdown');
+            const mobileDepartmentsMenu = document.getElementById('mobileDepartmentsMenu');
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.remove('-translate-x-full');
-        });
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('-translate-x-full');
+            });
 
-        closeMobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.add('-translate-x-full');
-        });
-
+            closeMobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('-translate-x-full');
+            });
+        })
     </script>
 
 

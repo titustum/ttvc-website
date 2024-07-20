@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .group:hover .group-hover\:scale-110 {
+        transform: scale(1.1);
+    }
+}
