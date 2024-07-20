@@ -39,7 +39,7 @@
     </style>
 
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-      <link rel="stylesheet" href="{{ asset('build/assets/app-pKFxUtPj.css') }}">
+      <link rel="stylesheet" href="{{ asset('build/assets/app-CHZNvl4T.css') }}">
 
       <script src="{{ asset('build/assets/app-C1-XIpUa.js') }}"></script>
 

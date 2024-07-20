@@ -41,7 +41,7 @@
         <nav id="mainNav" class="bg-white border-b shadow h-[70px] top-0 sticky w-full z-30">
             <div class="flex justify-between items-center px-3 py-2 lg:w-[90%] mt-2 lg:px-0 mx-auto">
                 <div class="inline xl:hidden">
-                    <button id="mobileMenuButton" class="text-2xl fa fa-bars"></button>
+                    <button id="mobileMenuButton" class="pr-6 text-2xl fa fa-bars"></button>
                 </div>
 
                 <a href="{{ route('welcome') }}" class="flex items-center text-orange-600 uppercase">
@@ -62,7 +62,7 @@
                         class="hidden px-4 py-3 ml-4 text-white transition-all bg-orange-600 rounded-full lg:inline hover:opacity-80">
                         APPLY NOW
                     </a>
-                    <a href="{{ route('admissions') }}" class="px-4 py-3 ml-4 transition-all lg:hidden hover:text-orange-600 focus:orange-600">
+                    <a href="{{ route('admissions') }}" class="px-4 py-3 transition-all md:ml-4 lg:hidden hover:text-orange-600 focus:orange-600">
                         {{-- <i class="text-2xl fas fa-envelope-open"></i> --}}
                         APPLY →
                     </a>
