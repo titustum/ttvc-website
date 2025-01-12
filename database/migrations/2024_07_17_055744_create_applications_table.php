@@ -10,18 +10,19 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
+            $table->string('full_name');
             $table->string('phone');
-            $table->enum('gender', ['male', 'female']);
-            $table->integer('id_number');
-            $table->date('date_of_birth');
-            $table->foreignId('course_id')->constrained();
-            $table->enum('start_term', ['sept_2024', 'jan_2025', 'may_2025']);
+            $table->string('alternative_phone')->nullable();
+            $table->enum('gender', ['male', 'female', 'other']);
+            $table->string('id_number');
+            $table->foreignId('course_id')->constrained('courses');
+            $table->string('start_term');
             $table->string('high_school');
-            $table->enum('high_school_grade', ['c++', 'c', 'c-', 'd+', 'd', 'd-', 'e', 'kcpe', 'none']);
-            $table->string('parent_name')->nullable();
+            $table->string('high_school_grade');
+            $table->string('kcse_index_number');
+            $table->year('kcse_year');
+            $table->string('nemis_upi_number')->nullable();
+            $table->string('parent_name');
             $table->string('parent_phone');
             $table->timestamps();
         });

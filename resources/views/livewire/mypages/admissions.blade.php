@@ -68,7 +68,7 @@ class extends Component
     }
 
 
-    public function submitApplication()
+   public function submitApplication()
     {
         $this->validate([
             'firstName' => 'required|string|max:255',
@@ -76,17 +76,17 @@ class extends Component
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:20',
             'gender' => 'required|in:male,female',
-            'idNumber' => 'required|integer|min:1000',
+            'idNumber' => 'required|string|max:255', // Change to string
             'dob' => 'required|date',
             'courseId' => 'required|exists:courses,id',
             'startTerm' => 'required|in:sept_2024,jan_2025,may_2025',
             'highSchool' => 'required|string|max:255',
             'highSchoolGrade' => 'required|in:c++,c,c-,d+,d,d-,e,kcpe,none',
-            'parent_name' => 'nullable|string',
-            'parent_phone' => 'required|string',
+            'parent_name' => 'nullable|string|max:255',
+            'parent_phone' => 'required|string|max:20',
             'terms' => 'accepted',
         ]);
-
+    
         Application::create([
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,
@@ -102,10 +102,11 @@ class extends Component
             'parent_name' => $this->parent_name,
             'parent_phone' => $this->parent_phone,
         ]);
-
+    
         session()->flash('message', 'Application submitted successfully!');
         $this->reset();
     }
+
 }
 
 ?>
@@ -152,11 +153,12 @@ class extends Component
                             <option value="">Select your gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
+                            <option value="other">Other</option>
                         </select>
                     </div>
                     <div>
                         <label for="idNumber" class="block mb-2 font-medium text-gray-700">ID No./Birth Cert.</label>
-                        <input type="number" id="idNumber" wire:model="idNumber" min="1000" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                        <input type="text" id="idNumber" wire:model="idNumber" min="1000" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                     </div>
                 </div>
 
@@ -170,7 +172,7 @@ class extends Component
                     <label for="courseId" class="block mb-2 font-medium text-gray-700">Desired Course of Study</label>
                     <select id="courseId" wire:model="courseId" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                         <option value="">Select a course</option>
-                        @foreach ($courses as $course)
+                        @foreach ($courses ?? [] as $course)
                             <option value="{{ $course->id }}">{{ $course->name }}</option>
                         @endforeach
                     </select>
@@ -181,7 +183,7 @@ class extends Component
 
                     <select id="startTerm" wire:model="startTerm" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                         <option value="">Select a term</option>
-                        @foreach($startTermOptions as $value => $label)
+                        @foreach($startTermOptions ?? [] as $value => $label)
                             <option value="{{ $value }}">{{ $label }}</option>
                         @endforeach
                     </select>

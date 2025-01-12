@@ -5,10 +5,11 @@
     <header class="text-white bg-black">
         <div class="px-3 py-2 lg:w-[90%] mx-auto flex items-center justify-between text-sm lg:px-0">
             <nav class="items-center hidden md:flex">
-                <a href="#" aria-label="Facebook"> <i class="fab fa-facebook" aria-hidden="true"></i> </a>
+                <a href="https://facebook.com/TetuTechnicalVocationalCollege" aria-label="Facebook"> <i class="fab fa-facebook" aria-hidden="true"></i> </a>
+                <a href="https://www.tiktok.com/@tetutvc019" aria-label="TikTok" class="ml-4"> <i class="fab fa-tiktok" aria-hidden="true"></i> </a>
                 <a href="#" aria-label="Twitter" class="ml-4"> <i class="fab fa-twitter" aria-hidden="true"></i> </a>
                 <a href="#" aria-label="YouTube" class="ml-4"> <i class="fab fa-youtube" aria-hidden="true"></i> </a>
-                <a href="#" aria-label="TikTok" class="ml-4"> <i class="fab fa-tiktok" aria-hidden="true"></i> </a>
+
             </nav>
             <div class="flex items-center justify-between w-full md:w-auto">
                 <div class="px-2">
@@ -79,7 +80,6 @@
                   <a href="{{ route('about') }}" class="block transition-all hover:text-orange-600">ABOUT US</a>
                   <a href="{{ route('administration') }}" class="block transition-all hover:text-orange-600">ADMINISTRATION</a>
                   <a href="{{ route('departments') }}" class="block transition-all hover:text-orange-600">DEPARTMENTS</a>
-                  <a href="#" class="block transition-all hover:text-orange-600">ACADEMICS</a>
                   <a href="{{ route('contact') }}" class="block transition-all hover:text-orange-600">CONTACT US</a>
                   <a href="{{ route('downloads') }}" class="block transition-all hover:text-orange-600">DOWNLOADS</a>
                   <a href="#" class="block transition-all hover:text-orange-600">TENDERS</a>
@@ -108,11 +108,11 @@
                 <div data-aos='fade-up'>
                     <h3 class="mb-4 text-xl font-semibold">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="/programs" class="text-gray-400 hover:text-white">Programs</a></li>
-                        <li><a href="/admissions" class="text-gray-400 hover:text-white">Admissions</a></li>
-                        <li><a href="/student-life" class="text-gray-400 hover:text-white">Student Life</a></li>
-                        <li><a href="/events" class="text-gray-400 hover:text-white">Events</a></li>
-                        <li><a href="/careers" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="{{ route('courses')  }}" class="text-gray-400 hover:text-white">Programs</a></li>
+                        <li><a href="{{ route('admissions') }}" class="text-gray-400 hover:text-white">Admissions</a></li>
+                        <li><a href="{{ route('departments') }}" class="text-gray-400 hover:text-white">Departments</a></li>
+                        <li><a href="{{ route('administration') }}" class="text-gray-400 hover:text-white">Administration</a></li>
+                        <li><a href="{{ route('downloads') }}" class="text-gray-400 hover:text-white">Downloads</a></li>
                     </ul>
                 </div>
 
@@ -152,9 +152,9 @@
             <div class="flex flex-col items-center justify-between pt-8 mt-8 border-t border-gray-700 md:flex-row">
                 <div class="mb-4 md:mb-0">
                     <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-tiktok"></i></a>
                     <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <div class="text-sm text-gray-400">
                     © 2024 Tetu Technical and Vocational College. All rights reserved.

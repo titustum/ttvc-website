@@ -5,7 +5,7 @@
 <x-guest-layout>
 
 
-<section id="hero" class="relative lg:h-[calc(100vh-150px)] bg-center bg-no-repeat bg-cover"
+{{-- <section id="hero" class="relative lg:h-[calc(100vh-150px)] bg-center bg-no-repeat bg-cover"
     style="background-image: url('./images/gate1.jpg');">
     <div class="absolute inset-0 bg-black opacity-60"></div>
     <div class="container relative flex flex-col items-start justify-center h-full px-4 mx-auto">
@@ -34,7 +34,9 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
+
+<x-hero-section/>
 
 
 <section class="w-full px-4 py-16 bg-white">

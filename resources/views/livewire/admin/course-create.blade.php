@@ -84,11 +84,11 @@ class extends Component
             @error('name') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
         </div>
 
-        <div>
-            <label for="photo" class="block text-sm font-medium text-gray-700">Photo (Optional)</label>
-            <input type="file" id="photo" wire:model="photo" class="block w-full mt-1">
-            @error('photo') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
-        </div>
+        <!--<div>-->
+        <!--    <label for="photo" class="block text-sm font-medium text-gray-700">Photo (Optional)</label>-->
+        <!--    <input type="file" id="photo" wire:model="photo" class="block w-full mt-1">-->
+        <!--    @error('photo') <span class="text-xs text-red-500">{{ $message }}</span> @enderror-->
+        <!--</div>-->
 
         <div>
             <label for="requirement" class="block text-sm font-medium text-gray-700">Requirement</label>

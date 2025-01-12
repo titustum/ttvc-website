@@ -36,15 +36,37 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        .owl-carousel .item img {
+            width: 100%; /* Make sure images fill the container horizontally */
+            height: 500px !important; /* Ensure images fill the container vertically */
+            object-fit: cover; /* Ensure images cover the entire area without distorting */
+        }
+        /* .owl-stage-outer {
+            height: 500px;
+        } */
+
+
     </style>
+
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+ 
+
 
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <link rel="stylesheet" href="{{ asset('build/assets/app-CHZNvl4T.css') }}">
 
-      <script src="{{ asset('build/assets/app-C1-XIpUa.js') }}"></script>
+      {{-- <script src="{{ asset('build/assets/app-C1-XIpUa.js') }}"></script> --}}
 
 
-      {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+      @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
+
 
   </head>
 <body class="font-sans antialiased">
@@ -53,12 +75,6 @@
 
 
     {{ $slot }}
-
-
-
-
-
-
 
 
     <script>
@@ -101,18 +117,58 @@
             lazyLoad();
 
             // Scroll event for lazy loading
-            teamContainer.addEventListener('scroll', lazyLoad);
+            // teamContainer.addEventListener('scroll', lazyLoad);
 
             // Scroll buttons functionality
-            scrollLeftBtn.addEventListener('click', () => {
-                teamContainer.scrollBy({ left: -200, behavior: 'smooth' });
-            });
+            // scrollLeftBtn.addEventListener('click', () => {
+            //     teamContainer.scrollBy({ left: -200, behavior: 'smooth' });
+            // });
 
-            scrollRightBtn.addEventListener('click', () => {
-                teamContainer.scrollBy({ left: 200, behavior: 'smooth' });
-            });
+            // scrollRightBtn.addEventListener('click', () => {
+            //     teamContainer.scrollBy({ left: 200, behavior: 'smooth' });
+            // });
         });
     </script>
+
+
+
+ <!-- jQuery -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+ <!-- Owl Carousel JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+ <script>
+    $(document).ready(function(){
+    $(".owl-carousel").owlCarousel({
+        items: 1, // Default to 1 item visible at a time
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        nav: true,
+        navText: [
+            '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>',
+            '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>'
+        ],
+        dots: true,
+        responsive: {
+            0: {
+                items: 1 // On small screens, show 1 item
+            },
+            600: {
+                items: 2 // On medium screens, show 2 items
+            },
+            1000: {
+                items: 1 // On large screens, show 1 item
+            }
+        }
+    });
+});
+
+</script>
+
 
 
 

@@ -12,6 +12,7 @@ new
 class extends Component
 {
     use WithFileUploads;
+
     public $roles;
     public $departments;
     public $department_id = '';
@@ -33,7 +34,7 @@ class extends Component
             'department_id' => 'required|exists:departments,id',
             'role_id' => 'required|exists:roles,id',
             'name' => 'required|string|max:255',
-            'photo' => 'nullable|image|max:1024',
+            'photo' => 'required|image|max:1024',  // Photo is now required
             'qualification' => 'required|string|max:255',
             'experience' => 'required|string|max:255',
         ]);
@@ -56,20 +57,18 @@ class extends Component
         session()->flash('message', 'Team member added successfully.');
     }
 };
-
 ?>
 
 
 
 <div class="p-3">
-
     <main class="container px-4 py-8 mx-auto my-8 bg-white rounded-md">
         <h1 class="mb-6 text-3xl font-bold text-orange-600">Add New Team Member</h1>
 
         @if (session('message'))
-        <div class="relative px-4 py-3 mb-4 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
-            {{ session('message') }}
-        </div>
+            <div class="relative px-4 py-3 mb-4 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
+                {{ session('message') }}
+            </div>
         @endif
 
         <form wire:submit.prevent="save" class="space-y-4">
@@ -79,7 +78,7 @@ class extends Component
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500">
                     <option value="">Select Department</option>
                     @foreach ($this->departments as $department)
-                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                        <option value="{{ $department->id }}">{{ $department->name }}</option>
                     @endforeach
                 </select>
                 @error('department_id') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
@@ -91,7 +90,7 @@ class extends Component
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500">
                     <option value="">Select Role</option>
                     @foreach ($this->roles as $role)
-                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                        <option value="{{ $role->id }}">{{ $role->name }}</option>
                     @endforeach
                 </select>
                 @error('role_id') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
@@ -105,9 +104,16 @@ class extends Component
             </div>
 
             <div>
-                <label for="photo" class="block text-sm font-medium text-gray-700">Photo (Optional)</label>
+                <label for="photo" class="block text-sm font-medium text-gray-700">Photo</label>
                 <input type="file" id="photo" wire:model="photo" class="block w-full mt-1">
                 @error('photo') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
+
+                <!-- Display uploaded photo preview -->
+                @if ($photo)
+                    <div class="mt-2">
+                        <img src="{{ $photo->temporaryUrl() }}" alt="Photo Preview" class="w-32 h-32 rounded">
+                    </div>
+                @endif
             </div>
 
             <div>
@@ -132,5 +138,5 @@ class extends Component
             </div>
         </form>
     </main>
-
 </div>
+

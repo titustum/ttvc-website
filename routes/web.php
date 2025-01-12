@@ -27,6 +27,9 @@ Volt::route('team', 'mypages.team-members')
         ->name('team');
 Volt::route('departments/{deptname}', 'mypages.department')
         ->name('department');
+        ///
+Volt::route('test-application', 'mypages.test-admission')
+        ->name('test.application');
 
 
 //admin management

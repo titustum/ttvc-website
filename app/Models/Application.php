@@ -10,17 +10,18 @@ class Application extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'email',
+        'full_name',
         'phone',
+        'alternative_phone',
         'gender',
         'id_number',
-        'date_of_birth',
         'course_id',
         'start_term',
         'high_school',
         'high_school_grade',
+        'kcse_index_number',
+        'kcse_year',
+        'nemis_upi_number',
         'parent_name',
         'parent_phone',
     ];

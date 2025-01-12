@@ -30,23 +30,17 @@ class extends Component
         $this->page = 1;
     }
 
-    public function courses()
-    {
-        return Course::with('department')
-            ->when($this->search, function ($query) {
-                $query->where('name', 'like', '%' . $this->search . '%');
-            })
-            ->when($this->department, function ($query) {
-                $query->whereHas('department', function ($q) {
-                    $q->where('name', $this->department);
-                });
-            })
-            ->paginate(12, ['*'], 'page', $this->page);
-    }
-
     public function departments()
     {
-        return Department::pluck('name');
+        return Department::with(['courses' => function ($query) {
+            $query->when($this->search, function ($q) {
+                $q->where('name', 'like', '%' . $this->search . '%');
+            });
+        }])
+        ->when($this->department, function ($query) {
+            $query->where('name', $this->department);
+        })
+        ->get();
     }
 };
 ?>
@@ -61,58 +55,54 @@ class extends Component
                        class="w-full px-4 py-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-orange-500">
             </div>
             <div>
-                <select wire:model="department"
+                <select wire:model.live="department" wire:key="department-select"
                         class="w-full px-4 py-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-orange-500">
                     <option value="">All Departments</option>
                     @foreach($this->departments() as $dept)
-                        <option value="{{ $dept }}">{{ $dept }}</option>
+                        <option value="{{ $dept->name }}">{{ $dept->name }}</option>
                     @endforeach
                 </select>
             </div>
         </div>
 
+        @foreach($this->departments() as $department)
+            @if(count($department->courses) > 0)
+                <div class="mb-12 overflow-hidden bg-white rounded-lg shadow-xl">
+                    <div class="p-6">
+                        <div class="flex items-center mb-6">
+                            <img src="{{ asset("storage/". $department->photo) }}" alt="{{ $department->name }}" class="w-16 h-16 mr-4 rounded-full object-cover border">
+                            <h2 class="text-2xl font-semibold text-gray-800">{{ $department->name }}</h2>
+                        </div>
 
-        <div class="mb-8 overflow-hidden bg-white rounded-lg shadow-xl">
-            <div class="p-6">
-                {{-- <h2 class="mb-6 text-2xl font-semibold text-gray-800">Available Courses</h2> --}}
-
-                <div class="mb-12 overflow-x-auto">
-                    <table class="w-full overflow-hidden bg-white rounded-lg shadow-md">
-                        <thead class="text-white bg-orange-600">
-                            <tr>
-                                <th class="px-2 py-2 text-left sm:px-4 sm:py-3">Course</th>
-                                <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 sm:table-cell">Requirements</th>
-                                <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 md:table-cell">Duration</th>
-                                <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 md:table-cell">Exam Body</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($this->courses() as $course)
-                            <tr class="border-b">
-                                <td class="px-2 py-2 sm:px-4 sm:py-3">
-                                    <div class="font-medium">{{$course->name}}</div>
-                                    <div class="text-sm text-gray-500 sm:hidden">{{$course->requirement}}</div>
-                                    <div class="text-sm text-gray-500 sm:hidden md:hidden">{{$course->duration}} | {{$course->exam_body}}</div>
-                                </td>
-                                <td class="hidden px-2 py-2 sm:px-4 sm:py-3 sm:table-cell">{{$course->requirement}}</td>
-                                <td class="hidden px-2 py-2 sm:px-4 sm:py-3 md:table-cell">{{$course->duration}}</td>
-                                <td class="hidden px-2 py-2 sm:px-4 sm:py-3 md:table-cell">{{$course->exam_body}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        <div class="mb-6 overflow-x-auto">
+                            <table class="w-full overflow-hidden bg-white rounded-lg shadow-md">
+                                <thead class="text-white bg-orange-600">
+                                    <tr>
+                                        <th class="px-2 py-2 text-left sm:px-4 sm:py-3">Course</th>
+                                        <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 sm:table-cell">Requirements</th>
+                                        <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 md:table-cell">Duration</th>
+                                        <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 md:table-cell">Exam Body</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($department->courses as $course)
+                                    <tr class="border-b">
+                                        <td class="px-2 py-2 sm:px-4 sm:py-3">
+                                            <div class="font-medium">{{$course->name}}</div>
+                                            <div class="text-sm text-gray-500 sm:hidden">{{$course->requirement}}</div>
+                                            <div class="text-sm text-gray-500 sm:hidden md:hidden">{{$course->duration}} | {{$course->exam_body}}</div>
+                                        </td>
+                                        <td class="hidden px-2 py-2 sm:px-4 sm:py-3 sm:table-cell">{{$course->requirement}}</td>
+                                        <td class="hidden px-2 py-2 sm:px-4 sm:py-3 md:table-cell">{{$course->duration}}</td>
+                                        <td class="hidden px-2 py-2 sm:px-4 sm:py-3 md:table-cell">{{$course->exam_body}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-
-
-
-            </div>
-        </div>
-
-
-
-
-        <div class="mt-8">
-            {{ $this->courses()->links() }}
-        </div>
+            @endif
+        @endforeach
     </div>
 </section>
