@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Righteous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="shortcut icon" href="{{ asset('images/logo.jpeg') }}" type="image/jpeg">
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -31,30 +31,6 @@
         content="Tetu TVC offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
     <meta property="twitter:image" content="{{ asset('images/logo.jpeg') }}">
 
-
-    <style>
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .owl-carousel .item img {
-            width: 100%;
-            /* Make sure images fill the container horizontally */
-            height: 500px !important;
-            /* Ensure images fill the container vertically */
-            object-fit: cover;
-            /* Ensure images cover the entire area without distorting */
-        }
-
-        /* .owl-stage-outer {
-            height: 500px;
-        } */
-    </style>
 
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -89,22 +65,70 @@
 
 
     <script>
-        window.addEventListener("DOMContentLoaded", (event) => {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Desktop navigation hover effects
+            const navItems = document.querySelectorAll('#mainNav .xl\\:flex a');
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.classList.add('text-orange-600');
+                });
+                item.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('active')) {
+                        this.classList.remove('text-orange-600');
+                    }
+                });
+            });
+        
+            // Mobile menu toggle
             const mobileMenuButton = document.getElementById('mobileMenuButton');
-            const mobileMenu = document.getElementById('mobileMenu');
             const closeMobileMenu = document.getElementById('closeMobileMenu');
-            const mobileDepartmentsDropdown = document.getElementById('mobileDepartmentsDropdown');
-            const mobileDepartmentsMenu = document.getElementById('mobileDepartmentsMenu');
-
-            mobileMenuButton.addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.remove('-translate-x-full');
+                document.body.style.overflow = 'hidden';
             });
-
-            closeMobileMenu.addEventListener('click', () => {
+            
+            closeMobileMenu.addEventListener('click', function() {
                 mobileMenu.classList.add('-translate-x-full');
+                document.body.style.overflow = 'auto';
             });
-        })
+            
+            // Mobile dropdowns
+            const mobileDropdowns = document.querySelectorAll('.mobile-dropdown button');
+            mobileDropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    if (content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        content.classList.add('hidden');
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+            
+            // Highlight current page in navigation
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                const linkPath = new URL(link.href, window.location.origin).pathname;
+                if (currentPath === linkPath || currentPath.startsWith(linkPath) && linkPath !== '/') {
+                    link.classList.add('text-orange-600', 'active');
+                    if (link.classList.contains('hover:border-b-2')) {
+                        link.classList.add('border-b-2', 'border-orange-600');
+                    }
+                }
+            });
+        });
     </script>
+
 
 
     <script>
@@ -125,19 +149,7 @@
             };
 
             // Initial load
-            lazyLoad();
-
-            // Scroll event for lazy loading
-            // teamContainer.addEventListener('scroll', lazyLoad);
-
-            // Scroll buttons functionality
-            // scrollLeftBtn.addEventListener('click', () => {
-            //     teamContainer.scrollBy({ left: -200, behavior: 'smooth' });
-            // });
-
-            // scrollRightBtn.addEventListener('click', () => {
-            //     teamContainer.scrollBy({ left: 200, behavior: 'smooth' });
-            // });
+            lazyLoad(); 
         });
     </script>
 
@@ -146,37 +158,35 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            
             new Swiper('.heroSwiper', {
-        slidesPerView: 1,
-        spaceBetween: 0,
+                slidesPerView: 1, // Show one slide at a time
+                spaceBetween: 0, // No space between slides for seamless transitions
 
-        
-        effect: 'coverflow',
-coverflowEffect: {
-  rotate: 50,
-  stretch: 0,
-  depth: 100,
-  modifier: 1,
-  slideShadows: true,
-},
-        loop: true,
+                effect: 'slide', // Smooth sliding effect
+                loop: true, // Infinite loop for a continuous swiping experience
 
-        autoplay: {
-            delay: 5000, // 5 seconds
-            disableOnInteraction: false, // Autoplay will not be disabled after user interactions
-        },
-      
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      }
-    });
+                autoplay: {
+                    delay: 5000, // 5 seconds interval
+                    disableOnInteraction: false, // Autoplay continues after user interactions
+                },
 
+                speed: 1200, // Adjust the speed of slide transition (1.2 seconds)
 
+                pagination: {
+                    el: '.swiper-pagination', // Pagination dots
+                    clickable: true, // Allow users to navigate by clicking dots
+                    dynamicBullets: true, // Add a dynamic look to the pagination
+                },
+
+                navigation: {
+                    nextEl: '.swiper-button-next', // Next button navigation
+                    prevEl: '.swiper-button-prev', // Previous button navigation
+                },
+
+                touchEventsTarget: 'container', // Ensure smooth swipe interaction
+                resistanceRatio: 0, // Disable resistance for a clean swipe feel
+            });
 
 
             AOS.init({
@@ -186,7 +196,12 @@ coverflowEffect: {
             });
 
             });
+            
     </script>
+
+
+
+
 
 
 
