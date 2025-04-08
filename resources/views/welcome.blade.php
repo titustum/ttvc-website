@@ -115,14 +115,14 @@
 
 
 
-  {{-- Our programs section --}}
+
   <section class="py-20 bg-gray-50">
     <div class="container px-4 mx-auto max-w-7xl">
       <div class="mb-16 text-center">
-        <h2 class="mb-4 text-3xl font-bold text-gray-800 lg:text-4xl">Our Featured Programs</h2>
+        <h2 class="mb-4 text-3xl font-bold text-gray-800 lg:text-4xl">Our Departments</h2>
         <div class="w-24 h-1 mx-auto bg-orange-500 rounded"></div>
-        <p class="max-w-2xl mx-auto mt-4 text-lg text-gray-600">Discover our industry-relevant technical and vocational
-          programs designed to launch your career</p>
+        <p class="max-w-2xl mx-auto mt-4 text-lg text-gray-600">Explore our outstanding academic departments designed to
+          provide industry-relevant skills and knowledge.</p>
       </div>
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -143,7 +143,7 @@
             <div class="pt-2 border-t border-gray-100">
               <a href="{{ route('department', $department->name) }}"
                 class="inline-flex items-center font-semibold text-orange-600 transition-colors duration-300 hover:text-orange-700">
-                Learn More
+                Explore Department
                 <svg xmlns="http://www.w3.org/2000/svg"
                   class="w-5 h-5 ml-1 transition-transform duration-300 group-hover:translate-x-1" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
@@ -168,12 +168,12 @@
                 </svg>
               </div>
             </div>
-            <h3 class="mb-4 text-2xl font-bold text-white">Explore All Programs</h3>
+            <h3 class="mb-4 text-2xl font-bold text-white">Explore Departments</h3>
             <p class="mb-6 text-white text-opacity-90">Discover our full range of technical and vocational programs
               designed to equip you with job-ready skills.</p>
             <a href="{{ route('departments') }}"
               class="inline-block px-6 py-3 font-semibold text-orange-600 transition duration-300 bg-white rounded-full shadow-md hover:bg-gray-100 hover:shadow-lg">
-              View All Programs
+              View All Departments
               <i class="ml-2 fas fa-arrow-right"></i>
             </a>
           </div>
@@ -181,7 +181,6 @@
       </div>
     </div>
   </section>
-
 
 
 
@@ -221,8 +220,8 @@
                     d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.039 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
                 </svg>
                 <blockquote class="mt-4 text-gray-600">
-                  "Tetu TVC equipped me with practical skills that employers value. Within three months of graduation, I
-                  secured a position at Kenya Power as a technician. The hands-on training made all the difference."
+                  Tetu TVC equipped me with practical skills that employers value. Within three months of graduation, I
+                  secured a position at Kenya Power as a technician. The hands-on training made all the difference.
                 </blockquote>
               </div>
               <p class="font-semibold text-gray-700">Currently: <span class="text-green-600">Electrical Technician at
@@ -258,9 +257,9 @@
                     d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.039 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
                 </svg>
                 <blockquote class="mt-4 text-gray-600">
-                  "The industry connections at Tetu TVC opened doors for me. Through the college's placement program, I
+                  The industry connections at Tetu TVC opened doors for me. Through the college's placement program, I
                   interned at Serena Hotel, which led to my current role. The instructors truly care about student
-                  success."
+                  success.
                 </blockquote>
               </div>
               <p class="font-semibold text-gray-700">Currently: <span class="text-green-600">Assistant Manager at Serena
@@ -296,8 +295,8 @@
                     d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.039 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
                 </svg>
                 <blockquote class="mt-4 text-gray-600">
-                  "The entrepreneurship module alongside my technical training gave me the confidence to start my own
-                  business. Today, my web development company employs three other Tetu TVC graduates."
+                  The entrepreneurship module alongside my technical training gave me the confidence to start my own
+                  business. Today, my web development company employs three other Tetu TVC graduates.
                 </blockquote>
               </div>
               <p class="font-semibold text-gray-700">Currently: <span class="text-green-600">Founder, Nyota Digital
