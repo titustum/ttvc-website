@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');//name of the department e.g. Cosmetology, ICT, Agriculture etc.
             $table->string('photo'); // captivating pic of students of departments doing somethin; will be displayed on landing page.
-            $table->string('short_desc'); // short captivating desc that will be loaded in landing page e.g. Master the art and science of Beauty Therapy and Hairdressing with our amazing programs.
+            $table->text('short_desc'); // short captivating desc that will be loaded in landing page e.g. Master the art and science of Beauty Therapy and Hairdressing with our amazing programs.
             $table->text('full_desc'); // The description that will be displayed on single page when user selects to view that department
             $table->string('banner_pic')->nullable(); // Banner pic that will be displayed on single page when user selects to view that department
             $table->timestamps();
