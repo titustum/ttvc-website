@@ -35,10 +35,6 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- Owl Carousel CSS -->
-
-
-
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -50,8 +46,6 @@
 
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-
 
 
 </head>
@@ -155,39 +149,54 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.heroSwiper', {
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                on: {
+                    init: function() {
+                        animateSlideElements(this.slides[this.activeIndex]);
+                    },
+                    slideChangeTransitionEnd: function() {
+                        animateSlideElements(this.slides[this.activeIndex]);
+                    },
+                },
+            });
+        
+            function animateSlideElements(slide) {
+                // Reset all animations
+                const elements = slide.querySelectorAll('[data-swiper-animation]');
+                elements.forEach(el => {
+                    el.classList.remove('animate__fadeInLeft', 'animate__fadeInUp', 'animate__zoomIn');
+                    el.style.opacity = '0';
+                });
+        
+                // Animate elements with delay
+                elements.forEach(el => {
+                    const animation = el.dataset.swiperAnimation;
+                    const delay = el.dataset.animationDelay || '0';
+                    
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.classList.add(animation);
+                    }, delay * 1000);
+                });
+            }
+        });
+    </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            
-            new Swiper('.heroSwiper', {
-                slidesPerView: 1, // Show one slide at a time
-                spaceBetween: 0, // No space between slides for seamless transitions
-
-                effect: 'slide', // Smooth sliding effect
-                loop: true, // Infinite loop for a continuous swiping experience
-
-                autoplay: {
-                    delay: 5000, // 5 seconds interval
-                    disableOnInteraction: false, // Autoplay continues after user interactions
-                },
-
-                speed: 1200, // Adjust the speed of slide transition (1.2 seconds)
-
-                pagination: {
-                    el: '.swiper-pagination', // Pagination dots
-                    clickable: true, // Allow users to navigate by clicking dots
-                    dynamicBullets: true, // Add a dynamic look to the pagination
-                },
-
-                navigation: {
-                    nextEl: '.swiper-button-next', // Next button navigation
-                    prevEl: '.swiper-button-prev', // Previous button navigation
-                },
-
-                touchEventsTarget: 'container', // Ensure smooth swipe interaction
-                resistanceRatio: 0, // Disable resistance for a clean swipe feel
-            });
-
 
             AOS.init({
                 duration: 1000, // Animation duration in milliseconds

@@ -3,7 +3,7 @@
 
 <x-guest-layout>
 
-  <x-hero-section />
+  <x-hero-section :slideContents=$slideContents />
 
 
 
@@ -324,7 +324,7 @@
               <i class="text-2xl fas fa-graduation-cap"></i>
             </div>
           </div>
-          <h3 class="text-4xl font-bold text-gray-800">92%</h3>
+          <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="92">0</span>%</h3>
           <p class="text-gray-600">Graduation Rate</p>
         </div>
 
@@ -335,7 +335,7 @@
               <i class="text-2xl fas fa-briefcase"></i>
             </div>
           </div>
-          <h3 class="text-4xl font-bold text-gray-800">85%</h3>
+          <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="85">0</span>%</h3>
           <p class="text-gray-600">Job Placement</p>
         </div>
 
@@ -346,7 +346,7 @@
               <i class="text-2xl fas fa-user-tie"></i>
             </div>
           </div>
-          <h3 class="text-4xl font-bold text-gray-800">78%</h3>
+          <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="78">0</span>%</h3>
           <p class="text-gray-600">Industry Partners</p>
         </div>
 
@@ -357,10 +357,13 @@
               <i class="text-2xl fas fa-award"></i>
             </div>
           </div>
-          <h3 class="text-4xl font-bold text-gray-800">120+</h3>
+          <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="120">0</span>+</h3>
           <p class="text-gray-600">Industry Certifications</p>
         </div>
       </div>
+
+
+
     </div>
   </section>
 
@@ -417,6 +420,40 @@
 
     </div>
   </section>
+
+
+
+  <script>
+    const counters = document.querySelectorAll('.counter');
+  
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const current = +counter.innerText;
+        const increment = target / 10000; // you can adjust speed here
+  
+        if (current < target) {
+          counter.innerText = Math.ceil(current + increment);
+          requestAnimationFrame(updateCount);
+        } else {
+          counter.innerText = target;
+        }
+      };
+  
+      // Optional: Wait until element is in view
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            updateCount();
+            observer.unobserve(entry.target); // Only run once
+          }
+        });
+      }, { threshold: 0.5 });
+  
+      observer.observe(counter);
+    });
+  </script>
+
 
 
 </x-guest-layout>

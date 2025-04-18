@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\HeroSlideContent;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -13,6 +14,7 @@ class WelcomeController extends Controller
     public function __invoke(Request $request)
     {
         $departments = Department::all();
-        return view('welcome', compact('departments'));
+        $slideContents = HeroSlideContent::all();
+        return view('welcome', compact('departments', 'slideContents'));
     }
 }

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             DepartmentSeeder::class,
+            HeroSlideContentSeeder::class,
             // CourseSeeder::class,
             // Add other seeders here
         ]);

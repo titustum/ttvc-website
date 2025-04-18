@@ -3,7 +3,7 @@
 <x-app-layout title="Test" />
 
 <header class="text-white bg-gray-900">
-    <div class="flex items-center justify-between px-4 py-2 mx-auto text-sm lg:w-4/5">
+    <div class="flex items-center justify-between px-4 py-2 mx-auto text-sm max-w-7xl">
         <nav class="items-center hidden space-x-4 md:flex">
             <a href="https://facebook.com/TetuTechnicalVocationalCollege" aria-label="Facebook"
                 class="transition-colors hover:text-orange-400">
@@ -44,7 +44,7 @@
 </header>
 
 <nav id="mainNav" class="sticky top-0 z-30 w-full h-20 bg-white border-b shadow">
-    <div class="flex items-center justify-between px-4 py-2 mx-auto lg:w-4/5">
+    <div class="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl">
         <div class="inline xl:hidden">
             <button id="mobileMenuButton"
                 class="pr-4 text-2xl transition-colors fa fa-bars hover:text-orange-600"></button>
