@@ -130,7 +130,7 @@
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="{{ $loop->index * 100 }}"
           class="overflow-hidden transition-all duration-300 bg-white rounded-lg shadow-lg group hover:shadow-xl">
           <div class="relative h-56 overflow-hidden">
-            <img src="{{  $department->photo  }}" alt="{{ $department->name }}"
+            <img src="{{  asset('storage/'.$department->photo)  }}" alt="{{ $department->name }}"
               class="object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110">
             <div
               class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/70 to-transparent group-hover:opacity-100">

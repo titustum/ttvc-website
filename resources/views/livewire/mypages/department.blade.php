@@ -24,7 +24,7 @@ class extends Component
     <header class="relative">
         <!-- Banner Image -->
         <div class="h-96 md:h-[500px] w-full overflow-hidden">
-            <img src="{{ $department->banner_pic ?? $department->photo }}" alt="{{ $department->name }} Banner"
+            <img src="{{  asset('storage/'.$department->banner_pic)  }}" alt="{{ $department->name }} Banner"
                 class="object-cover w-full h-full">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
         </div>

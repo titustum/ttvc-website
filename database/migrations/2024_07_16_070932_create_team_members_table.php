@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('team_members', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Department::class);
-            $table->foreignIdFor(Role::class); //name e.g. Principal, Deputy Principal, HOD
-            $table->string('name'); // fullname e.g. James Kariuki
+            $table->foreignIdFor(Role::class); //name e.g. Principal, Deputy Principal, HOD, Section Head, Trainer etc. 
+            $table->string('section_assigned')->nullable(); // section assigned i.e. games, clubs, etc
+            $table->string('email')->unique(); // email e.g. 
+            $table->string('name'); // fullname e.g. James Kariuki 
             $table->string('photo')->nullable();
             $table->string('qualification'); // e.g. BSc. Computer Science
-            $table->string('experience')->default('4+ years experience');
+            $table->string('years_of_experience')->default('4'); // Years of experience e.g. 4 years
             $table->timestamps();
         });
     }

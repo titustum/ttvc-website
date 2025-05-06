@@ -10,9 +10,14 @@ class Department extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name", 'short_desc', 'full_desc',
-        'banner_pic', 'pic1', 'pic2'
-    ];
+        'name',
+        'photo',
+        'short_desc',
+        'full_desc',
+        'banner_pic',
+        'facility_pic',
+        'facility_pic2',
+    ]; 
 
     public function courses()
     {

@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
             ->name('courses.view');
     Volt::route('create-department', 'admin.department-create')
             ->name('department.create');
+    Volt::route('create-success-story', 'admin.create-success-story')
+            ->name('success.story.create');
     Volt::route('create-course', 'admin.course-create')
             ->name('course.create');
     Volt::route('create-team', 'admin.team-create')

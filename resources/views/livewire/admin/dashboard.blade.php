@@ -70,7 +70,8 @@ class extends Component
                 <ul class="space-y-2">
                     @foreach($recentGalleryItems as $item)
                     <li class="flex items-center p-2 bg-gray-100 rounded">
-                        <img src="{{ asset('storage/'.$item->image_path) }}" alt="{{ $item->title }}" class="w-12 h-12 mr-4 rounded">
+                        <img src="{{ asset('storage/'.$item->image_path) }}" alt="{{ $item->title }}"
+                            class="w-12 h-12 mr-4 rounded">
                         <div>
                             <p class="font-semibold">{{ $item->title }}</p>
                             <p class="text-sm text-gray-600">{{ $item->created_at->diffForHumans() }}</p>
@@ -78,7 +79,8 @@ class extends Component
                     </li>
                     @endforeach
                 </ul>
-                <a href="{{ route('gallery.index') }}" class="inline-block mt-4 text-orange-600 hover:underline">View all gallery items →</a>
+                <a href="{{ route('gallery.index') }}" class="inline-block mt-4 text-orange-600 hover:underline">View
+                    all gallery items →</a>
             </div> --}}
 
             <!-- Recent Applicants -->
@@ -91,11 +93,13 @@ class extends Component
                             <p class="font-semibold">{{ $applicant->name }}</p>
                             <p class="text-sm text-gray-600">{{ $applicant->course->name }}</p>
                         </div>
-                        <span class="px-2 py-1 text-xs text-white bg-orange-600 rounded-full">{{ $applicant->status }}</span>
+                        <span class="px-2 py-1 text-xs text-white bg-orange-600 rounded-full">{{ $applicant->status
+                            }}</span>
                     </li>
                     @endforeach
                 </ul>
-                <a href="{{ route('applicants.view') }}" class="inline-block mt-4 text-orange-600 hover:underline">View all applicants →</a>
+                <a href="{{ route('applicants.view') }}" class="inline-block mt-4 text-orange-600 hover:underline">View
+                    all applicants →</a>
             </div>
         </div>
 
@@ -103,14 +107,21 @@ class extends Component
         <div class="mt-8">
             <h2 class="mb-4 text-xl font-semibold text-gray-800">Quick Actions</h2>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                <a href="{{ route('department.create') }}" class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
+                <a href="{{ route('department.create') }}"
+                    class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
                     <span class="text-white">Add New Department</span>
                 </a>
-                <a href="{{ route('course.create') }}" class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
+                <a href="{{ route('course.create') }}"
+                    class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
                     <span class="text-white">Add New Course</span>
                 </a>
-                <a href="{{ route('team.create') }}" class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
+                <a href="{{ route('team.create') }}"
+                    class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
                     <span class="text-white">Add New Trainer</span>
+                </a>
+                <a href="{{ route('success.story.create') }}"
+                    class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
+                    <span class="text-white">Add Success Story</span>
                 </a>
                 <a href="#" class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
                     <span class="text-white">Add Gallery Item</span>
