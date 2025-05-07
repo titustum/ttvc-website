@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
             ->name('success.story.create');
     Volt::route('create-downloads', 'admin.create-downloads')
             ->name('downloads.create');
+    Volt::route('create-gallery-item', 'admin.create-gallery-item')
+            ->name('gallery.create'); 
     Volt::route('create-course', 'admin.course-create')
             ->name('course.create');
     Volt::route('create-team', 'admin.team-create')
