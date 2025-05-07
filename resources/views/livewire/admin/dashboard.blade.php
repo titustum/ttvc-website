@@ -123,11 +123,19 @@ class extends Component
                     class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
                     <span class="text-white">Add Success Story</span>
                 </a>
+                <a href="{{ route('slide.item.create') }}"
+                    class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
+                    <span class="text-white">Add Slide Item</span>
+                </a>
                 <a href="{{ route('downloads.create') }}"
                     class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
                     <span class="text-white">Add Download File</span>
                 </a>
                 <a href="{{  route('gallery.create') }}"
+                    class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
+                    <span class="text-white">Add Gallery</span>
+                </a>
+                <a href="{{  route('gallery.item.create') }}"
                     class="p-4 text-center bg-orange-600 rounded-lg shadow-md hover:bg-orange-700">
                     <span class="text-white">Add Gallery Item</span>
                 </a>

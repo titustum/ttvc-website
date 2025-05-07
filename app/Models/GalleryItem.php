@@ -11,5 +11,11 @@ class GalleryItem extends Model
         'category', // Category of the gallery item
         'description',
         'image',
+        'gallery_id'
     ];
+
+    public function gallery()
+    {
+        return $this->belongsTo(Gallery::class);
+    }
 }

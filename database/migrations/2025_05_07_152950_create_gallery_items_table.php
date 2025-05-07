@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('gallery_items', function (Blueprint $table) {
             $table->id(); 
+            $table->foreignId('gallery_id')->constrained()->onDelete('cascade'); // Foreign key to the galleries table
             $table->string('name'); // Name of the gallery item
             $table->string('category'); // Category of the gallery item
             $table->string('slug')->unique(); // Slug for the gallery item

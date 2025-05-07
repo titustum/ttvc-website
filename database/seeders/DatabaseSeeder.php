@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // DepartmentSeeder::class,
             HeroSlideContentSeeder::class,
+            GallerySeeder::class,
             RolesSeeder::class,
             // CourseSeeder::class,
             // Add other seeders here

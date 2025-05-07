@@ -42,12 +42,16 @@ Route::middleware('auth')->group(function () {
             ->name('success.story.create');
     Volt::route('create-downloads', 'admin.create-downloads')
             ->name('downloads.create');
-    Volt::route('create-gallery-item', 'admin.create-gallery-item')
+    Volt::route('create-gallery', 'admin.create-gallery')
             ->name('gallery.create'); 
+    Volt::route('create-gallery-item', 'admin.create-gallery-item')
+            ->name('gallery.item.create'); 
     Volt::route('create-course', 'admin.course-create')
             ->name('course.create');
     Volt::route('create-team', 'admin.team-create')
             ->name('team.create');
+    Volt::route('create-slide-item', 'admin.create-slide-item')
+            ->name('slide.item.create');
     Volt::route('view-applicants', 'admin.applicants-view')
             ->name('applicants.view');
 
