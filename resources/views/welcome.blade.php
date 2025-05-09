@@ -194,18 +194,21 @@
       </div>
 
       <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+
+        @foreach ($successStories as $story)
+
         <!-- Success Story 1 -->
         <div data-aos="fade-up" data-aos-duration="800" class="relative">
           <div class="relative z-10 p-6 bg-white rounded-lg shadow-lg">
             <div class="absolute transform -translate-x-1/2 -top-10 left-1/2">
               <div class="w-20 h-20 p-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-600">
-                <img src="{{ asset('images/stories/plumbing-story.jpg') }}" alt="John Mwangi"
+                <img src="{{ asset('storage/'. $story->photo) }}" alt="{{  $story->name }}"
                   class="object-cover w-full h-full rounded-full">
               </div>
             </div>
             <div class="pt-10 text-center">
-              <h3 class="text-xl font-bold text-gray-800">John Mwangi</h3>
-              <p class="text-orange-600">Diploma in Electrical Engineering, 2023</p>
+              <h3 class="text-xl font-bold text-gray-800"> {{ $story->name }}</h3>
+              <p class="text-orange-600"> {{ $story->course }}, {{ $story->year }}</p>
               <div class="flex justify-center mt-2 mb-4 text-orange-500">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -220,91 +223,19 @@
                     d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.039 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
                 </svg>
                 <blockquote class="mt-4 text-gray-600">
-                  Tetu TVC equipped me with practical skills that employers value. Within three months of graduation, I
-                  secured a position at Kenya Power as a technician. The hands-on training made all the difference.
+                  {{ $story->statement }}
                 </blockquote>
               </div>
-              <p class="font-semibold text-gray-700">Currently: <span class="text-green-600">Electrical Technician at
-                  Kenya Power</span></p>
+              <p class="font-semibold text-gray-700">Currently: <span class="text-green-600">{{ $story->occupation }} at
+                  {{ $story->company }}</span></p>
             </div>
           </div>
           <div class="absolute inset-0 transform translate-x-2 translate-y-2 bg-orange-100 rounded-lg -z-10"></div>
         </div>
 
-        <!-- Success Story 2 -->
-        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" class="relative">
-          <div class="relative z-10 p-6 bg-white rounded-lg shadow-lg">
-            <div class="absolute transform -translate-x-1/2 -top-10 left-1/2">
-              <div class="w-20 h-20 p-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-600">
-                <img src="{{ asset('images/stories/fashion-story.jpg') }}" alt="Grace Wanjiku"
-                  class="object-cover w-full h-full rounded-full">
-              </div>
-            </div>
-            <div class="pt-10 text-center">
-              <h3 class="text-xl font-bold text-gray-800">Grace Wanjiku</h3>
-              <p class="text-orange-600">Certificate in Hospitality Management, 2022</p>
-              <div class="flex justify-center mt-2 mb-4 text-orange-500">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <div class="mt-4 mb-6">
-                <svg class="w-8 h-8 mx-auto text-gray-300" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24">
-                  <path
-                    d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.039 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
-                </svg>
-                <blockquote class="mt-4 text-gray-600">
-                  The industry connections at Tetu TVC opened doors for me. Through the college's placement program, I
-                  interned at Serena Hotel, which led to my current role. The instructors truly care about student
-                  success.
-                </blockquote>
-              </div>
-              <p class="font-semibold text-gray-700">Currently: <span class="text-green-600">Assistant Manager at Serena
-                  Hotel</span></p>
-            </div>
-          </div>
-          <div class="absolute inset-0 transform translate-x-2 translate-y-2 bg-orange-100 rounded-lg -z-10"></div>
-        </div>
+        @endforeach
 
-        <!-- Success Story 3 -->
-        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" class="relative">
-          <div class="relative z-10 p-6 bg-white rounded-lg shadow-lg">
-            <div class="absolute transform -translate-x-1/2 -top-10 left-1/2">
-              <div class="w-20 h-20 p-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-600">
-                <img src="{{ asset('images/stories/ict-story.jpeg') }}" alt="David Kamau"
-                  class="object-cover w-full h-full rounded-full">
-              </div>
-            </div>
-            <div class="pt-10 text-center">
-              <h3 class="text-xl font-bold text-gray-800">David Kamau</h3>
-              <p class="text-orange-600">Diploma in ICT, 2021</p>
-              <div class="flex justify-center mt-2 mb-4 text-orange-500">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-              </div>
-              <div class="mt-4 mb-6">
-                <svg class="w-8 h-8 mx-auto text-gray-300" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24">
-                  <path
-                    d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.039 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
-                </svg>
-                <blockquote class="mt-4 text-gray-600">
-                  The entrepreneurship module alongside my technical training gave me the confidence to start my own
-                  business. Today, my web development company employs three other Tetu TVC graduates.
-                </blockquote>
-              </div>
-              <p class="font-semibold text-gray-700">Currently: <span class="text-green-600">Founder, Nyota Digital
-                  Solutions</span></p>
-            </div>
-          </div>
-          <div class="absolute inset-0 transform translate-x-2 translate-y-2 bg-orange-100 rounded-lg -z-10"></div>
-        </div>
+
       </div>
 
       <!-- View All Stories Button -->
@@ -380,42 +311,14 @@
       </p>
 
       <div class="grid items-center grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
-        <!-- Partner 1 -->
-        <div data-aos='fade-up'
-          class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-          <img src="/images/partners/knec.png" alt="Kenya National Examinational Council" class="h-16 max-w-full">
-        </div>
 
-        <!-- Partner 2 -->
-        <div data-aos='fade-up'
+        @foreach ($partners as $partner)
+        <div data-aos='fade-up' title="{{ $partner->name }}"
           class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-          <img src="/images/partners/CDAAC.png" alt="CDAAC Logo" class="h-16 max-w-full">
+          <img src="{{  asset('storage/'. $partner->logo)  }}" alt="{{ $partner->name }}" class="h-16 max-w-full">
         </div>
+        @endforeach
 
-        <!-- Partner 3 -->
-        <div data-aos='fade-up'
-          class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-          <img src="/images/partners/nita.png" alt="NITA Logo" class="h-16 max-w-full">
-        </div>
-
-        <!-- Partner 4 -->
-        <div data-aos='fade-up'
-          class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-          <img src="/images/partners/Ministry-of-Education-logo.jpg" alt="Ministry of Education"
-            class="max-w-full max-h-16">
-        </div>
-
-        <!-- Partner 5 -->
-        <div data-aos='fade-up'
-          class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-          <img src="/images/partners/TVETA.png" alt="TVETA" class="h-16 max-w-full">
-        </div>
-
-        <!-- Partner 5 -->
-        <div data-aos='fade-up' title="Kenya Association of Technical Training Institutions"
-          class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-          <img src="/images/partners/katti.png" alt="KATTI" class="h-16 max-w-full">
-        </div>
       </div>
 
     </div>
