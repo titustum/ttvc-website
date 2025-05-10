@@ -66,8 +66,9 @@ class extends Component
 }
 ?>
 
-<div class="p-3">
-    <main class="container px-8 py-8 mx-auto my-8 bg-white rounded-md">
+<div>
+
+    <main class="px-8 py-8 mx-auto bg-white rounded-md">
         <h1 class="mb-6 text-3xl font-bold text-orange-600">Add a Download</h1>
 
         @if (session('message'))

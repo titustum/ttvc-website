@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\WelcomeController;
+use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,29 +35,48 @@ Volt::route('test-application', 'mypages.test-admission')
 
 //admin management
 Route::middleware('auth')->group(function () {
-    Volt::route('view-courses', 'admin.courses-view')
-            ->name('courses.view');
-    Volt::route('create-department', 'admin.department-create')
-            ->name('department.create');
-    Volt::route('create-success-story', 'admin.create-success-story')
-            ->name('success.story.create');
-    Volt::route('create-downloads', 'admin.create-downloads')
-            ->name('downloads.create');
-    Volt::route('create-gallery', 'admin.create-gallery')
-            ->name('gallery.create'); 
-    Volt::route('create-gallery-item', 'admin.create-gallery-item')
-            ->name('gallery.item.create'); 
-    Volt::route('create-partner', 'admin.create-partner')
-            ->name('partner.create'); 
-    Volt::route('create-course', 'admin.course-create')
-            ->name('course.create');
-    Volt::route('create-team', 'admin.team-create')
-            ->name('team.create');
-    Volt::route('create-slide-item', 'admin.create-slide-item')
-            ->name('slide.item.create');
-    Volt::route('view-applicants', 'admin.applicants-view')
-            ->name('applicants.view');
 
+    Volt::route('admin-create-department', 'admin.create-department')
+            ->name('admin.departments.create');
+    Volt::route('admin-create-success-story', 'admin.create-success-story')
+            ->name('admin.success.stories.create');
+    Volt::route('admin-create-downloads', 'admin.create-downloads')
+            ->name('admin.downloads.create');
+    Volt::route('admin-create-gallery', 'admin.create-gallery')
+            ->name('admin.galleries.create'); 
+    Volt::route('admin-create-gallery-item', 'admin.create-gallery-item')
+            ->name('admin.gallery.items.create'); 
+    Volt::route('admin-create-partner', 'admin.create-partner')
+            ->name('admin.partners.create'); 
+    Volt::route('admin-create-course', 'admin.create-course')
+            ->name('admin.courses.create');
+    Volt::route('admin-create-team', 'admin.create-team')
+            ->name('admin.teams.create');
+    Volt::route('admin-create-slide-item', 'admin.create-slide-item')
+            ->name('admin.slide.items.create');
+    
+
+//View routes
+    Volt::route('view-departments', 'admin.view-departments')
+        ->name('admin.departments.view'); 
+    Volt::route('admin-view-courses', 'admin.view-courses')
+        ->name('admin.courses.view'); 
+     Volt::route('admin-view-applicants', 'admin.view-applicants')
+                ->name('admin.applicants.view');
+     Volt::route('admin-view-teams', 'admin.view-teams')
+                ->name('admin.teams.view');
+     Volt::route('admin-view-slide-items', 'admin.view-slide-items')
+                ->name('admin.slide.items.view'); 
+Volt::route('admin-view-downloads', 'admin.view-downloads')
+        ->name('admin.downloads.view'); 
+Volt::route('admin-view-partners', 'admin.view-partners')
+        ->name('admin.partners.view');
+Volt::route('admin-view-success-stories', 'admin.view-success-stories')
+        ->name('admin.success.stories.view');
+Volt::route('admin-manage-gallery', 'admin.view-galleries')
+        ->name('admin.galleries.view');
+Volt::route('admin-view-gallery-items', 'admin.view-gallery-items')
+        ->name('admin.gallery.items.view');
     Volt::route('dashboard', 'admin.dashboard')
         ->middleware(['auth', 'verified'])
         ->name('dashboard');

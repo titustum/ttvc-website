@@ -55,7 +55,7 @@ class extends Component
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="{{ route('department.create') }}"
+                    <a href="{{ route('admin.departments.create') }}"
                         class="text-sm font-medium text-orange-600 hover:underline">Add Department &rarr;</a>
                 </div>
             </div>
@@ -78,7 +78,8 @@ class extends Component
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="{{ route('course.create') }}" class="text-sm font-medium text-blue-600 hover:underline">Add
+                    <a href="{{ route('admin.courses.create') }}"
+                        class="text-sm font-medium text-blue-600 hover:underline">Add
                         Course &rarr;</a>
                 </div>
             </div>
@@ -101,7 +102,8 @@ class extends Component
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="{{ route('team.create') }}" class="text-sm font-medium text-green-600 hover:underline">Add
+                    <a href="{{ route('admin.teams.create') }}"
+                        class="text-sm font-medium text-green-600 hover:underline">Add
                         Trainer &rarr;</a>
                 </div>
             </div>
@@ -124,7 +126,7 @@ class extends Component
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="{{ route('applicants.view') }}"
+                    <a href="{{ route('admin.applicants.view') }}"
                         class="text-sm font-medium text-purple-600 hover:underline">View Applicants &rarr;</a>
                 </div>
             </div>
@@ -137,7 +139,7 @@ class extends Component
         <div class="overflow-hidden bg-white rounded-lg shadow">
             <div class="flex items-center justify-between px-6 py-4 border-b">
                 <h2 class="text-lg font-medium text-gray-800">Recent Applicants</h2>
-                <a href="{{ route('applicants.view') }}"
+                <a href="{{ route('admin.applicants.view') }}"
                     class="text-sm font-medium text-orange-600 hover:underline">View All</a>
             </div>
             <div class="p-6">
@@ -232,7 +234,7 @@ class extends Component
     <div class="mb-8">
         <h2 class="mb-4 text-lg font-medium text-gray-800">Quick Actions</h2>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            <a href="{{ route('department.create') }}"
+            <a href="{{ route('admin.departments.create') }}"
                 class="flex flex-col items-center p-4 transition-all duration-300 bg-white rounded-lg shadow hover:shadow-md hover:translate-y-[-2px]">
                 <div class="flex items-center justify-center w-12 h-12 mb-3 text-orange-600 bg-orange-100 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -244,7 +246,7 @@ class extends Component
                 <span class="text-sm font-medium text-gray-700">Add Department</span>
             </a>
 
-            <a href="{{ route('course.create') }}"
+            <a href="{{ route('admin.courses.create') }}"
                 class="flex flex-col items-center p-4 transition-all duration-300 bg-white rounded-lg shadow hover:shadow-md hover:translate-y-[-2px]">
                 <div class="flex items-center justify-center w-12 h-12 mb-3 text-blue-600 bg-blue-100 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -256,7 +258,7 @@ class extends Component
                 <span class="text-sm font-medium text-gray-700">Add Course</span>
             </a>
 
-            <a href="{{ route('team.create') }}"
+            <a href="{{ route('admin.teams.create') }}"
                 class="flex flex-col items-center p-4 transition-all duration-300 bg-white rounded-lg shadow hover:shadow-md hover:translate-y-[-2px]">
                 <div class="flex items-center justify-center w-12 h-12 mb-3 text-green-600 bg-green-100 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -268,7 +270,7 @@ class extends Component
                 <span class="text-sm font-medium text-gray-700">Add Trainer</span>
             </a>
 
-            <a href="{{ route('success.story.create') }}"
+            <a href="{{ route('admin.success.stories.create') }}"
                 class="flex flex-col items-center p-4 transition-all duration-300 bg-white rounded-lg shadow hover:shadow-md hover:translate-y-[-2px]">
                 <div class="flex items-center justify-center w-12 h-12 mb-3 text-purple-600 bg-purple-100 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -280,7 +282,7 @@ class extends Component
                 <span class="text-sm font-medium text-gray-700">Success Story</span>
             </a>
 
-            <a href="{{ route('slide.item.create') }}"
+            <a href="{{ route('admin.slide.items.create') }}"
                 class="flex flex-col items-center p-4 transition-all duration-300 bg-white rounded-lg shadow hover:shadow-md hover:translate-y-[-2px]">
                 <div class="flex items-center justify-center w-12 h-12 mb-3 text-pink-600 bg-pink-100 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -292,7 +294,7 @@ class extends Component
                 <span class="text-sm font-medium text-gray-700">Add Slide</span>
             </a>
 
-            <a href="{{ route('downloads.create') }}"
+            <a href="{{ route('admin.downloads.create') }}"
                 class="flex flex-col items-center p-4 transition-all duration-300 bg-white rounded-lg shadow hover:shadow-md hover:translate-y-[-2px]">
                 <div class="flex items-center justify-center w-12 h-12 mb-3 text-indigo-600 bg-indigo-100 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -304,7 +306,7 @@ class extends Component
                 <span class="text-sm font-medium text-gray-700">Add Download</span>
             </a>
 
-            <a href="{{ route('gallery.create') }}"
+            <a href="{{ route('admin.galleries.create') }}"
                 class="flex flex-col items-center p-4 transition-all duration-300 bg-white rounded-lg shadow hover:shadow-md hover:translate-y-[-2px]">
                 <div class="flex items-center justify-center w-12 h-12 mb-3 rounded-lg text-cyan-600 bg-cyan-100">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -316,7 +318,7 @@ class extends Component
                 <span class="text-sm font-medium text-gray-700">Add Gallery</span>
             </a>
 
-            <a href="{{ route('gallery.item.create') }}"
+            <a href="{{ route('admin.gallery.items.create') }}"
                 class="flex flex-col items-center p-4 transition-all duration-300 bg-white rounded-lg shadow hover:shadow-md hover:translate-y-[-2px]">
                 <div class="flex items-center justify-center w-12 h-12 mb-3 text-teal-600 bg-teal-100 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -328,7 +330,7 @@ class extends Component
                 <span class="text-sm font-medium text-gray-700">Gallery Item</span>
             </a>
 
-            <a href="{{ route('partner.create') }}"
+            <a href="{{ route('admin.partners.create') }}"
                 class="flex flex-col items-center p-4 transition-all duration-300 bg-white rounded-lg shadow hover:shadow-md hover:translate-y-[-2px]">
                 <div class="flex items-center justify-center w-12 h-12 mb-3 text-yellow-600 bg-yellow-100 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
