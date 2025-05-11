@@ -1,9 +1,9 @@
 @section('title') {{ $title ?? "TTVC" }} @endsection
 
-<x-app-layout title="Test" />
+<x-app-layout />
 
 <header class="text-white bg-gray-900">
-    <div class="flex items-center justify-between px-4 py-2 mx-auto text-sm max-w-7xl">
+    <div class="container flex items-center justify-between px-4 py-2 mx-auto text-sm lg:px-8">
         <nav class="items-center hidden space-x-4 md:flex">
             <a href="https://facebook.com/TetuTechnicalVocationalCollege" aria-label="Facebook"
                 class="transition-colors hover:text-orange-400">
@@ -44,7 +44,7 @@
 </header>
 
 <nav id="mainNav" class="sticky top-0 z-30 w-full h-20 bg-white border-b shadow">
-    <div class="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl">
+    <div class="container flex items-center justify-between px-4 py-2 mx-auto lg:px-8">
         <div class="inline xl:hidden">
             <button id="mobileMenuButton"
                 class="pr-4 text-2xl transition-colors fa fa-bars hover:text-orange-600"></button>
@@ -95,20 +95,13 @@
                 </a>
                 <div
                     class="absolute left-0 z-10 invisible w-56 mt-0 uppercase transition-all duration-300 bg-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible">
-                    <a href="{{ route('departments') }}#engineering"
-                        class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">Engineering</a>
-                    <a href="{{ route('departments') }}#ict"
-                        class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">ICT
-                        & Computing</a>
-                    <a href="{{ route('departments') }}#business"
-                        class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">Business
-                        Studies</a>
-                    <a href="{{ route('departments') }}#hospitality"
-                        class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">Hospitality
-                        & Tourism</a>
-                    <a href="{{ route('departments') }}#agriculture"
-                        class="block px-4 py-3 text-gray-800 hover:bg-orange-100 hover:text-orange-600">Agriculture &
-                        Environment</a>
+                    @foreach ($departments as $department)
+                    <a href="{{ route('department', $department->name) }}"
+                        class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">
+                        {{ $department->name }}
+                    </a>
+                    @endforeach
+
                 </div>
             </div>
 
@@ -144,7 +137,8 @@
             <a href="{{ route('welcome') }}"
                 class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">HOME</a>
             <a href="{{ route('about') }}"
-                class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">ABOUT US</a>
+                class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">ABOUT
+                US</a>
 
             <!-- Mobile Administration Dropdown -->
             <div class="mobile-dropdown">
@@ -180,7 +174,8 @@
                     <a href="{{ route('departments') }}#engineering"
                         class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Engineering</a>
                     <a href="{{ route('departments') }}#ict"
-                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">ICT &
+                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">ICT
+                        &
                         Computing</a>
                     <a href="{{ route('departments') }}#business"
                         class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Business
@@ -197,7 +192,8 @@
             <a href="{{ route('courses') }}"
                 class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">COURSES</a>
             <a href="{{ route('contact') }}"
-                class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">CONTACT US</a>
+                class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">CONTACT
+                US</a>
             <div class="pt-4 mt-4 border-t border-gray-200">
                 <a href="{{ route('downloads') }}"
                     class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">DOWNLOADS</a>
@@ -229,7 +225,8 @@
             <!-- About Tetu TVC -->
             <div data-aos='fade-up'>
                 <h3 class="mb-4 text-xl font-semibold">About Tetu TVC</h3>
-                <p class="mb-4 text-gray-400">Tetu Technical and Vocational College is committed to providing quality
+                <p class="mb-4 text-gray-400">Tetu Technical and Vocational College is committed to providing
+                    quality
                     education and training to empower students for successful careers.</p>
                 <a href="/about" class="text-orange-400 hover:text-orange-300">Learn More</a>
             </div>
@@ -239,8 +236,10 @@
                 <h3 class="mb-4 text-xl font-semibold">Quick Links</h3>
                 <ul class="space-y-2">
                     <li><a href="{{ route('courses')  }}" class="text-gray-400 hover:text-white">Programs</a></li>
-                    <li><a href="{{ route('admissions') }}" class="text-gray-400 hover:text-white">Admissions</a></li>
-                    <li><a href="{{ route('departments') }}" class="text-gray-400 hover:text-white">Departments</a></li>
+                    <li><a href="{{ route('admissions') }}" class="text-gray-400 hover:text-white">Admissions</a>
+                    </li>
+                    <li><a href="{{ route('departments') }}" class="text-gray-400 hover:text-white">Departments</a>
+                    </li>
                     <li><a href="{{ route('administration') }}"
                             class="text-gray-400 hover:text-white">Administration</a></li>
                     <li><a href="{{ route('downloads') }}" class="text-gray-400 hover:text-white">Downloads</a></li>

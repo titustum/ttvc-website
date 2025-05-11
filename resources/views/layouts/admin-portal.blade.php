@@ -25,7 +25,7 @@
                     Dashboard
                 </a>
 
-                <a href="{{ route('admin.departments.view') }}"
+                <a href="{{ route('admin.departments.manage') }}"
                     class="flex items-center px-4 py-3 text-sm font-medium {{ request()->routeIs('admin.departments.*') ? 'text-orange-600 bg-orange-50 rounded-lg' : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -35,7 +35,7 @@
                     Departments
                 </a>
 
-                <a href="{{ route('admin.courses.view') }}"
+                <a href="{{ route('admin.courses.manage') }}"
                     class="flex items-center px-4 py-3 text-sm font-medium {{ request()->routeIs('admin.courses.*') ? 'text-orange-600 bg-orange-50 rounded-lg' : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -45,7 +45,7 @@
                     Courses
                 </a>
 
-                <a href="{{ route('admin.teams.view') }}"
+                <a href="{{ route('admin.teams.manage') }}"
                     class="flex items-center px-4 py-3 text-sm font-medium {{ request()->routeIs('admin.teams.*') ? 'text-orange-600 bg-orange-50 rounded-lg' : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -54,7 +54,7 @@
                     </svg>
                     Trainers
                 </a>
-                <a href="{{ route('admin.slide.items.view') }}"
+                <a href="{{ route('admin.slide.items.manage') }}"
                     class="flex items-center px-4 py-3 text-sm font-medium {{ request()->routeIs('admin.slide.items.*') ? 'text-orange-600 bg-orange-50 rounded-lg' : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -63,7 +63,7 @@
                     </svg>
                     Slides
                 </a>
-                <a href="{{ route('admin.downloads.view') }}"
+                <a href="{{ route('admin.downloads.manage') }}"
                     class="flex items-center px-4 py-3 text-sm font-medium {{ request()->routeIs('admin.downloads.*') ? 'text-orange-600 bg-orange-50 rounded-lg' : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -72,7 +72,7 @@
                     </svg>
                     Downloads
                 </a>
-                <a href="{{ route('admin.partners.view') }}"
+                <a href="{{ route('admin.partners.manage') }}"
                     class="flex items-center px-4 py-3 text-sm font-medium {{ request()->routeIs('admin.partners.*') ? 'text-orange-600 bg-orange-50 rounded-lg' : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -81,7 +81,7 @@
                     </svg>
                     Partners
                 </a>
-                <a href="{{ route('admin.galleries.view') }}"
+                <a href="{{ route('admin.galleries.manage') }}"
                     class="flex items-center px-4 py-3 text-sm font-medium {{ request()->routeIs('admin.galleries.*') ? 'text-orange-600 bg-orange-50 rounded-lg' : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -90,7 +90,7 @@
                     </svg>
                     Galleries
                 </a>
-                <a href="{{ route('admin.success.stories.view') }}"
+                <a href="{{ route('admin.success.stories.manage') }}"
                     class="flex items-center px-4 py-3 text-sm font-medium {{ request()->routeIs('admin.success.stories.*') ? 'text-orange-600 bg-orange-50 rounded-lg' : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -100,7 +100,7 @@
                     Stories
                 </a>
 
-                <a href="{{ route('admin.applicants.view') }}"
+                <a href="{{ route('admin.applicants.manage') }}"
                     class="flex items-center px-4 py-3 text-sm font-medium {{ request()->routeIs('admin.applicants.*') ? 'text-orange-600 bg-orange-50 rounded-lg' : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">

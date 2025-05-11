@@ -36,61 +36,46 @@ Volt::route('test-application', 'mypages.test-admission')
 //admin management
 Route::middleware('auth')->group(function () {
 
-    Volt::route('admin-create-department', 'admin.create-department')
-            ->name('admin.departments.create');
-    Volt::route('admin-create-success-story', 'admin.create-success-story')
-            ->name('admin.success.stories.create');
-    Volt::route('admin-create-downloads', 'admin.create-downloads')
-            ->name('admin.downloads.create');
-    Volt::route('admin-create-gallery', 'admin.create-gallery')
-            ->name('admin.galleries.create'); 
-    Volt::route('admin-create-gallery-item', 'admin.create-gallery-item')
-            ->name('admin.gallery.items.create'); 
-    Volt::route('admin-create-partner', 'admin.create-partner')
-            ->name('admin.partners.create'); 
-    Volt::route('admin-create-course', 'admin.create-course')
-            ->name('admin.courses.create');
-    Volt::route('admin-create-team', 'admin.create-team')
-            ->name('admin.teams.create');
-    Volt::route('admin-create-slide-item', 'admin.create-slide-item')
-            ->name('admin.slide.items.create');
-    
+        //View routes
+        Volt::route('view-manage-departments', 'admin.manage-departments')
+                ->name('admin.departments.manage'); 
+        Volt::route('admin-manage-courses', 'admin.manage-courses')
+                ->name('admin.courses.manage'); 
+        Volt::route('admin-view-applicants', 'admin.manage-applicants')
+                        ->name('admin.applicants.manage');
+        Volt::route('admin-manage-teams', 'admin.manage-teams')
+                        ->name('admin.teams.manage');
+        Volt::route('admin-manage-slide-items', 'admin.manage-slide-items')
+                ->name('admin.slide.items.manage'); 
+        Volt::route('admin-manage-downloads', 'admin.manage-downloads')
+                ->name('admin.downloads.manage'); 
+        Volt::route('admin-manage-partners', 'admin.manage-partners')
+                ->name('admin.partners.manage');
+        Volt::route('admin-manage-success-stories', 'admin.manage-success-stories')
+                ->name('admin.success.stories.manage');
+        Volt::route('admin-manage-gallery', 'admin.manage-galleries')
+                ->name('admin.galleries.manage');
+        Volt::route('admin-manage-gallery-items', 'admin.manage-gallery-items')
+                ->name('admin.gallery.items.manage');
+                
+        //roles
+        Volt::route('admin-manage-roles', 'admin.manage-roles')
+                ->name('admin.roles.manage');
 
-//View routes
-    Volt::route('view-departments', 'admin.view-departments')
-        ->name('admin.departments.view'); 
-    Volt::route('admin-view-courses', 'admin.view-courses')
-        ->name('admin.courses.view'); 
-     Volt::route('admin-view-applicants', 'admin.view-applicants')
-                ->name('admin.applicants.view');
-     Volt::route('admin-view-teams', 'admin.view-teams')
-                ->name('admin.teams.view');
-     Volt::route('admin-view-slide-items', 'admin.view-slide-items')
-                ->name('admin.slide.items.view'); 
-Volt::route('admin-view-downloads', 'admin.view-downloads')
-        ->name('admin.downloads.view'); 
-Volt::route('admin-view-partners', 'admin.view-partners')
-        ->name('admin.partners.view');
-Volt::route('admin-view-success-stories', 'admin.view-success-stories')
-        ->name('admin.success.stories.view');
-Volt::route('admin-manage-gallery', 'admin.view-galleries')
-        ->name('admin.galleries.view');
-Volt::route('admin-view-gallery-items', 'admin.view-gallery-items')
-        ->name('admin.gallery.items.view');
-    Volt::route('dashboard', 'admin.dashboard')
-        ->middleware(['auth', 'verified'])
-        ->name('dashboard');
+        Volt::route('dashboard', 'admin.dashboard')
+                ->middleware(['auth', 'verified'])
+                ->name('dashboard');
 
-    Route::view('profile', 'profile')
-        ->middleware(['auth'])
-        ->name('profile');
+        Route::view('profile', 'profile')
+                ->middleware(['auth'])
+                ->name('profile');
 
-    Route::post('logout', function (Request $request) {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
-    })->name('logout');
+        Route::post('logout', function (Request $request) {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return redirect('/');
+        })->name('logout');
 });
 
 require __DIR__.'/auth.php';

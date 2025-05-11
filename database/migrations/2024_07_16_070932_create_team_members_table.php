@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('name'); // fullname e.g. James Kariuki 
             $table->string('photo')->nullable();
             $table->string('qualification'); // e.g. BSc. Computer Science
-            $table->string('years_of_experience')->default('4'); // Years of experience e.g. 4 years
+            $table->string('graduation_year')->default('2022'); // Years of experience e.g. 4 years
             $table->timestamps();
         });
     }

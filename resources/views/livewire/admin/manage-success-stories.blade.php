@@ -4,6 +4,7 @@ use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
 use Livewire\WithFileUploads;
 use App\Models\SuccessStory;
+use App\Models\Department;
 use Illuminate\Support\Facades\Storage;
 
 new
@@ -13,37 +14,40 @@ class extends Component
 {
     use WithFileUploads;
 
-    public $stories;
-    public $name = '';
-    public $photo;
-    public $course = '';
-    public $year = '';
-    public $occupation = '';
-    public $company = '';
-    public $statement = '';
-    public $editingId = null;
+        public $stories;
+        public $name = '';
+        public $photo;
+        public $course = '';
+        public $year = '';
+        public $occupation = '';
+        public $company = '';
+        public $statement = '';
+        public $editingId = null;
+        public $department_id = '';
+        public $departments = [];
 
-    public function mount()
+        public function mount()
     {
         $this->stories = SuccessStory::all();
+        $this->departments = Department::all();
     }
 
     public function save()
     {
         $this->validate([
             'name' => 'required|string|max:255',
-            'photo' => $this->editingId ? 'nullable|image|max:2048' : 'required|image|max:2048', // 2MB max
+            'photo' => $this->editingId ? 'nullable|image|max:2048' : 'required|image|max:2048',
             'course' => 'required|string|max:255',
             'year' => 'required|string|max:255',
             'occupation' => 'required|string|max:255',
             'company' => 'required|string|max:255',
             'statement' => 'required|string',
+            'department_id' => 'required|exists:departments,id',
         ]);
 
         if ($this->editingId) {
             $story = SuccessStory::find($this->editingId);
             if ($this->photo) {
-                 // Delete the old photo
                 Storage::disk('public')->delete($story->photo);
                 $photoPath = $this->photo->store('success_stories', 'public');
                 $story->photo = $photoPath;
@@ -60,6 +64,7 @@ class extends Component
         $story->occupation = $this->occupation;
         $story->company = $this->company;
         $story->statement = $this->statement;
+        $story->department_id = $this->department_id;
         $story->save();
 
         $this->resetInputFields();
@@ -72,21 +77,13 @@ class extends Component
         $story = SuccessStory::find($id);
         $this->editingId = $id;
         $this->name = $story->name;
-        $this->photo = null; // Reset file input
+        $this->photo = null;
         $this->course = $story->course;
         $this->year = $story->year;
         $this->occupation = $story->occupation;
         $this->company = $story->company;
         $this->statement = $story->statement;
-    }
-
-    public function delete($id)
-    {
-        $story = SuccessStory::find($id);
-        Storage::disk('public')->delete($story->photo);
-        $story->delete();
-        $this->mount();
-        session()->flash('message', 'Success story deleted successfully.');
+        $this->department_id = $story->department_id;
     }
 
     public function resetInputFields()
@@ -99,8 +96,8 @@ class extends Component
         $this->occupation = '';
         $this->company = '';
         $this->statement = '';
+        $this->department_id = '';
     }
-
 }
 
 ?>
@@ -116,6 +113,18 @@ class extends Component
         @endif
 
         <form wire:submit.prevent="save" class="space-y-4">
+            <div>
+                <label for="department_id" class="block text-sm font-medium text-gray-700">Department</label>
+                <select id="department_id" wire:model="department_id"
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500">
+                    <option value="">-- Select Department --</option>
+                    @foreach ($departments as $dept)
+                    <option value="{{ $dept->id }}">{{ $dept->name }}</option>
+                    @endforeach
+                </select>
+                @error('department_id') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
+            </div>
+
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                 <input type="text" id="name" wire:model="name"
