@@ -71,15 +71,15 @@
                 </a>
                 <div
                     class="absolute left-0 z-10 invisible w-56 mt-0 uppercase transition-all duration-300 bg-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible">
-                    <a href="{{ route('administration') }}#principal"
+                    <a href="{{ route('principal.office') }}"
                         class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">Principal's
                         Office</a>
-                    <a href="{{ route('administration') }}#deputy"
+                    {{-- <a href="{{ route('administration') }}#deputy"
                         class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">Deputy
                         Principal</a>
                     <a href="{{ route('administration') }}#board"
                         class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">Board
-                        of Governors</a>
+                        of Governors</a> --}}
                     <a href="{{ route('administration') }}#staff"
                         class="block px-4 py-3 text-gray-800 hover:bg-orange-100 hover:text-orange-600">Administrative
                         Staff</a>
@@ -98,7 +98,7 @@
                     @foreach ($departments as $department)
                     <a href="{{ route('department', $department->name) }}"
                         class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">
-                        {{ $department->name }}
+                        {{ $department->name }} Department
                     </a>
                     @endforeach
 
@@ -148,16 +148,16 @@
                     <i class="text-xs fas fa-chevron-down"></i>
                 </button>
                 <div class="hidden pl-4 mt-1 space-y-1">
-                    <a href="{{ route('administration') }}#principal"
+                    <a href="{{ route('principal.office') }}"
                         class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Principal's
                         Office</a>
-                    <a href="{{ route('administration') }}#deputy"
+                    {{-- <a href="{{ route('administration') }}#deputy"
                         class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Deputy
                         Principal</a>
                     <a href="{{ route('administration') }}#board"
                         class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Board
-                        of Governors</a>
-                    <a href="{{ route('administration') }}#staff"
+                        of Governors</a> --}}
+                    <a href="{{ route('administration') }}"
                         class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Administrative
                         Staff</a>
                 </div>
@@ -171,21 +171,12 @@
                     <i class="text-xs fas fa-chevron-down"></i>
                 </button>
                 <div class="hidden pl-4 mt-1 space-y-1">
-                    <a href="{{ route('departments') }}#engineering"
-                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Engineering</a>
-                    <a href="{{ route('departments') }}#ict"
-                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">ICT
-                        &
-                        Computing</a>
-                    <a href="{{ route('departments') }}#business"
-                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Business
-                        Studies</a>
-                    <a href="{{ route('departments') }}#hospitality"
-                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Hospitality
-                        & Tourism</a>
-                    <a href="{{ route('departments') }}#agriculture"
-                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Agriculture
-                        & Environment</a>
+                    @foreach ($departments as $department)
+                    <a href="{{ route('department', $department->name) }}"
+                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">
+                        {{ $department->name }} Department
+                    </a>
+                    @endforeach
                 </div>
             </div>
 

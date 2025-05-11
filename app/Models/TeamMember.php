@@ -17,10 +17,10 @@ class TeamMember extends Model
         'name',
         'photo',
         'qualification',
-        'years_of_experience'
+        'graduation_year',
     ];
     protected $casts = [
-        'years_of_experience' => 'integer',
+        'graduation_year' => 'integer',
     ];
 
     public function role()
