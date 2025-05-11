@@ -3,6 +3,8 @@
 use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
 use App\Models\Department;
+use App\Models\SuccessStory;
+
 
 new
 #[Title('Department')]
@@ -10,11 +12,15 @@ new
 class extends Component
 {
     public $department;
+    public $departments = [];
+    public $successStories = [];
 
     public function mount($deptname)
     {
         $this->department = Department::where('name', $deptname)->firstOrFail();
+        $this->successStories = SuccessStory::all();   
     }
+ 
 
 };
 ?>
@@ -59,20 +65,19 @@ class extends Component
                             <!-- Department stats -->
                             <div class="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
                                 <div class="p-6 text-center rounded-lg bg-orange-50">
-                                    <span class="block mb-2 text-3xl font-bold text-orange-600">{{
-                                        count($department->courses) ?? 8
-                                        }}</span>
+                                    <span class="block mb-2 text-3xl font-bold text-orange-600">
+                                        {{ count($department->courses) }}</span>
                                     <span class="text-gray-600">Courses Offered</span>
                                 </div>
                                 <div class="p-6 text-center rounded-lg bg-blue-50">
                                     <span class="block mb-2 text-3xl font-bold text-blue-600">{{
-                                        count($department->teamMembers) ?? 8
+                                        count($department->teamMembers) ?? 0
                                         }}</span>
                                     <span class="text-gray-600">Expert Trainers</span>
                                 </div>
                                 <div class="p-6 text-center rounded-lg bg-green-50">
-                                    <span class="block mb-2 text-3xl font-bold text-green-600">{{ $graduationRate ??
-                                        '95%' }}</span>
+                                    <span class="block mb-2 text-3xl font-bold text-green-600">{{ random_int(90,99)
+                                        }}%</span>
                                     <span class="text-gray-600">Graduation Rate</span>
                                 </div>
                             </div>
@@ -82,11 +87,11 @@ class extends Component
                             <div class="mb-8">
                                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                                     <div class="overflow-hidden rounded-lg shadow-md">
-                                        <img src="/images/departments/{{ strtolower($department->name) }}/facility-1.jpg"
+                                        <img src="{{ asset('storage/'.$department->facility_pic) }}"
                                             alt="{{ $department->name }} Facility" class="object-cover w-full h-48">
                                     </div>
                                     <div class="overflow-hidden rounded-lg shadow-md">
-                                        <img src="/images/departments/{{ strtolower($department->name) }}/facility-2.jpg"
+                                        <img src="{{ asset('storage/'.$department->facility_pic2) }}"
                                             alt="{{ $department->name }} Facility" class="object-cover w-full h-48">
                                     </div>
                                 </div>
@@ -116,7 +121,10 @@ class extends Component
                                     </div>
                                     <div>
                                         <span class="block font-medium">Duration</span>
-                                        <span class="text-gray-600">2 Years (4 Semesters)</span>
+                                        <div class="text-gray-600">Level 3 (2 Terms)</div>
+                                        <div class="text-gray-600">Level 4 (2 Terms)</div>
+                                        <div class="text-gray-600">Level 5 (3 Terms)</div>
+                                        <div class="text-gray-600">Level 6 (4 Terms)</div>
                                     </div>
                                 </li>
                                 <li class="flex items-start">
@@ -124,8 +132,8 @@ class extends Component
                                         <i class="fas fa-user-graduate"></i>
                                     </div>
                                     <div>
-                                        <span class="block font-medium">Qualification</span>
-                                        <span class="text-gray-600">Diploma in {{ $department->name }}</span>
+                                        <div class="block font-medium">Qualification</div>
+                                        <div class="text-gray-600">KCSE and Above</div>
                                     </div>
                                 </li>
                                 <li class="flex items-start">
@@ -134,18 +142,18 @@ class extends Component
                                     </div>
                                     <div>
                                         <span class="block font-medium">Mode of Study</span>
-                                        <span class="text-gray-600">Full-time / Part-time</span>
+                                        <span class="text-gray-600">Full-time</span>
                                     </div>
                                 </li>
-                                <li class="flex items-start">
+                                {{-- <li class="flex items-start">
                                     <div class="mt-1 mr-3 text-orange-500">
                                         <i class="fas fa-dollar-sign"></i>
                                     </div>
                                     <div>
                                         <span class="block font-medium">Tuition Fee</span>
-                                        <span class="text-gray-600">$X,XXX per semester</span>
+                                        <span class="text-gray-600">KES 12k per semester</span>
                                     </div>
-                                </li>
+                                </li> --}}
                             </ul>
 
                             <a href="{{ route('admissions') }}"
@@ -164,62 +172,72 @@ class extends Component
         </section>
 
         <!-- Courses Section -->
-        <section class="py-16 bg-gray-50">
+
+        <section class="py-8 bg-gray-50">
             <div class="container px-4 mx-auto">
-                <div class="mb-12 text-center" data-aos="fade-up">
-                    <h2 class="text-3xl font-bold">Our Courses</h2>
-                    <div class="w-24 h-1 mx-auto mt-4 bg-orange-500 rounded"></div>
-                    <p class="max-w-3xl mx-auto mt-4 text-lg text-gray-600">
-                        Explore our comprehensive range of courses designed to develop industry-relevant skills and
-                        knowledge.
-                    </p>
-                </div>
 
-                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    @foreach($department->courses as $course)
-                    <div class="overflow-hidden transition-all duration-300 bg-white rounded-lg shadow-md hover:shadow-lg"
-                        data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                        <div class="h-48 overflow-hidden">
-                            <img src="{{ $course->image }}" alt="{{ $course->name }}"
-                                class="object-cover w-full h-full">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="mb-2 text-xl font-bold">{{ $course->name }}</h3>
-                            <p class="mb-4 text-gray-600 line-clamp-3">{{ $course->description }}</p>
+                <div class="mb-8 overflow-hidden bg-white rounded-lg shadow-md">
+                    <div class="p-6">
+                        <h2 class="mb-4 text-xl font-semibold text-gray-800">Courses Offered</h2>
 
-                            <div class="flex items-center mb-4 text-sm text-gray-500">
-                                <div class="flex items-center mr-4">
-                                    <i class="mr-2 text-orange-500 fas fa-clock"></i>
-                                    {{ $course->duration }}
-                                </div>
-                                <div class="flex items-center">
-                                    <i class="mr-2 text-orange-500 fas fa-book"></i>
-                                    {{ $course->modules }} Modules
-                                </div>
-                            </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white rounded-md shadow-sm">
+                                <thead class="text-white bg-orange-600">
+                                    <tr>
+                                        <th
+                                            class="px-3 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-4 sm:py-3">
+                                            Course</th>
+                                        <th
+                                            class="hidden px-3 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-4 sm:py-3 sm:table-cell">
+                                            Requirements</th>
+                                        <th
+                                            class="hidden px-3 py-2 text-xs font-medium tracking-wider text-left text-white uppercase md:px-4 md:py-3 md:table-cell">
+                                            Duration</th>
+                                        <th
+                                            class="hidden px-3 py-2 text-xs font-medium tracking-wider text-left text-white uppercase md:px-4 md:py-3 md:table-cell">
+                                            Exam Body</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                            <a href="{{ route('courses') }}"
-                                class="inline-flex items-center font-semibold text-orange-500 hover:text-orange-600">
-                                View Course Details
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </a>
+
+
+                                    @foreach($department->courses as $course)
+                                    <tr class="{{ $loop->even ? 'bg-gray-50' : '' }} border-b">
+                                        <td class="px-3 py-2 whitespace-nowrap sm:px-4 sm:py-3">
+                                            <div class="text-sm font-medium text-gray-900">{{ $course->name }}</div>
+                                            <div class="text-xs text-gray-500 sm:hidden">{{ $course->requirement ??
+                                                'N/A' }}
+                                            </div>
+                                            <div class="text-xs text-gray-500 sm:hidden md:hidden">{{ $course->duration
+                                                ?? 'N/A'
+                                                }} | {{ $course->exam_body ?? 'N/A' }}</div>
+                                        </td>
+                                        <td
+                                            class="hidden px-3 py-2 text-sm text-gray-600 whitespace-nowrap sm:px-4 sm:py-3 sm:table-cell">
+                                            {{ $course->requirement ?? 'N/A' }}</td>
+                                        <td
+                                            class="hidden px-3 py-2 text-sm text-gray-600 whitespace-nowrap md:px-4 md:py-3 md:table-cell">
+                                            {{ $course->duration ?? 'N/A' }}</td>
+                                        <td
+                                            class="hidden px-3 py-2 text-sm text-gray-600 whitespace-nowrap md:px-4 md:py-3 md:table-cell">
+                                            {{ $course->exam_body ?? 'N/A' }}</td>
+                                    </tr>
+
+                                    @endforeach
+
+                                    @empty($department->courses)
+                                    <tr>
+                                        <td class="px-4 py-3 text-sm text-center text-gray-500" colspan="4">No courses
+                                            offered
+                                            yet.</td>
+                                    </tr>
+                                    @endempty
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    @endforeach
                 </div>
-
-                @if(count($department->courses) > 6)
-                <div class="mt-12 text-center">
-                    <a href="{{ route('courses') }}"
-                        class="inline-block px-6 py-3 font-semibold text-white transition duration-300 bg-orange-500 rounded-lg hover:bg-orange-600">
-                        View All Courses
-                    </a>
-                </div>
-                @endif
             </div>
         </section>
 
@@ -230,7 +248,8 @@ class extends Component
                     <h2 class="text-3xl font-bold">Meet Our Trainers</h2>
                     <div class="w-24 h-1 mx-auto mt-4 bg-orange-500 rounded"></div>
                     <p class="max-w-3xl mx-auto mt-4 text-lg text-gray-600">
-                        Learn from industry experts with extensive professional experience and a passion for teaching.
+                        Learn from industry experts with extensive professional experience and a passion for
+                        teaching.
                     </p>
                 </div>
 
@@ -239,31 +258,18 @@ class extends Component
                     <div class="text-center" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <div class="relative inline-block mb-4">
                             <div class="w-48 h-48 mx-auto overflow-hidden rounded-full shadow-md">
-                                <img src="{{ $trainer->photo }}" alt="{{ $trainer->name }}"
+                                <img src="{{ asset('storage/'.$trainer->photo) }}" alt="{{ $trainer->name }}"
                                     class="object-cover w-full h-full">
                             </div>
                             <div
                                 class="absolute px-3 py-1 text-xs font-semibold text-white transform -translate-x-1/2 bg-orange-500 rounded-full -bottom-2 left-1/2">
-                                {{ $trainer->years_experience }}+ Years Exp.
+                                {{ $trainer->years_of_experience }}+ Years Exp.
                             </div>
                         </div>
                         <h3 class="text-xl font-bold">{{ $trainer->name }}</h3>
-                        <p class="mb-2 text-orange-500">{{ $trainer->position }}</p>
-                        <p class="mb-3 text-sm text-gray-600">{{ $trainer->specialization }}</p>
-                        <div class="flex justify-center space-x-3">
-                            @if($trainer->linkedin)
-                            <a href="{{ $trainer->linkedin ?? '' }}" class="text-blue-600 hover:text-blue-800"
-                                aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            @endif
-                            @if($trainer->email)
-                            <a href="mailto:{{ $trainer->email }}" class="text-gray-600 hover:text-gray-800"
-                                aria-label="Email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            @endif
-                        </div>
+                        <p class="mb-2 text-orange-500">{{ $trainer->role->name }}</p>
+                        <p class="text-sm text-gray-600 ">{{ $trainer->qualification }}</p>
+                        {{-- <p class="mb-3 text-sm text-blue-600">{{ $trainer->email }}</p> --}}
                     </div>
                     @endforeach
                 </div>
@@ -286,65 +292,29 @@ class extends Component
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <!-- Sample testimonials - in production, these would come from your database -->
-                            <div class="swiper-slide">
-                                <div class="p-6 bg-white rounded-lg shadow-md">
-                                    <div class="flex items-center mb-4">
-                                        <div class="w-16 h-16 mr-4 overflow-hidden rounded-full">
-                                            <img src="/images/testimonials/student1.jpg" alt="Student"
-                                                class="object-cover w-full h-full">
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold">Jane Doe</h4>
-                                            <p class="text-sm text-gray-600">Class of 2023, Now at Tech Solutions Inc.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <p class="italic text-gray-600">"The hands-on training I received in the {{
-                                        $department->name }} department was invaluable. The skills I learned directly
-                                        translated to my current role, allowing me to hit the ground running from day
-                                        one."</p>
-                                </div>
-                            </div>
+
+                            @foreach ($successStories as $story)
 
                             <div class="swiper-slide">
                                 <div class="p-6 bg-white rounded-lg shadow-md">
                                     <div class="flex items-center mb-4">
                                         <div class="w-16 h-16 mr-4 overflow-hidden rounded-full">
-                                            <img src="/images/testimonials/student2.jpg" alt="Student"
-                                                class="object-cover w-full h-full">
+                                            <img src="{{ asset('storage/'.$story->photo) }}"
+                                                alt="{{ $story->name }} Photo" class="object-cover w-full h-full">
                                         </div>
                                         <div>
-                                            <h4 class="font-bold">John Smith</h4>
-                                            <p class="text-sm text-gray-600">Class of 2022, Now at Industry Leaders Ltd
+                                            <h4 class="font-bold">{{ $story->name }}</h4>
+                                            <p class="text-sm text-gray-600">Class of {{ $story->year }}, Now at
+                                                {{
+                                                $story->company}}
                                             </p>
                                         </div>
                                     </div>
-                                    <p class="italic text-gray-600">"The instructors in the {{ $department->name }}
-                                        department bring real-world experience into the classroom. Their connections in
-                                        the industry helped me secure an internship that led to my current full-time
-                                        position."</p>
+                                    <p class="italic text-gray-600">"{{ $story->statement }}"</p>
                                 </div>
                             </div>
 
-                            <div class="swiper-slide">
-                                <div class="p-6 bg-white rounded-lg shadow-md">
-                                    <div class="flex items-center mb-4">
-                                        <div class="w-16 h-16 mr-4 overflow-hidden rounded-full">
-                                            <img src="/images/testimonials/student3.jpg" alt="Student"
-                                                class="object-cover w-full h-full">
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold">Sarah Johnson</h4>
-                                            <p class="text-sm text-gray-600">Class of 2021, Now at Global Innovations
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <p class="italic text-gray-600">"The {{ $department->name }} program gave me both
-                                        technical skills and professional development opportunities. The curriculum
-                                        stays current with industry trends, which made me highly marketable to
-                                        employers."</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
 
                         <!-- Slider controls -->
@@ -361,8 +331,10 @@ class extends Component
             <div class="container px-4 mx-auto">
                 <div class="flex flex-col items-center justify-between md:flex-row">
                     <div class="mb-8 text-center md:mb-0 md:text-left" data-aos="fade-right">
-                        <h2 class="mb-4 text-3xl font-bold">Ready to Start Your Career in {{ $department->name }}?</h2>
-                        <p class="max-w-xl text-white/90">Take the first step toward your future career. Apply now for
+                        <h2 class="mb-4 text-3xl font-bold">Ready to Start Your Career in {{ $department->name
+                            }}?</h2>
+                        <p class="max-w-xl text-white/90">Take the first step toward your future career. Apply
+                            now for
                             our upcoming intake and join our community of successful graduates.</p>
                     </div>
                     <div class="flex flex-col gap-4 sm:flex-row" data-aos="fade-left">
@@ -419,41 +391,7 @@ class extends Component
         }
       });
     });
-    
-    // FAQ accordion functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const accordionHeaders = document.querySelectorAll('.accordion-header');
-      
-      accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-          const content = this.nextElementSibling;
-          const icon = this.querySelector('.accordion-icon');
-          
-          // Toggle content visibility
-          content.classList.toggle('hidden');
-          
-          // Rotate icon
-          if (content.classList.contains('hidden')) {
-            icon.style.transform = 'rotate(0deg)';
-          } else {
-            icon.style.transform = 'rotate(180deg)';
-          }
-          
-          // Close other open accordions (optional)
-          accordionHeaders.forEach(otherHeader => {
-            if (otherHeader !== this) {
-              const otherContent = otherHeader.nextElementSibling;
-              const otherIcon = otherHeader.querySelector('.accordion-icon');
-              
-              if (!otherContent.classList.contains('hidden')) {
-                otherContent.classList.add('hidden');
-                otherIcon.style.transform = 'rotate(0deg)';
-              }
-            }
-          });
-        });
-      });
-    });
+     
     </script>
 
 </section>

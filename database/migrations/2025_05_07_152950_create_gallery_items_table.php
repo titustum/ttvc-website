@@ -15,9 +15,6 @@ return new class extends Migration
             $table->id(); 
             $table->foreignId('gallery_id')->constrained()->onDelete('cascade'); // Foreign key to the galleries table
             $table->string('name'); // Name of the gallery item
-            $table->string('category'); // Category of the gallery item
-            $table->string('slug')->unique(); // Slug for the gallery item
-            $table->string('description')->nullable();
             $table->string('image'); // URL or path to the image 
             $table->timestamps();
         });

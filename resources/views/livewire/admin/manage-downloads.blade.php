@@ -120,14 +120,7 @@ class extends Component
 
 <div>
     <main class="px-8 py-8 mx-auto bg-white rounded-md">
-        <div class="flex items-center justify-between mb-6">
-            <h1 class="text-3xl font-bold text-orange-600">Manage Downloads</h1>
-            <a href="{{ route('admin.downloads.create') }}"
-                class="px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600">
-                Add Download
-            </a>
-        </div>
-
+        <h1 class="text-3xl font-bold text-orange-600">Manage Downloads</h1>
         <div>
             @if (session('message'))
             <div class="relative px-4 py-3 mb-4 text-green-700 bg-green-100 border border-green-400 rounded"
