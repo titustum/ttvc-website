@@ -211,7 +211,7 @@
                 </div>
                 <div class="pt-10 text-center">
                   <h3 class="text-xl font-bold text-gray-800"> {{ $story->name }}</h3>
-                  <p class="text-orange-600"> {{ $story->course }}, {{ $story->year }}</p>
+                  <p class="text-orange-600"> {{ $story->course }}, Class of {{ $story->year }}</p>
                   <div class="flex justify-center mt-2 mb-4 text-orange-500">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>

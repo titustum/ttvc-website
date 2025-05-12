@@ -28,9 +28,15 @@ class extends Component
 
         public function mount()
     {
-        $this->stories = SuccessStory::all();
+        $this->loadStories();
         $this->departments = Department::all();
     }
+
+    public function loadStories()
+    {
+        $this->stories = SuccessStory::all();
+    }
+
 
     public function save()
     {
@@ -68,6 +74,7 @@ class extends Component
         $story->save();
 
         $this->resetInputFields();
+        $this->loadStories(); // Refresh the list without calling mount()
         $this->mount();
         session()->flash('message', 'Success story saved successfully.');
     }
@@ -88,15 +95,10 @@ class extends Component
 
     public function resetInputFields()
     {
-        $this->editingId = null;
-        $this->name = '';
-        $this->photo = null;
-        $this->course = '';
-        $this->year = '';
-        $this->occupation = '';
-        $this->company = '';
-        $this->statement = '';
-        $this->department_id = '';
+        $this->reset([
+            'editingId', 'name', 'photo', 'course', 'year',
+            'occupation', 'company', 'statement', 'department_id'
+        ]);
     }
 }
 
