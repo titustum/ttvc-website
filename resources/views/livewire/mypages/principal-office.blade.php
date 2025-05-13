@@ -50,17 +50,15 @@ class extends Component
             'Collaboration' => 'Working with industry partners and stakeholders for mutual success',
             'Relevance' => 'Ensuring our programs meet current industry needs and standards'
         ];
-        
-        $this->studentPopulation = 1800;
-        $this->totalCourses = 45; // Example number
-        $this->yearEstablished = 2008; // Example year
+         
         
         $this->keyAchievementsList = [
+            'Student population increase to over 1800, with a diverse range of courses',
             'Successful accreditation by relevant TVET bodies for all our technical programs',
             'Strategic partnerships with over 25 industry leaders ensuring internship placements for all students',
             '92% graduate employability rate in technical fields within six months of graduation',
-            'National champions in 3 categories at the Kenya Skills Competition 2024',
-            'Recent investment of KES 50 million in modernizing our training equipment and facilities',
+            'National champions in 3 categories at the Kenya Music and Drama Festivals 2024', 
+            'Attained National TVET Excellence Award for Best Technical College in 2024', 
         ];
         
         $this->principalMessage = "Welcome to Tetu Technical and Vocational College! We are dedicated to empowering our students with the technical competencies and entrepreneurial spirit needed to excel in their chosen careers. Our focus on practical, hands-on training ensures that our graduates are job-ready and can make a significant impact on the Kenyan economy. At Tetu TVC, we believe in learning by doing and providing real-world experiences that translate directly to workplace success. We invite you to explore the opportunities available at our institution and join our community of skilled professionals who are building Kenya's future.";

@@ -2,8 +2,8 @@
 
 use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
-use App\Models\Role;
 use App\Models\TeamMember;
+use App\Models\Role; // Make sure to use the Role model
 
 new
 #[Title('Administration')]
@@ -12,8 +12,8 @@ class extends Component
 {
     public $principals;
     public $deputies;
-    public $hos;
-    public $hod;
+    public $hods; // Renamed for consistency
+    public $sectionHeads; // More descriptive name
     public $trainers;
     public $others;
 
@@ -26,16 +26,19 @@ class extends Component
             $query->where('name', 'Deputy Principal');
         })->get();
 
-        $this->hod = TeamMember::whereHas('role', function ($query) {
+        $this->hods = TeamMember::whereHas('role', function ($query) {
             $query->where('name', 'HOD');
         })->get();
 
-        // $this->hos = TeamMember::whereHave('role', function ($query) {
-        //     $query->where('name', 'HOD');
-        // })->get();
-
-        $this->hos = TeamMember::whereDoesntHave('role', function ($query) {
-            $query->whereIn('name', ['Principal', 'Deputy Principal', 'HOD', 'Trainer', 'Others']);
+        // Assuming you might have a specific 'Head of Section' role
+        $this->sectionHeads = TeamMember::whereHas('role', function ($query) {
+            $query->where('name', 'Head of Section');
+        })->orWhere(function ($query) {
+            // Alternatively, if 'HOS' is in section_assigned for other section heads
+            $query->whereNotNull('section_assigned')
+                  ->whereDoesntHave('role', function ($q) {
+                      $q->whereIn('name', ['Principal', 'Deputy Principal', 'HOD', 'Trainer', 'Others', 'Head of Section']);
+                  });
         })->get();
 
         $this->trainers = TeamMember::whereHas('role', function ($query) {
@@ -45,9 +48,9 @@ class extends Component
         $this->others = TeamMember::whereHas('role', function ($query) {
             $query->where('name', 'others');
         })->get();
-
     }
 };
+
 ?>
 
 
