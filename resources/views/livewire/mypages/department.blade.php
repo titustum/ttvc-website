@@ -15,12 +15,12 @@ class extends Component
     public $departments = [];
     public $successStories = [];
 
-    public function mount($deptname)
+    public function mount($slug)
     {
-        $this->department = Department::where('name', $deptname)->firstOrFail();
+        $this->departments = Department::all();
+        $this->department = Department::where('slug', $slug)->firstOrFail();
         $this->successStories = SuccessStory::all();   
-    }
- 
+    } 
 
 };
 ?>
@@ -263,7 +263,7 @@ class extends Component
                             </div>
                             <div
                                 class="absolute px-3 py-1 text-xs font-semibold text-white transform -translate-x-1/2 bg-orange-500 rounded-full -bottom-2 left-1/2">
-                                {{ $trainer->years_of_experience }}+ Years Exp.
+                                {{ $trainer->years_of_experience }} Years Exp.
                             </div>
                         </div>
                         <h3 class="text-xl font-bold">{{ $trainer->name }}</h3>

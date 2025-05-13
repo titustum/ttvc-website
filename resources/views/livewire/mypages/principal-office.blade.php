@@ -4,7 +4,6 @@ use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
 use App\Models\TeamMember;
 use App\Models\Department;
-use Illuminate\Support\Facades\Cache;
 
 new
 #[Title('Principal\'s Office')]
@@ -25,29 +24,21 @@ class extends Component
 
     public function mount(): void
     {
-        // Use caching for performance improvement
-        $cacheTTL = 3600; // Cache for 1 hour
+        // No caching — fetch directly from the database
+        $this->principal = TeamMember::with('role')
+            ->whereHas('role', function ($query) {
+                $query->where('name', 'Principal');
+            })
+            ->first();
 
-        $this->principal = Cache::remember('principal', $cacheTTL, function() {
-            return TeamMember::with('role')
-                ->whereHas('role', function ($query) {
-                    $query->where('name', 'Principal');
-                })
-                ->first();
-        });
+        $this->headsOfDepartments = TeamMember::with(['role', 'department'])
+            ->whereHas('role', function ($query) {
+                $query->where('name', 'HOD');
+            })
+            ->take(6)
+            ->get();
 
-        $this->headsOfDepartments = Cache::remember('heads_of_departments', $cacheTTL, function() {
-            return TeamMember::with(['role', 'department'])
-                ->whereHas('role', function ($query) {
-                    $query->where('name', 'HOD');
-                })
-                ->take(6)
-                ->get();
-        });
-
-        $this->academicDepartmentsList = Cache::remember('departments', $cacheTTL, function() {
-            return Department::all();
-        });
+        $this->academicDepartmentsList = Department::all();
 
         // College stats and information
         $this->collegeOverview = "Tetu Technical and Vocational College (Tetu TVC) is a leading institution committed to providing high-quality technical and vocational education and training. We equip our students with practical skills and knowledge that are highly relevant to the demands of the modern workforce and contribute to national development.";
@@ -75,8 +66,8 @@ class extends Component
         $this->principalMessage = "Welcome to Tetu Technical and Vocational College! We are dedicated to empowering our students with the technical competencies and entrepreneurial spirit needed to excel in their chosen careers. Our focus on practical, hands-on training ensures that our graduates are job-ready and can make a significant impact on the Kenyan economy. At Tetu TVC, we believe in learning by doing and providing real-world experiences that translate directly to workplace success. We invite you to explore the opportunities available at our institution and join our community of skilled professionals who are building Kenya's future.";
     }
 }
-
 ?>
+
 
 <div class="bg-gray-100">
     <div class="container px-4 py-16 mx-auto">
@@ -215,7 +206,7 @@ class extends Component
                                 @endif
 
                                 <div class="mt-3">
-                                    <a href="{{ route('department', $department->name) }}"
+                                    <a href="{{ route('department', $department->slug) }}"
                                         class="inline-flex items-center text-sm font-medium text-orange-600 transition-all duration-300 group-hover:text-orange-700">
                                         Learn More
                                         <svg xmlns="http://www.w3.org/2000/svg"

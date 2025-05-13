@@ -114,7 +114,7 @@ class extends Component
         </div>
         @endif
 
-        <form wire:submit.prevent="save" class="space-y-4">
+        <form wire:submit="save" class="space-y-4">
             <div>
                 <label for="department_id" class="block text-sm font-medium text-gray-700">Department</label>
                 <select id="department_id" wire:model="department_id"

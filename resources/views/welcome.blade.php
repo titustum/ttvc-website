@@ -141,7 +141,7 @@
               {{ $department->name }}</h3>
             <p class="mb-5 text-gray-600 line-clamp-3">{{ $department->short_desc }}</p>
             <div class="pt-2 border-t border-gray-100">
-              <a href="{{ route('department', $department->name) }}"
+              <a href="{{ route('department', $department->slug) }}"
                 class="inline-flex items-center font-semibold text-orange-600 transition-colors duration-300 hover:text-orange-700">
                 Explore Department
                 <svg xmlns="http://www.w3.org/2000/svg"

@@ -11,9 +11,7 @@ new
 #[Title('Apply Now')]
 #[Layout('layouts.guest')]
 class extends Component
-{
-    public $departments;
-    public $selectedDepartment = '';
+{ 
     public $courses = [];
     public $full_name;
     public $phone;
@@ -35,41 +33,47 @@ class extends Component
     public function mount()
     {
         $this->departments = Department::all();
+        $this->courses = Course::all();
         $this->startTermOptions = $this->getStartTermOptions();
     }
-
-    public function updatedSelectedDepartment($value)
-    {
-        $this->courses = Course::where('department_id', $value)->get();
-        $this->course_id = ''; // Reset course selection when department changes
-    }
+ 
 
     public function getStartTermOptions(): array
     {
         $currentDate = Carbon::now();
         $options = [];
-        $yearsToAdd = 2; // Show options for the current and next two years
+        $terms = [
+            'May' => 5,
+            'September' => 9,
+            'January' => 1
+        ];
 
-        for ($i = 0; $i < $yearsToAdd; $i++) {
-            $year = $currentDate->year + $i;
+        // Add current term dynamically
+        foreach ($terms as $label => $month) {
+            $year = ($currentDate->month <= $month) ? $currentDate->year : $currentDate->year + 1;
+            $termDate = Carbon::create($year, $month, 1);
 
-            $septDate = Carbon::create($year, 9, 1);
-            if ($currentDate->lte($septDate) || $i > 0) {
-                $options["sept_$year"] = "September $year";
-            }
-
-            $janDate = Carbon::create($year + 1, 1, 1);
-            if ($currentDate->lte($janDate) || $i > 0) {
-                $options["jan_" . ($year + 1)] = "January " . ($year + 1);
-            }
-
-            $mayDate = Carbon::create($year + 1, 5, 1);
-            if ($currentDate->lte($mayDate) || $i > 0) {
-                $options["may_" . ($year + 1)] = "May " . ($year + 1);
+            // Ensure we include the current term and upcoming terms
+            if ($currentDate->gte(Carbon::create($currentDate->year, $month, 1)) || $currentDate->lte($termDate)) {
+                $key = strtolower(substr($label, 0, 3)) . "_{$year}";
+                $options[$key] = "$label $year";
             }
         }
+
+        // Add terms for the next two years dynamically
+        for ($i = 1; $i <= 2; $i++) {
+            foreach ($terms as $label => $month) {
+                $year = $currentDate->year + $i;
+                $termDate = Carbon::create($year, $month, 1);
+                $key = strtolower(substr($label, 0, 3)) . "_{$year}";
+                $options[$key] = "$label $year";
+            }
+        }
+
         return $options;
     }
+
+
 
     public function submitApplication()
     {
@@ -83,8 +87,8 @@ class extends Component
             'start_term' => 'required|in:' . implode(',', array_keys($this->startTermOptions)),
             'high_school' => 'required|string|max:255',
             'high_school_grade' => 'required|string|max:50',
-            'kcse_index_number' => 'nullable|string|max:255',
-            'kcse_year' => 'nullable|digits:4|integer|min:1990|max:' . date('Y'),
+            'kcse_index_number' => 'required|string|max:255',
+            'kcse_year' => 'required|digits:4|integer|min:1990|max:' . date('Y'),
             'nemis_upi_number' => 'nullable|string|max:255',
             'parent_name' => 'required|string|max:255',
             'parent_phone' => 'required|string|max:20',
@@ -111,8 +115,7 @@ class extends Component
         session()->flash('message', 'Application submitted successfully!');
         $this->reset();
         $this->startTermOptions = $this->getStartTermOptions(); // Refresh start term options
-        $this->courses = []; // Clear courses after submission
-        $this->selectedDepartment = ''; // Clear selected department
+        $this->courses = []; // Clear courses after submission 
     }
 }
 
@@ -130,31 +133,16 @@ class extends Component
             @endif
 
             <form wire:submit.prevent="submitApplication" class="space-y-6" data-aos="fade-up">
-                <div>
-                    <label for="department" class="block mb-2 font-medium text-gray-700">Select Department</label>
-                    <select id="department" wire:model.live="selectedDepartment" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
-                        <option value="">Select a department</option>
-                        @foreach ($departments as $department)
-                        <option value="{{ $department->id }}">{{ $department->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
 
                 <div>
                     <label for="courseId" class="block mb-2 font-medium text-gray-700">Desired Course of Study</label>
                     <select id="courseId" wire:model="course_id" required
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600"
-                        @if(!$courses) disabled @endif>
+                        @if(count($courses)==0) disabled @endif>
                         <option value="">Select a course</option>
                         @foreach ($courses as $course)
-                        <option value="{{ $course->id }}">{{ $course->name }}</option>
+                        <option value="{{ $course->id }}">{{ $course->department->name }} - {{ $course->name }}</option>
                         @endforeach
-                        @if (!$courses && $selectedDepartment)
-                        <option disabled>No courses available in the selected department.</option>
-                        @elseif (!$courses)
-                        <option disabled>Please select a department first.</option>
-                        @endif
                     </select>
                 </div>
 
@@ -207,19 +195,17 @@ class extends Component
                         Grade</label>
                     <input type="text" id="high_school_grade" wire:model="high_school_grade" required
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
-                    {{-- Consider using a select input for predefined grades if applicable --}}
                 </div>
 
                 <div class="grid gap-6 md:grid-cols-2">
                     <div>
-                        <label for="kcse_index_number" class="block mb-2 font-medium text-gray-700">KCSE Index Number
-                            (If Applicable)</label>
+                        <label for="kcse_index_number" class="block mb-2 font-medium text-gray-700">KCSE Index
+                            Number</label>
                         <input type="text" id="kcse_index_number" wire:model="kcse_index_number"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                     </div>
                     <div>
-                        <label for="kcse_year" class="block mb-2 font-medium text-gray-700">KCSE Year (If
-                            Applicable)</label>
+                        <label for="kcse_year" class="block mb-2 font-medium text-gray-700">KCSE Year</label>
                         <input type="number" id="kcse_year" wire:model="kcse_year"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                     </div>

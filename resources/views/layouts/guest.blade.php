@@ -91,7 +91,7 @@
                     class="absolute left-0 z-10 invisible w-56 mt-0 uppercase transition-all duration-300 bg-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible">
 
                     @foreach ($departments as $department)
-                    <a href="{{ route('department', $department->name) }}"
+                    <a href="{{ route('department', $department->slug) }}"
                         class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">
                         {{ $department->name }}
                     </a>
@@ -161,7 +161,7 @@
                 <div class="hidden pl-4 mt-1 space-y-1">
 
                     @foreach ($departments as $department)
-                    <a href="{{ route('department', $department->name) }}"
+                    <a href="{{ route('department', $department->slug) }}"
                         class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">
                         {{ $department->name }}
                     </a>

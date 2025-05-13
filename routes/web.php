@@ -28,7 +28,7 @@ Volt::route('courses', 'mypages.courses')
         ->name('courses');
 Volt::route('team', 'mypages.team-members')
         ->name('team');
-Volt::route('departments/{deptname}', 'mypages.department')
+Volt::route('departments/{slug}', 'mypages.department')
         ->name('department');
         ///
 Volt::route('test-application', 'mypages.test-admission')

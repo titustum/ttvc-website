@@ -51,6 +51,7 @@ class extends Component
                 $course->photo = $photoPath;
             }
         } else {
+            //if there is file to upload
             $photoPath = $this->photo->store('courses', 'public');
             $course = new Course();
             $course->photo = $photoPath;

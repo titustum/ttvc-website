@@ -22,7 +22,11 @@ class TeamMember extends Model
     protected $casts = [
         'graduation_year' => 'integer',
     ];
-
+    //years of experience = current year - graduation year
+    public function getYearsOfExperienceAttribute()
+    {
+        return now()->year - $this->graduation_year;
+    }
     public function role()
     {
         return $this->belongsTo(Role::class);
