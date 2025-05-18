@@ -177,18 +177,6 @@ class extends Component
                 @error('banner_pic') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
             </div>
 
-            <div>
-                <label for="facility_pic" class="block text-sm font-medium text-gray-700">Facility Photo 1</label>
-                <input type="file" id="facility_pic" wire:model="facility_pic" class="block w-full mt-1">
-                @error('facility_pic') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
-            </div>
-
-            <div>
-                <label for="facility_pic2" class="block text-sm font-medium text-gray-700">Facility Photo 2</label>
-                <input type="file" id="facility_pic2" wire:model="facility_pic2" class="block w-full mt-1">
-                @error('facility_pic2') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
-            </div>
-
             <button type="submit"
                 class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-orange-600 border border-transparent rounded-md shadow-sm hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
                 Save Department
@@ -226,14 +214,7 @@ class extends Component
                             class="px-5 py-3 text-xs font-semibold tracking-wider text-left uppercase border-b-2 border-gray-200">
                             Banner Photo
                         </th>
-                        <th
-                            class="px-5 py-3 text-xs font-semibold tracking-wider text-left uppercase border-b-2 border-gray-200">
-                            Facility Photo 1
-                        </th>
-                        <th
-                            class="px-5 py-3 text-xs font-semibold tracking-wider text-left uppercase border-b-2 border-gray-200">
-                            Facility Photo 2
-                        </th>
+
                         <th
                             class="px-5 py-3 text-xs font-semibold tracking-wider text-left uppercase border-b-2 border-gray-200">
                             Actions
@@ -268,22 +249,7 @@ class extends Component
                             <span class="text-gray-500">No Banner Photo</span>
                             @endif
                         </td>
-                        <td class="px-5 py-5 text-sm border-b border-gray-200">
-                            @if($department->facility_pic)
-                            <img src="{{ Storage::url($department->facility_pic) }}" alt="{{ $department->name }}"
-                                class="object-cover w-12 h-12 rounded-full">
-                            @else
-                            <span class="text-gray-500">No Facility Photo 1</span>
-                            @endif
-                        </td>
-                        <td class="px-5 py-5 text-sm border-b border-gray-200">
-                            @if($department->facility_pic2)
-                            <img src="{{ Storage::url($department->facility_pic2) }}" alt="{{ $department->name }}"
-                                class="object-cover w-12 h-12 rounded-full">
-                            @else
-                            <span class="text-gray-500">No Facility Photo 2</span>
-                            @endif
-                        </td>
+
                         <td class="px-5 py-5 text-sm border-b border-gray-200">
                             <div class="flex space-x-2">
                                 <button wire:click="edit({{ $department->id }})"

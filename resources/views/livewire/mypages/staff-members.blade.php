@@ -33,11 +33,11 @@ class extends Component
         $this->sectionHeads = TeamMember::whereHas('role', function ($query) {
             $query->where('name', 'Head of Section');
         })->orWhere(function ($query) {
-            $query->whereNotNull('section_assigned')
-                  ->whereDoesntHave('role', function ($q) {
+            $query->whereDoesntHave('role', function ($q) {
                       $q->whereIn('name', ['Principal', 'Deputy Principal', 'HOD', 'Trainer', 'Others', 'Head of Section']);
                   });
         })->get();
+ 
 
         $this->trainers = TeamMember::whereHas('role', function ($query) {
             $query->where('name', 'Trainer');
