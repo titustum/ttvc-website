@@ -64,19 +64,23 @@
 
             <!-- Administration Dropdown -->
             <div class="relative group">
-                <a href="{{ route('administration') }}"
+                <button
                     class="flex items-center px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600">
                     ADMINISTRATION
                     <i class="ml-1 text-xs fas fa-chevron-down"></i>
-                </a>
+                </button>
                 <div
                     class="absolute left-0 z-10 invisible w-56 mt-0 uppercase transition-all duration-300 bg-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible">
                     <a href="{{ route('principal.office') }}"
                         class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">Principal's
                         Office</a>
-                    <a href="{{ route('administration') }}#staff"
+                    {{-- <a href="{{ route('administration') }}"
                         class="block px-4 py-3 text-gray-800 hover:bg-orange-100 hover:text-orange-600">Administrative
-                        Staff</a>
+                        Staff</a> --}}
+                    <a href="{{ route('staff.members') }}"
+                        class="block px-4 py-3 text-gray-800 hover:bg-orange-100 hover:text-orange-600">
+                        Our Staff Members
+                    </a>
                 </div>
             </div>
 
@@ -143,11 +147,15 @@
                 </button>
                 <div class="hidden pl-4 mt-1 space-y-1">
                     <a href="{{ route('principal.office') }}"
-                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Principal's
+                        class="block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600">Principal's
                         Office</a>
-                    <a href="{{ route('administration') }}"
-                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">Administrative
-                        Staff</a>
+                    {{-- <a href="{{ route('administration') }}"
+                        class="block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600">Administrative
+                        Staff</a> --}}
+                    <a href="{{ route('staff.members') }}"
+                        class="block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600">
+                        Our Staff Members
+                    </a>
                 </div>
             </div>
 
@@ -162,7 +170,7 @@
 
                     @foreach ($departments as $department)
                     <a href="{{ route('department', $department->slug) }}"
-                        class="block px-2 py-2 transition-all rounded hover:bg-orange-100 hover:text-orange-600">
+                        class="block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600">
                         {{ $department->name }}
                     </a>
                     @endforeach

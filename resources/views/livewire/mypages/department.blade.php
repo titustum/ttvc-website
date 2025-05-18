@@ -51,18 +51,15 @@ class extends Component
         <!-- Department Overview Section -->
         <section class="py-16 bg-white">
             <div class="container px-4 mx-auto">
-                <div class="flex flex-col gap-12 md:flex-row">
-                    <!-- Main Content -->
-                    <div class="w-full md:w-2/3">
-                        <div class="prose prose-lg max-w-none" data-aos="fade-up">
+
+
+                <div class="p-6 prose prose-lg max-w-none" data-aos="fade-up">
+                    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                        <div class="md:col-span-2">
+
                             <h2 class="mb-6 text-3xl font-bold">Department Overview</h2>
+                            <p class="mb-4 text-gray-600">{{ $department->full_desc }}</p>
 
-                            <!-- Department full description -->
-                            <div class="mb-8">
-                                {!! $department->full_desc !!}
-                            </div>
-
-                            <!-- Department stats -->
                             <div class="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
                                 <div class="p-6 text-center rounded-lg bg-orange-50">
                                     <span class="block mb-2 text-3xl font-bold text-orange-600">
@@ -76,98 +73,50 @@ class extends Component
                                     <span class="text-gray-600">Expert Trainers</span>
                                 </div>
                                 <div class="p-6 text-center rounded-lg bg-green-50">
-                                    <span class="block mb-2 text-3xl font-bold text-green-600">{{ random_int(90,99)
+                                    <span class="block mb-2 text-3xl font-bold text-green-600">{{ random_int(94,99)
                                         }}%</span>
                                     <span class="text-gray-600">Graduation Rate</span>
                                 </div>
                             </div>
 
-                            <!-- Facilities and Resources -->
-                            <h3 class="mb-4 text-2xl font-bold">Our Facilities</h3>
+
+
+
+                            <h3 class="mb-4 text-2xl font-bold">Practical Learning Environment</h3>
                             <div class="mb-8">
-                                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                                    <div class="overflow-hidden rounded-lg shadow-md">
-                                        <img src="{{ asset('storage/'.$department->facility_pic) }}"
-                                            alt="{{ $department->name }} Facility" class="object-cover w-full h-48">
-                                    </div>
-                                    <div class="overflow-hidden rounded-lg shadow-md">
-                                        <img src="{{ asset('storage/'.$department->facility_pic2) }}"
-                                            alt="{{ $department->name }} Facility" class="object-cover w-full h-48">
-                                    </div>
-                                </div>
-                                <p class="mt-4">Our {{ $department->name }} department features state-of-the-art
-                                    facilities designed to provide hands-on training in real-world environments.
-                                    Students gain practical experience using industry-standard equipment and technology.
+                                <p class="mt-4">
+                                    Our {{ $department->name }} department emphasizes hands-on learning through
+                                    real-world simulations and practical sessions. Students actively engage with modern
+                                    tools and equipment under the guidance of experienced instructors, preparing them
+                                    for success in their respective fields.
                                 </p>
                             </div>
+
 
                             <!-- Industry connections -->
                             <h3 class="mb-4 text-2xl font-bold">Industry Connections</h3>
                             <p>Our program maintains strong relationships with industry leaders, providing students with
                                 internship opportunities, job placement assistance, and insights into current industry
                                 trends and practices.</p>
+
+
                         </div>
-                    </div>
 
-                    <!-- Sidebar -->
-                    <div class="w-full md:w-1/3">
-                        <div class="sticky p-6 shadow-sm bg-gray-50 rounded-xl top-8" data-aos="fade-left">
-                            <h3 class="pb-3 mb-4 text-xl font-bold border-b border-gray-200">Program Information</h3>
+                        <div>
+                            @if($department->photo)
+                            <img src="{{ asset('storage/' . $department->photo) }}" alt="{{ $department->name }} Photo"
+                                class="w-full mb-4 rounded-lg shadow-md">
+                            @endif
 
-                            <ul class="mb-6 space-y-4">
-                                <li class="flex items-start">
-                                    <div class="mt-1 mr-3 text-orange-500">
-                                        <i class="fas fa-calendar-alt"></i>
-                                    </div>
-                                    <div>
-                                        <span class="block font-medium">Duration</span>
-                                        <div class="text-gray-600">Level 3 (2 Terms)</div>
-                                        <div class="text-gray-600">Level 4 (2 Terms)</div>
-                                        <div class="text-gray-600">Level 5 (3 Terms)</div>
-                                        <div class="text-gray-600">Level 6 (4 Terms)</div>
-                                    </div>
-                                </li>
-                                <li class="flex items-start">
-                                    <div class="mt-1 mr-3 text-orange-500">
-                                        <i class="fas fa-user-graduate"></i>
-                                    </div>
-                                    <div>
-                                        <div class="block font-medium">Qualification</div>
-                                        <div class="text-gray-600">KCSE and Above</div>
-                                    </div>
-                                </li>
-                                <li class="flex items-start">
-                                    <div class="mt-1 mr-3 text-orange-500">
-                                        <i class="fas fa-clock"></i>
-                                    </div>
-                                    <div>
-                                        <span class="block font-medium">Mode of Study</span>
-                                        <span class="text-gray-600">Full-time</span>
-                                    </div>
-                                </li>
-                                {{-- <li class="flex items-start">
-                                    <div class="mt-1 mr-3 text-orange-500">
-                                        <i class="fas fa-dollar-sign"></i>
-                                    </div>
-                                    <div>
-                                        <span class="block font-medium">Tuition Fee</span>
-                                        <span class="text-gray-600">KES 12k per semester</span>
-                                    </div>
-                                </li> --}}
-                            </ul>
-
-                            <a href="{{ route('admissions') }}"
-                                class="block px-4 py-3 mb-4 font-semibold text-center text-white transition duration-300 bg-orange-500 rounded-lg hover:bg-orange-600">
-                                Apply Now
-                            </a>
-
-                            <a href="#"
-                                class="block px-4 py-3 font-semibold text-center text-orange-500 transition duration-300 border border-orange-500 rounded-lg hover:bg-orange-50">
-                                Download Brochure
-                            </a>
+                            <div class="p-4 bg-orange-100 rounded-lg">
+                                <h3 class="mb-2 text-xl font-semibold text-orange-600">Quick Facts</h3>
+                                <p class="text-gray-700">{{ $department->short_desc }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </section>
 
@@ -176,66 +125,47 @@ class extends Component
         <section class="py-8 bg-gray-50">
             <div class="container px-4 mx-auto">
 
-                <div class="mb-8 overflow-hidden bg-white rounded-lg shadow-md">
+                <div class="mb-8 overflow-hidden bg-white rounded-lg shadow-xl">
                     <div class="p-6">
-                        <h2 class="mb-4 text-xl font-semibold text-gray-800">Courses Offered</h2>
+                        <h2 class="mb-6 text-2xl font-semibold text-gray-800">Courses Offered</h2>
 
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full bg-white rounded-md shadow-sm">
+
+                        <div class="mb-12 overflow-x-auto">
+                            <table class="w-full overflow-hidden bg-white rounded-lg shadow-md">
                                 <thead class="text-white bg-orange-600">
                                     <tr>
-                                        <th
-                                            class="px-3 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-4 sm:py-3">
-                                            Course</th>
-                                        <th
-                                            class="hidden px-3 py-2 text-xs font-medium tracking-wider text-left text-white uppercase sm:px-4 sm:py-3 sm:table-cell">
+                                        <th class="px-2 py-2 text-left sm:px-4 sm:py-3">Course</th>
+                                        <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 sm:table-cell">
                                             Requirements</th>
-                                        <th
-                                            class="hidden px-3 py-2 text-xs font-medium tracking-wider text-left text-white uppercase md:px-4 md:py-3 md:table-cell">
-                                            Duration</th>
-                                        <th
-                                            class="hidden px-3 py-2 text-xs font-medium tracking-wider text-left text-white uppercase md:px-4 md:py-3 md:table-cell">
-                                            Exam Body</th>
+                                        <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 md:table-cell">Duration
+                                        </th>
+                                        <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 md:table-cell">Exam Body
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
-
-
                                     @foreach($department->courses as $course)
-                                    <tr class="{{ $loop->even ? 'bg-gray-50' : '' }} border-b">
-                                        <td class="px-3 py-2 whitespace-nowrap sm:px-4 sm:py-3">
-                                            <div class="text-sm font-medium text-gray-900">{{ $course->name }}</div>
-                                            <div class="text-xs text-gray-500 sm:hidden">{{ $course->requirement ??
-                                                'N/A' }}
-                                            </div>
-                                            <div class="text-xs text-gray-500 sm:hidden md:hidden">{{ $course->duration
-                                                ?? 'N/A'
-                                                }} | {{ $course->exam_body ?? 'N/A' }}</div>
+                                    <tr class="border-b">
+                                        <td class="px-2 py-2 sm:px-4 sm:py-3">
+                                            <div class="font-medium">{{$course->name}}</div>
+                                            <div class="text-sm text-gray-500 sm:hidden">{{$course->requirement}}</div>
+                                            <div class="text-sm text-gray-500 sm:hidden md:hidden">{{$course->duration}}
+                                                | {{$course->exam_body}}</div>
                                         </td>
-                                        <td
-                                            class="hidden px-3 py-2 text-sm text-gray-600 whitespace-nowrap sm:px-4 sm:py-3 sm:table-cell">
-                                            {{ $course->requirement ?? 'N/A' }}</td>
-                                        <td
-                                            class="hidden px-3 py-2 text-sm text-gray-600 whitespace-nowrap md:px-4 md:py-3 md:table-cell">
-                                            {{ $course->duration ?? 'N/A' }}</td>
-                                        <td
-                                            class="hidden px-3 py-2 text-sm text-gray-600 whitespace-nowrap md:px-4 md:py-3 md:table-cell">
-                                            {{ $course->exam_body ?? 'N/A' }}</td>
+                                        <td class="hidden px-2 py-2 sm:px-4 sm:py-3 sm:table-cell">
+                                            {{$course->requirement}}</td>
+                                        <td class="hidden px-2 py-2 sm:px-4 sm:py-3 md:table-cell">{{$course->duration}}
+                                        </td>
+                                        <td class="hidden px-2 py-2 sm:px-4 sm:py-3 md:table-cell">
+                                            {{$course->exam_body}}</td>
                                     </tr>
-
                                     @endforeach
-
-                                    @empty($department->courses)
-                                    <tr>
-                                        <td class="px-4 py-3 text-sm text-center text-gray-500" colspan="4">No courses
-                                            offered
-                                            yet.</td>
-                                    </tr>
-                                    @endempty
                                 </tbody>
                             </table>
                         </div>
+
+
+
                     </div>
                 </div>
             </div>

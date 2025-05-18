@@ -227,29 +227,29 @@ class extends Component
         </div>
         <div class="p-4">
             <table class="min-w-full divide-y divide-gray-200">
-                <thead>
+                <thead class="text-white bg-orange-600">
                     <tr>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-left uppercase">
                             Name
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">
-                            Email
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-left uppercase">
+                            Course
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-left uppercase">
+                            KCSE G
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-left uppercase">
                             Phone
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">
-                            Status
                         </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @foreach ($recentApplicants as $applicant)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $applicant->name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $applicant->email }}</td>
+                        <td class="px-6 py-4 font-bold whitespace-nowrap">{{ $applicant->full_name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ $applicant->course->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ $applicant->high_school_grade }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $applicant->phone }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $applicant->status }}</td>
                     </tr>
                     @endforeach
                 </tbody>

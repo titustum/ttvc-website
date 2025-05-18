@@ -24,6 +24,11 @@ class extends Component
         $this->partners = Partner::all();
     }
 
+    public function refreshPartners()
+    {
+        $this->partners = Partner::all();
+    }
+
     public function save()
     {
         $this->validate([
@@ -51,7 +56,7 @@ class extends Component
         $partner->save();
 
         $this->resetInputFields();
-        $this->mount();
+        $this->refreshPartners();
         session()->flash('message', 'Partner saved successfully.');
     }
 
@@ -68,7 +73,7 @@ class extends Component
         $partner = Partner::find($id);
         Storage::disk('public')->delete($partner->logo);
         $partner->delete();
-        $this->mount();
+        $this->refreshPartners();
         session()->flash('message', 'Partner deleted successfully.');
     }
 

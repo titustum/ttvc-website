@@ -31,13 +31,11 @@ class extends Component
             })
             ->first();
 
-        $this->headsOfDepartments = TeamMember::with(['role', 'department'])
-            ->whereHas('role', function ($query) {
-                $query->where('name', 'HOD');
-            })
-            ->take(6)
-            ->get();
 
+        $this->principal->email = "info@tetutvc.ac.ke";
+    
+
+         
         $this->academicDepartmentsList = Department::all();
 
         // College stats and information
@@ -112,7 +110,7 @@ class extends Component
 
                     @if ($principal->email || $principal->phone)
                     <div class="p-4 mt-6 rounded-lg bg-gray-50">
-                        <h4 class="mb-2 text-lg font-medium text-gray-800">Contact the Principal's Office</h4>
+                        <h4 class="mb-2 text-lg font-medium text-gray-800">Contact us</h4>
                         @if ($principal->email)
                         <p class="flex items-center mb-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-orange-500" fill="none"
@@ -135,6 +133,7 @@ class extends Component
                         @endif
                     </div>
                     @endif
+
                 </div>
                 @else
                 <div class="w-full p-8 text-center">
@@ -250,56 +249,6 @@ class extends Component
         </section>
         @endif
 
-        <!-- Heads of Departments Section - Enhanced with better layout -->
-        @if ($headsOfDepartments->isNotEmpty())
-        <section class="py-12 bg-white rounded-lg shadow-md">
-            <div class="px-8">
-                <h2 class="mb-8 text-2xl font-bold text-center text-gray-800">Meet Our Heads of Departments</h2>
-                <div class="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-3">
-                    @foreach ($headsOfDepartments as $hod)
-                    <div
-                        class="text-center transition-all duration-300 transform bg-white rounded-lg shadow-sm hover:-translate-y-1 hover:shadow-md">
-                        <div
-                            class="relative w-24 h-24 mx-auto -mt-12 overflow-hidden border-4 border-white rounded-full shadow-md">
-                            <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}"
-                                class="object-cover w-full h-full"
-                                onerror="this.src='{{ asset('images/placeholder-profile.jpg') }}'">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-base font-semibold text-gray-800">{{ $hod->name }}</h3>
-                            <p class="text-sm text-gray-600">{{ $hod->role->name }}</p>
-                            @if ($hod->department)
-                            <p class="text-sm text-orange-600">{{ $hod->department->name }}</p>
-                            @endif
-
-                            @if ($hod->email)
-                            <div class="mt-3 text-xs text-gray-500">
-                                <a href="mailto:{{ $hod->email }}" class="hover:text-orange-600">{{ $hod->email }}</a>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-
-                @if (TeamMember::whereHas('role', function ($query) {
-                $query->where('name', 'HOD');
-                })->count() > 6)
-                <div class="mt-8 text-center">
-                    <a href="/administration"
-                        class="inline-flex items-center px-6 py-3 text-sm font-medium text-white transition-colors bg-orange-600 rounded-md hover:bg-orange-700">
-                        View All Leadership
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
-                </div>
-                @endif
-            </div>
-        </section>
-        @endif
     </div>
 
 

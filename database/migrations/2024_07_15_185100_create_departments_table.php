@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('short_desc'); // short captivating desc that will be loaded in landing page e.g. Master the art and science of Beauty Therapy and Hairdressing with our amazing programs.
             $table->text('full_desc'); // The description that will be displayed on single page when user selects to view that department
             $table->string('banner_pic'); // Banner pic that will be displayed on single page when user selects to view that department
-            $table->string('facility_pic')->nullable(); // Facility pic that will be displayed on single page when user selects to view that department
-            $table->string('facility_pic2')->nullable(); // Facility pic2 that will be displayed on single page when user selects to view that department
             $table->timestamps();
         });
     }

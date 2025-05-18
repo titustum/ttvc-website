@@ -18,14 +18,16 @@ Volt::route('admissions', 'mypages.admissions')
         ->name('admissions');
 Volt::route('departments', 'mypages.departments')
         ->name('departments');
-Volt::route('administration', 'mypages.administration')
-        ->name('administration');
+Volt::route('staff-members', 'mypages.staff-members')
+        ->name('staff.members');
 Volt::route('principal-office', 'mypages.principal-office')
         ->name('principal.office');
 Volt::route('downloads', 'mypages.downloads')
         ->name('downloads');
 Volt::route('courses', 'mypages.courses')
         ->name('courses');
+Volt::route('administration', 'mypages.administration')
+        ->name('administration');
 Volt::route('team', 'mypages.team-members')
         ->name('team');
 Volt::route('departments/{slug}', 'mypages.department')

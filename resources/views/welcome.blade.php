@@ -21,9 +21,9 @@
               </h3>
               <div class="my-6 text-center">
                 <div class="inline-block p-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-600">
-                  <img src="{{ asset('images/principal.png') }}"
+                  <img src="{{ asset('images/principal-pic.jpg') }}"
                     class="object-cover w-48 h-48 border-4 border-white rounded-full shadow-inner"
-                    alt="Mrs. Catherine Gikoyo">
+                    alt="Md. Catherine Gikoyo">
                 </div>
               </div>
               <div class="px-4 my-4 text-gray-700">
@@ -32,7 +32,7 @@
                   committed to providing quality programs, activities, and services that will enhance and enrich your
                   academic and professional journey.</p>
                 <div class="pt-3 font-bold text-center border-t border-gray-200">
-                  <p class="text-gray-800">Mrs. Catherine Gikonyo</p>
+                  <p class="text-gray-800">Madam Catherine Gikonyo</p>
                   <p class="text-orange-600">College Principal</p>
                 </div>
               </div>

@@ -36,15 +36,10 @@ class RolesSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'Deputy Principal - Administration', 
+                'name' => 'Deputy Principal', 
                 'created_at' => now(),
                 'updated_at' => now(),
-            ],
-            [
-                'name' => 'Deputy Principal - Academics', 
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
+            ], 
             // Add more roles as needed
         ]);
     }

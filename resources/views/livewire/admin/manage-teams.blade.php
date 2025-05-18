@@ -18,8 +18,7 @@ class extends Component
     public $teamMembers;
     public $department_id;
     public $role_id;
-    public $section_assigned;
-    public $email;
+    public $section_assigned; 
     public $name;
     public $photo;
     public $qualification;
@@ -40,8 +39,7 @@ class extends Component
         $this->validate([
             'department_id' => 'required|exists:departments,id',
             'role_id' => 'required|exists:roles,id',
-            'section_assigned' => 'nullable|string|max:255',
-            'email' => 'required|email|unique:team_members,email,' . ($this->editingId ?? 'NULL'),
+            'section_assigned' => 'nullable|string|max:255', 
             'name' => 'required|string|max:255',
             'photo' => $this->editingId ? 'nullable|image|max:2048' : 'nullable|image|max:2048', // 2MB max
             'qualification' => 'required|string|max:255',
@@ -65,8 +63,7 @@ class extends Component
 
         $teamMember->department_id = $this->department_id;
         $teamMember->role_id = $this->role_id;
-        $teamMember->section_assigned = $this->section_assigned;
-        $teamMember->email = $this->email;
+        $teamMember->section_assigned = $this->section_assigned; 
         $teamMember->name = $this->name;
         $teamMember->qualification = $this->qualification;
         $teamMember->graduation_year = $this->graduation_year;
@@ -83,8 +80,7 @@ class extends Component
         $this->editingId = $id;
         $this->department_id = $teamMember->department_id;
         $this->role_id = $teamMember->role_id;
-        $this->section_assigned = $teamMember->section_assigned;
-        $this->email = $teamMember->email;
+        $this->section_assigned = $teamMember->section_assigned; 
         $this->name = $teamMember->name;
         $this->qualification = $teamMember->qualification;
         $this->graduation_year = $teamMember->graduation_year;
@@ -161,13 +157,6 @@ class extends Component
             </div>
 
             <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="email" wire:model="email"
-                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500">
-                @error('email') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
-            </div>
-
-            <div>
                 <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                 <input type="text" id="name" wire:model="name"
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500">
@@ -225,10 +214,6 @@ class extends Component
                         </th>
                         <th
                             class="px-5 py-3 text-xs font-semibold tracking-wider text-left uppercase border-b-2 border-gray-200">
-                            Email
-                        </th>
-                        <th
-                            class="px-5 py-3 text-xs font-semibold tracking-wider text-left uppercase border-b-2 border-gray-200">
                             Name
                         </th>
                         <th
@@ -253,16 +238,13 @@ class extends Component
                     @foreach ($teamMembers as $member)
                     <tr>
                         <td class="px-5 py-5 text-sm border-b border-gray-200">
-                            <p class="text-gray-900 whitespace-no-wrap">{{ $member->department->name }}</p>
+                            <p class="text-gray-900 whitespace-no-wrap">{{ $member->department?->name ?? 'N/A' }}</p>
                         </td>
                         <td class="px-5 py-5 text-sm border-b border-gray-200">
-                            <p class="text-gray-600 whitespace-no-wrap">{{ $member->role->name }}</p>
+                            <p class="text-gray-600 whitespace-no-wrap">{{ $member->role?->name ?? 'N/A' }}</p>
                         </td>
                         <td class="px-5 py-5 text-sm border-b border-gray-200">
                             <p class="text-gray-600 whitespace-no-wrap">{{ $member->section_assigned ?? '-' }}</p>
-                        </td>
-                        <td class="px-5 py-5 text-sm border-b border-gray-200">
-                            <p class="text-gray-600 whitespace-no-wrap">{{ $member->email }}</p>
                         </td>
                         <td class="px-5 py-5 text-sm border-b border-gray-200">
                             <p class="text-gray-900 whitespace-no-wrap">{{ $member->name }}</p>

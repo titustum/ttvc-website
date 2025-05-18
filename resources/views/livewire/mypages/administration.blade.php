@@ -1,151 +1,72 @@
 <?php
 
+namespace App\Livewire;
+
 use Livewire\Attributes\{Layout, Title};
 use Livewire\Volt\Component;
 use App\Models\TeamMember;
-use App\Models\Role; // Make sure to use the Role model
+use App\Models\Role;
+use Illuminate\View\View;
 
 new
-#[Title('Administration')]
-#[Layout('layouts.guest')]
+#[Title('Administrative Staff')]
+#[Layout('layouts.guest')] // Assuming you have an 'admin' layout
 class extends Component
 {
-    public $principals;
-    public $deputies;
-    public $hods; // Renamed for consistency
-    public $sectionHeads; // More descriptive name
-    public $trainers;
-    public $others;
+    public $administrativeStaff;
 
-    public function mount(){
-        $this->principals = TeamMember::whereHas('role', function ($query) {
-            $query->where('name', 'Principal');
-        })->get();
+    public function mount(): void
+    {
+        $adminRoles = [
+            'Dean of Students', 
+            'Registrar', 
+            'Principal', 
+            'Finance Officer',
+            'Secretary'
+        ];
 
-        $this->deputies = TeamMember::whereHas('role', function ($query) {
-            $query->where('name', 'Deputy Principal');
-        })->get();
-
-        $this->hods = TeamMember::whereHas('role', function ($query) {
-            $query->where('name', 'HOD');
-        })->get();
-
-        // Assuming you might have a specific 'Head of Section' role
-        $this->sectionHeads = TeamMember::whereHas('role', function ($query) {
-            $query->where('name', 'Head of Section');
-        })->orWhere(function ($query) {
-            // Alternatively, if 'HOS' is in section_assigned for other section heads
-            $query->whereNotNull('section_assigned')
-                  ->whereDoesntHave('role', function ($q) {
-                      $q->whereIn('name', ['Principal', 'Deputy Principal', 'HOD', 'Trainer', 'Others', 'Head of Section']);
-                  });
-        })->get();
-
-        $this->trainers = TeamMember::whereHas('role', function ($query) {
-            $query->where('name', 'Trainer');
-        })->get();
-
-        $this->others = TeamMember::whereHas('role', function ($query) {
-            $query->where('name', 'others');
+        $this->administrativeStaff = TeamMember::whereHas('role', function ($query) use ($adminRoles) {
+            $query->whereIn('name', $adminRoles);
         })->get();
     }
-};
+     
+}
 
 ?>
 
+<main class="py-16 bg-gray-100">
+    <div class="container px-4 mx-auto">
+        <h1 class="mb-12 text-4xl font-bold text-center text-gray-800">Our Administrative Leadership</h1>
 
-<main>
-
-
-
-    <!-- ======================start team section ============== -->
-
-    <section class="py-16 bg-gray-100">
-        <div class="container px-4 mx-auto">
-            <h1 class="mb-12 text-4xl font-bold text-center text-gray-800">Our Team</h1>
-
-            <!-- Principal -->
-            @foreach ($principals as $principal)
-            <div class="mb-16">
-                <h2 class="mb-8 text-3xl font-semibold text-center text-gray-800">Principal</h2>
-                <div class="flex justify-center">
-                    <div class="w-64 text-center">
-                        <img src="{{ asset('storage/'.$principal->photo) }}" alt="{{$principal->name}}"
-                            class="object-cover w-48 h-48 mx-auto mb-4 rounded-full">
-                        <h3 class="text-xl font-semibold text-gray-800">{{ $principal->name }}</h3>
-                        <p class="text-gray-600">{{ $principal->role->name }}</p>
-                    </div>
+        @if ($administrativeStaff->isEmpty())
+        <p class="text-center text-gray-600">No administrative leadership members found.</p>
+        @else
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            @foreach ($administrativeStaff as $staff)
+            <div data-aos="fade-up" class="p-6 text-center bg-white rounded-lg shadow-md">
+                @if ($staff->photo)
+                <img src="{{ asset('storage/'.$staff->photo) }}" alt="{{ $staff->name }}"
+                    class="object-cover w-32 h-32 mx-auto mb-4 rounded-full">
+                @else
+                <div class="flex items-center justify-center w-32 h-32 mx-auto mb-4 bg-gray-300 rounded-full">
+                    <svg class="w-16 h-16 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
                 </div>
+                @endif
+                <h3 class="text-lg font-semibold text-gray-800">{{ $staff->name }}</h3>
+                <p class="text-gray-600">{{ $staff->role->name }}</p>
+                @if ($staff->department)
+                <p class="text-sm text-gray-500">{{ $staff->department->name }}</p>
+                @endif
+                @if ($staff->email)
+                <p class="text-sm text-blue-500"><a href="mailto:{{ $staff->email }}">{{ $staff->email }}</a></p>
+                @endif
+                {{-- You can add more details here as needed --}}
             </div>
             @endforeach
-
-
-            <!-- Deputy Principals -->
-
-            <div class="mb-16">
-                <h2 class="mb-8 text-3xl font-semibold text-center text-gray-800">Deputy Principals</h2>
-                <div class="flex flex-wrap justify-center gap-8">
-                    @foreach ($deputies as $deputy)
-                    <div data-aos="fade-up" class="w-64 text-center">
-                        <img src="{{ asset('storage/'.$deputy->photo) }}" alt="{{$deputy->name}}"
-                            class="object-cover w-40 h-40 mx-auto mb-4 rounded-full">
-                        <h3 class="text-lg font-semibold text-gray-800">{{$deputy->name}}</h3>
-                        <p class="text-gray-600">{{ $deputy->role->name }}</p>
-                        <p class="text-gray-600">{{ $deputy->section_assigned }}</p>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-
-
-            <!-- Section Heads -->
-            <div class="mb-16">
-                <h2 class="mb-8 text-3xl font-semibold text-center text-gray-800">Section Heads</h2>
-                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    <!-- HODs -->
-                    @foreach ($hod as $hod)
-                    <div data-aos="fade-up" class="text-center">
-                        <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}"
-                            class="object-cover w-32 h-32 mx-auto mb-4 rounded-full">
-                        <h3 class="text-lg font-semibold text-gray-800">{{ $hod->name }}</h3>
-                        <p class="text-gray-600">{{ $hod->role->name }}, {{ $hod->department->name }}</p>
-                    </div>
-                    @endforeach
-
-                    <!-- Other Section Heads -->
-                    @foreach ($hos as $hos)
-                    <div data-aos="fade-up" class="text-center">
-                        <img src="{{ asset('storage/'.$hos->photo) }}" alt="{{ $hos->name }}"
-                            class="object-cover w-32 h-32 mx-auto mb-4 rounded-full">
-                        <h3 class="text-lg font-semibold text-gray-800">{{ $hos->name }}</h3>
-                        <p class="text-gray-600">{{ $hos->role->name }}, {{ $hos->section_assigned }} </p>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-
-            <!-- Other Trainers -->
-            <div>
-                <h2 class="mb-8 text-3xl font-semibold text-center text-gray-800">Our Trainers</h2>
-                <div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                    <!-- Repeat this block for each trainer -->
-                    @foreach ($trainers as $trainer)
-                    <div data-aos="fade-up" class="text-center">
-                        <img src="{{ asset('storage/'.$trainer->photo) }}" alt="{{$trainer->name}}"
-                            class="object-cover w-24 h-24 mx-auto mb-2 rounded-full">
-                        <h3 class="font-semibold text-gray-800 text-md">{{$trainer->name}}</h3>
-                        <p class="text-sm text-gray-600">{{$trainer->department->name}}</p>
-                    </div>
-                    @endforeach
-                    <!-- Add more trainer blocks as needed -->
-                </div>
-            </div>
         </div>
-    </section>
-
-
-
-    <!-- =================end team ========================== -->
-
-
+        @endif
+    </div>
 </main>

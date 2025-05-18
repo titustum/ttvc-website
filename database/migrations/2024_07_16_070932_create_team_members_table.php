@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(Department::class);
             $table->foreignIdFor(Role::class); //name e.g. Principal, Deputy Principal, HOD, Section Head, Trainer etc. 
             $table->string('section_assigned')->nullable(); // section assigned i.e. games, clubs, etc
-            $table->string('email')->unique(); // email e.g. 
+            $table->string('email')->unique()->nullable(); // email e.g. 
             $table->string('name'); // fullname e.g. James Kariuki 
             $table->string('photo')->nullable();
             $table->string('qualification'); // e.g. BSc. Computer Science
