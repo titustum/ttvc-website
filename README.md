@@ -4,7 +4,7 @@ This is a college websiote crafted for the requirements needed by college. It is
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [titus@tetutvc.ac.ke](mailto:titus@tetutvc.ac.ke). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel, please send an e-mail to Titus Tum via [titus@tetutvc.ac.ke](mailto:titus@tetutvc.ac.ke). All security vulnerabilities will be promptly addressed.
 
 ## License
 
